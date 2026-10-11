@@ -22,16 +22,17 @@ The schema is in `database/schema.sql`. Import it into the existing database onl
 sudo mariadb db_example_com < database/schema.sql
 ```
 
-## Database connection password
+## Database connection configuration
 
-The connection settings are in `includes/database.php`. On the server, set the actual MariaDB password for the configured user in that file. The connection defaults are:
+The connection code reads these environment variables from the PHP environment configured for OpenLiteSpeed:
 
-- Host: `localhost`
-- Port: `3306`
-- Database: `db_example_com`
-- Username: `admin`
+- `PAYLESS_DB_HOST` (default `localhost`)
+- `PAYLESS_DB_PORT` (default `3306`)
+- `PAYLESS_DB_NAME` (default `db_example_com`)
+- `PAYLESS_DB_USER` (default `admin`)
+- `PAYLESS_DB_PASSWORD` (required; do not commit it)
 
-**Important:** this repository is public. Never commit the actual password to GitHub. Keep the server's real password in the server copy of `includes/database.php` and avoid pushing that modified file. A dedicated database user with only the necessary privileges is safer than using an administrator account; consider this before production.
+Configure `PAYLESS_DB_PASSWORD` in the OpenLiteSpeed PHP environment before deploying this change; otherwise database-backed forms and the admin dashboard will stop connecting. Use the same environment for PHP CLI when running the owner-provisioning command. Because a real database credential was previously present in repository content, rotate that MariaDB password immediately and update the server configuration. A dedicated database user with only the necessary privileges is safer than a database administrator account.
 
 The website saves equipment and gravel enquiries to the `customer_requests` table. A private owner/admin dashboard is available at `/admin/login.php`; it is not linked from the public customer navigation.
 
