@@ -83,4 +83,33 @@
       if (window.location.hash === hash) syncActiveNav();
     }
   }));
+  
+  // Profile dropdown: close on outside click, Escape, or viewport changes.
+  const userMenu = document.querySelector('[data-admin-user-menu]');
+  const userTrigger = userMenu?.querySelector('[data-admin-user-trigger]');
+  const userDropdown = userMenu?.querySelector('[data-admin-user-dropdown]');
+  function closeUserMenu(returnFocus = false) {
+    if (!userMenu || !userTrigger || !userDropdown) return;
+    userMenu.classList.remove('is-open');
+    userTrigger.setAttribute('aria-expanded', 'false');
+    userDropdown.hidden = true;
+    if (returnFocus) userTrigger.focus();
+  }
+  function toggleUserMenu(event) {
+    event.preventDefault();
+    const opening = userDropdown?.hidden ?? true;
+    if (!userMenu || !userTrigger || !userDropdown) return;
+    userMenu.classList.toggle('is-open', opening);
+    userTrigger.setAttribute('aria-expanded', String(opening));
+    userDropdown.hidden = !opening;
+  }
+  userTrigger?.addEventListener('click', toggleUserMenu);
+  document.addEventListener('click', event => {
+    if (userMenu && !userMenu.contains(event.target)) closeUserMenu();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && userMenu?.classList.contains('is-open')) closeUserMenu(true);
+  });
+  window.addEventListener('resize', () => closeUserMenu(), { passive: true });
+
 })();
