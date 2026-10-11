@@ -29,7 +29,7 @@
     <div class="section-heading section-heading--split"><div><p class="eyebrow"><span class="eyebrow-line"></span> FIND YOUR MACHINE / 01</p><h2>Right tool.<br><span>Right on time.</span></h2></div><div class="section-heading__aside"><p>Not sure where to start? Browse by the work you need to get done. We’ll help you confirm the right equipment for your project.</p><a class="text-link" href="<?= e(page_url('equipment')) ?>">Explore all equipment <span>↗</span></a></div></div>
     <div class="category-grid">
       <?php foreach ($categories as $i => $category): ?>
-      <a class="category-card" id="<?= e($category['anchor']) ?>" href="<?= e(page_url('equipment')) ?>#<?= e($category['anchor']) ?>" data-reveal>
+      <a class="category-card" id="<?= e($category['anchor']) ?>" href="<?= e(page_url('equipment')) ?>" data-reveal>
         <span class="category-card__index">0<?= $i + 1 ?></span><span class="category-card__icon"><?= e($category['icon']) ?></span><span class="category-card__content"><strong><?= e($category['name']) ?></strong><small><?= e($category['detail']) ?></small></span><span class="category-card__arrow">↗</span>
       </a>
       <?php endforeach; ?>

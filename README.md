@@ -35,3 +35,7 @@ The request handler uses PHP's `mail()` and requires the host's mail transport t
 - Replace placeholder photography with licensed/approved images.
 - Validate current pricing/specifications, delivery area, accessibility, structured data and all form flows.
 - Configure HTTPS and host-level security/rate limiting before launch.
+
+
+## SEO deployment note
+Set `PAYLESS_SITE_URL` to the verified canonical website origin (for example, the final HTTPS domain) before publishing the generated sitemap. The domain has deliberately not been assumed in the repository.
