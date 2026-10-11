@@ -58,7 +58,7 @@ html[data-theme=dark]{color-scheme:dark;--admin-bg:#151815;--admin-paper:#1d221d
 /* Workspace sidebar inspired by the grouped, collapsible navigation in PrivacyVista. */
 .admin-app-shell{display:grid;grid-template-columns:248px minmax(0,1fr);align-items:stretch;min-height:calc(100vh - 76px);transition:grid-template-columns .22s ease}
 .admin-app-shell>.admin-wrap{width:min(1320px,calc(100% - 56px));margin:32px auto 56px;min-width:0}
-.admin-sidebar{position:sticky;top:0;align-self:start;display:flex;flex-direction:column;gap:5px;min-width:0;height:calc(100vh - 76px);padding:22px 14px 14px;background:var(--admin-paper);border-right:1px solid var(--admin-line);overflow-y:auto;overflow-x:hidden}
+.admin-sidebar{position:sticky;top:76px;align-self:start;display:flex;flex-direction:column;gap:5px;min-width:0;height:calc(100vh - 76px);padding:22px 14px 14px;background:var(--admin-paper);border-right:1px solid var(--admin-line);overflow-y:auto;overflow-x:hidden}
 .admin-sidebar-label{padding:12px 11px 6px;color:var(--admin-muted);font:10px 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
 .admin-nav-link{display:flex;align-items:center;gap:12px;min-height:44px;padding:10px 12px;border:1px solid transparent;border-radius:3px;color:var(--admin-muted)!important;font-size:12px;font-weight:700;white-space:nowrap;transition:background .16s,color .16s,border-color .16s}
 .admin-nav-link:hover{background:var(--admin-surface-2);color:var(--admin-ink)!important}
