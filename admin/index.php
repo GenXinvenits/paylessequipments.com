@@ -101,23 +101,23 @@ function admin_url(array $replace = []): string {
 }
 admin_layout_start('Request dashboard', $user);
 ?>
-<div class="head"><div><div class="eyebrow">PAYLESS / PRIVATE WORKSPACE</div><h1>Request dashboard</h1><p>Review customer enquiries, follow up, and keep the team’s queue organized.</p></div><a class="btn accent" href="/admin/">↻ Refresh data</a></div>
-<?php if ($notice !== ''): ?><div class="notice" role="status"><?= admin_escape($notice) ?></div><?php endif; ?>
-<?php if ($error !== ''): ?><div class="notice error" role="alert"><?= admin_escape($error) ?></div><?php endif; ?>
-<div class="grid">
-  <div class="stat"><span>Total requests</span><strong><?= number_format((int) ($stats['total'] ?? 0)) ?></strong></div>
-  <div class="stat"><span>New · needs review</span><strong><?= number_format((int) ($stats['new_count'] ?? 0)) ?></strong></div>
-  <div class="stat"><span>Contacted</span><strong><?= number_format((int) ($stats['contacted_count'] ?? 0)) ?></strong></div>
-  <div class="stat"><span>Quoted</span><strong><?= number_format((int) ($stats['quoted_count'] ?? 0)) ?></strong></div>
+<div class="admin-head"><div><div class="admin-eyebrow">PAYLESS / PRIVATE WORKSPACE</div><h1>Request dashboard</h1><p>Review customer enquiries, follow up, and keep the team’s queue organized.</p></div><a class="admin-btn admin-btn--accent" href="/admin/">↻ Refresh data</a></div>
+<?php if ($notice !== ''): ?><div class="admin-notice" role="status"><?= admin_escape($notice) ?></div><?php endif; ?>
+<?php if ($error !== ''): ?><div class="admin-notice error" role="alert"><?= admin_escape($error) ?></div><?php endif; ?>
+<div class="admin-grid">
+  <div class="admin-stat"><span>Total requests</span><strong><?= number_format((int) ($stats['total'] ?? 0)) ?></strong></div>
+  <div class="admin-stat"><span>New · needs review</span><strong><?= number_format((int) ($stats['new_count'] ?? 0)) ?></strong></div>
+  <div class="admin-stat"><span>Contacted</span><strong><?= number_format((int) ($stats['contacted_count'] ?? 0)) ?></strong></div>
+  <div class="admin-stat"><span>Quoted</span><strong><?= number_format((int) ($stats['quoted_count'] ?? 0)) ?></strong></div>
 </div>
 
 <?php if ($detailId): ?>
-<section class="card" aria-labelledby="detail-heading">
-  <?php if (!$detail): ?><div class="empty">That request could not be found. <a href="/admin/">Return to the dashboard.</a></div>
+<section class="admin-card" aria-labelledby="detail-heading">
+  <?php if (!$detail): ?><div class="admin-empty">That request could not be found. <a href="/admin/">Return to the dashboard.</a></div>
   <?php else: ?>
-  <div class="detail">
-    <div class="wide"><a class="btn light" href="<?= admin_escape(admin_url(['request' => null])) ?>">← Back to requests</a></div>
-    <section><div class="eyebrow">REQUEST #<?= (int) $detail['id'] ?> · <?= admin_escape(ucfirst((string) $detail['request_type'])) ?></div><h2 id="detail-heading"><?= admin_escape((string) $detail['customer_name']) ?></h2><dl>
+  <div class="admin-detail">
+    <div class="wide"><a class="admin-btn admin-btn--light" href="<?= admin_escape(admin_url(['request' => null])) ?>">← Back to requests</a></div>
+    <section><div class="admin-eyebrow">REQUEST #<?= (int) $detail['id'] ?> · <?= admin_escape(ucfirst((string) $detail['request_type'])) ?></div><h2 id="detail-heading"><?= admin_escape((string) $detail['customer_name']) ?></h2><dl>
       <dt>Company</dt><dd><?= admin_escape((string) ($detail['company'] ?: 'Not provided')) ?></dd>
       <dt>Phone</dt><dd><a href="tel:<?= admin_escape((string) $detail['phone']) ?>"><?= admin_escape((string) $detail['phone']) ?></a></dd>
       <dt>Email</dt><dd><a href="mailto:<?= admin_escape((string) $detail['email']) ?>"><?= admin_escape((string) $detail['email']) ?></a></dd>
@@ -126,7 +126,7 @@ admin_layout_start('Request dashboard', $user);
       <dt>Submitted</dt><dd><?= admin_escape((string) $detail['created_at']) ?></dd>
     </dl></section>
     <section><h2>Request details</h2><dl>
-      <dt>Status</dt><dd><span class="pill <?= admin_escape((string) $detail['request_status']) ?>"><?= admin_escape((string) $detail['request_status']) ?></span></dd>
+      <dt>Status</dt><dd><span class="admin-pill <?= admin_escape((string) $detail['request_status']) ?>"><?= admin_escape((string) $detail['request_status']) ?></span></dd>
       <dt>Equipment selected</dt><dd><?= admin_escape(implode(', ', (array) json_decode((string) $detail['equipment_json'], true))) ?: 'None listed' ?></dd>
       <dt>Rental period</dt><dd><?= admin_escape((string) ($detail['rental_period'] ?: 'Not specified')) ?></dd>
       <dt>Start date / needed by</dt><dd><?= admin_escape((string) ($detail['start_date'] ?: 'Not specified')) ?></dd>
@@ -135,38 +135,38 @@ admin_layout_start('Request dashboard', $user);
       <dt>ZIP code</dt><dd><?= admin_escape((string) ($detail['zip_code'] ?: 'Not provided')) ?></dd>
     </dl></section>
     <section class="wide"><h2>Customer notes</h2><p><?= nl2br(admin_escape((string) ($detail['details'] ?: 'No additional notes provided.'))) ?></p></section>
-    <section class="wide"><form method="post" action="/admin/?request=<?= (int) $detail['id'] ?>" class="actions"><input type="hidden" name="_csrf" value="<?= admin_escape($csrf) ?>"><input type="hidden" name="action" value="update_status"><input type="hidden" name="request_id" value="<?= (int) $detail['id'] ?>"><label for="detail-status">Update status</label><select id="detail-status" name="request_status"><?php foreach ($statuses as $key => $label): ?><option value="<?= admin_escape($key) ?>" <?= $detail['request_status'] === $key ? 'selected' : '' ?>><?= admin_escape($label) ?></option><?php endforeach; ?></select><button class="btn accent" type="submit">Save status</button></form></section>
+    <section class="wide"><form method="post" action="/admin/?request=<?= (int) $detail['id'] ?>" class="admin-actions"><input type="hidden" name="_csrf" value="<?= admin_escape($csrf) ?>"><input type="hidden" name="action" value="update_status"><input type="hidden" name="request_id" value="<?= (int) $detail['id'] ?>"><label for="detail-status">Update status</label><select id="detail-status" name="request_status"><?php foreach ($statuses as $key => $label): ?><option value="<?= admin_escape($key) ?>" <?= $detail['request_status'] === $key ? 'selected' : '' ?>><?= admin_escape($label) ?></option><?php endforeach; ?></select><button class="admin-btn admin-btn--accent" type="submit">Save status</button></form></section>
   </div><?php endif; ?>
 </section>
 <?php endif; ?>
 
-<section class="card">
-  <form class="filters" method="get" action="/admin/">
+<section class="admin-card">
+  <form class="admin-filters" method="get" action="/admin/">
     <?php if ($detailId): ?><input type="hidden" name="request" value="<?= (int) $detailId ?>"><?php endif; ?>
     <input type="search" name="q" value="<?= admin_escape($q) ?>" placeholder="Search name, company, phone, email, location or request #">
     <select name="status" aria-label="Filter by status"><option value="">All statuses</option><?php foreach ($statuses as $key => $label): ?><option value="<?= admin_escape($key) ?>" <?= $statusFilter === $key ? 'selected' : '' ?>><?= admin_escape($label) ?></option><?php endforeach; ?></select>
     <select name="type" aria-label="Filter by request type"><option value="">All request types</option><option value="equipment" <?= $typeFilter === 'equipment' ? 'selected' : '' ?>>Equipment</option><option value="gravel" <?= $typeFilter === 'gravel' ? 'selected' : '' ?>>Gravel</option></select>
-    <button class="btn" type="submit">Search</button><a class="btn light" href="/admin/">Clear</a>
+    <button class="admin-btn" type="submit">Search</button><a class="admin-btn admin-btn--light" href="/admin/">Clear</a>
   </form>
-  <div class="table-wrap"><table><thead><tr><th>Request</th><th>Customer</th><th>Contact</th><th>Submitted</th><th>Status</th><th>Manage</th></tr></thead><tbody>
-  <?php if (!$requests): ?><tr><td colspan="6" class="empty">No requests match these filters.</td></tr><?php else: foreach ($requests as $row): ?>
+  <div class="admin-table-wrap"><table><thead><tr><th>Request</th><th>Customer</th><th>Contact</th><th>Submitted</th><th>Status</th><th>Manage</th></tr></thead><tbody>
+  <?php if (!$requests): ?><tr><td colspan="6" class="admin-empty">No requests match these filters.</td></tr><?php else: foreach ($requests as $row): ?>
     <tr><td><strong>#<?= (int) $row['id'] ?> · <?= admin_escape(ucfirst((string) $row['request_type'])) ?></strong><small><?= admin_escape((string) ($row['start_date'] ?: $row['rental_period'] ?: 'Date not specified')) ?></small><small><?= admin_escape((string) $row['job_location']) ?></small></td>
     <td><strong><?= admin_escape((string) $row['customer_name']) ?></strong><small><?= admin_escape((string) ($row['company'] ?: 'Individual customer')) ?></small></td>
     <td><a href="tel:<?= admin_escape((string) $row['phone']) ?>"><?= admin_escape((string) $row['phone']) ?></a><small><a href="mailto:<?= admin_escape((string) $row['email']) ?>"><?= admin_escape((string) $row['email']) ?></a></small></td>
-    <td><?= admin_escape((string) $row['created_at']) ?></td><td><span class="pill <?= admin_escape((string) $row['request_status']) ?>"><?= admin_escape((string) $row['request_status']) ?></span></td>
-    <td><div class="actions"><a class="btn light" href="<?= admin_escape(admin_url(['request' => (string) $row['id']])) ?>">View details</a><form method="post" action="/admin/" class="actions"><input type="hidden" name="_csrf" value="<?= admin_escape($csrf) ?>"><input type="hidden" name="action" value="update_status"><input type="hidden" name="request_id" value="<?= (int) $row['id'] ?>"><select name="request_status" aria-label="Status for request <?= (int) $row['id'] ?>"><?php foreach ($statuses as $key => $label): ?><option value="<?= admin_escape($key) ?>" <?= $row['request_status'] === $key ? 'selected' : '' ?>><?= admin_escape($label) ?></option><?php endforeach; ?></select><button class="btn" type="submit">Save</button></form></div></td></tr>
+    <td><?= admin_escape((string) $row['created_at']) ?></td><td><span class="admin-pill <?= admin_escape((string) $row['request_status']) ?>"><?= admin_escape((string) $row['request_status']) ?></span></td>
+    <td><div class="admin-actions"><a class="admin-btn admin-btn--light" href="<?= admin_escape(admin_url(['request' => (string) $row['id']])) ?>">View details</a><form method="post" action="/admin/" class="admin-actions"><input type="hidden" name="_csrf" value="<?= admin_escape($csrf) ?>"><input type="hidden" name="action" value="update_status"><input type="hidden" name="request_id" value="<?= (int) $row['id'] ?>"><select name="request_status" aria-label="Status for request <?= (int) $row['id'] ?>"><?php foreach ($statuses as $key => $label): ?><option value="<?= admin_escape($key) ?>" <?= $row['request_status'] === $key ? 'selected' : '' ?>><?= admin_escape($label) ?></option><?php endforeach; ?></select><button class="admin-btn" type="submit">Save</button></form></div></td></tr>
   <?php endforeach; endif; ?></tbody></table></div>
-  <div class="pager"><span>Showing <?= $total ? (($page - 1) * $perPage + 1) : 0 ?>–<?= min($page * $perPage, $total) ?> of <?= number_format($total) ?> requests</span><span class="actions"><?php if ($page > 1): ?><a class="btn light" href="<?= admin_escape(admin_url(['p' => $page - 1])) ?>">← Previous</a><?php endif; ?><?php if ($page < $pages): ?><a class="btn light" href="<?= admin_escape(admin_url(['p' => $page + 1])) ?>">Next →</a><?php endif; ?></span></div>
+  <div class="admin-pager"><span>Showing <?= $total ? (($page - 1) * $perPage + 1) : 0 ?>–<?= min($page * $perPage, $total) ?> of <?= number_format($total) ?> requests</span><span class="admin-actions"><?php if ($page > 1): ?><a class="admin-btn admin-btn--light" href="<?= admin_escape(admin_url(['p' => $page - 1])) ?>">← Previous</a><?php endif; ?><?php if ($page < $pages): ?><a class="admin-btn admin-btn--light" href="<?= admin_escape(admin_url(['p' => $page + 1])) ?>">Next →</a><?php endif; ?></span></div>
 </section>
 
 <?php if (($user['role'] ?? '') === 'owner'): ?>
-<h2 class="section-title">Access management · Owner only</h2>
-<p class="helper">Only the owner can create or disable admin accounts. Admins can manage requests but cannot grant access to other people.</p>
-<div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);align-items:start">
-  <section class="card" style="padding:20px"><h2 style="margin:0 0 5px;font-size:20px">Assign an admin</h2><p class="helper">Use a unique work email and a strong temporary password. Give the credentials to the person privately.</p>
-  <form method="post" action="/admin/#access-management" class="form-grid"><input type="hidden" name="_csrf" value="<?= admin_escape($csrf) ?>"><input type="hidden" name="action" value="create_admin"><label>Full name<input name="display_name" maxlength="120" required></label><label>Work email<input type="email" name="email" maxlength="254" required></label><label class="wide">Temporary password (14+ characters)<input type="password" name="password" minlength="14" maxlength="4096" autocomplete="new-password" required></label><div class="wide"><button class="btn accent" type="submit">Create admin account</button></div></form></section>
-  <section class="card" id="access-management" style="padding:20px"><h2 style="margin:0 0 5px;font-size:20px">Authorized accounts</h2>
-  <?php foreach ($admins as $admin): ?><div class="user-row"><div><strong><?= admin_escape((string) $admin['display_name']) ?> <?= $admin['role'] === 'owner' ? '<span class="pill">Owner</span>' : '' ?></strong><small><?= admin_escape((string) $admin['email']) ?> · <?= (int) $admin['is_active'] ? 'Active' : 'Disabled' ?></small><small><?= $admin['last_login_at'] ? 'Last login: ' . admin_escape((string) $admin['last_login_at']) : 'Never signed in' ?></small></div><?php if ($admin['role'] === 'admin'): ?><form method="post" action="/admin/#access-management"><input type="hidden" name="_csrf" value="<?= admin_escape($csrf) ?>"><input type="hidden" name="action" value="toggle_admin"><input type="hidden" name="admin_id" value="<?= (int) $admin['id'] ?>"><button class="btn <?= (int) $admin['is_active'] ? 'light' : 'accent' ?>" type="submit"><?= (int) $admin['is_active'] ? 'Disable access' : 'Enable access' ?></button></form><?php endif; ?></div><?php endforeach; ?>
+<h2 class="admin-section-title">Access management · Owner only</h2>
+<p class="admin-helper">Only the owner can create or disable admin accounts. Admins can manage requests but cannot grant access to other people.</p>
+<div class="admin-grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);align-items:start">
+  <section class="admin-card" style="padding:20px"><h2 style="margin:0 0 5px;font-size:20px">Assign an admin</h2><p class="admin-helper">Use a unique work email and a strong temporary password. Give the credentials to the person privately.</p>
+  <form method="post" action="/admin/#access-management" class="admin-form-grid"><input type="hidden" name="_csrf" value="<?= admin_escape($csrf) ?>"><input type="hidden" name="action" value="create_admin"><label>Full name<input name="display_name" maxlength="120" required></label><label>Work email<input type="email" name="email" maxlength="254" required></label><label class="wide">Temporary password (14+ characters)<input type="password" name="password" minlength="14" maxlength="4096" autocomplete="new-password" required></label><div class="wide"><button class="admin-btn admin-btn--accent" type="submit">Create admin account</button></div></form></section>
+  <section class="admin-card" id="access-management" style="padding:20px"><h2 style="margin:0 0 5px;font-size:20px">Authorized accounts</h2>
+  <?php foreach ($admins as $admin): ?><div class="admin-user-row"><div><strong><?= admin_escape((string) $admin['display_name']) ?> <?= $admin['role'] === 'owner' ? '<span class="admin-pill">Owner</span>' : '' ?></strong><small><?= admin_escape((string) $admin['email']) ?> · <?= (int) $admin['is_active'] ? 'Active' : 'Disabled' ?></small><small><?= $admin['last_login_at'] ? 'Last login: ' . admin_escape((string) $admin['last_login_at']) : 'Never signed in' ?></small></div><?php if ($admin['role'] === 'admin'): ?><form method="post" action="/admin/#access-management"><input type="hidden" name="_csrf" value="<?= admin_escape($csrf) ?>"><input type="hidden" name="action" value="toggle_admin"><input type="hidden" name="admin_id" value="<?= (int) $admin['id'] ?>"><button class="btn <?= (int) $admin['is_active'] ? 'admin-btn--light' : 'admin-btn--accent' ?>" type="submit"><?= (int) $admin['is_active'] ? 'Disable access' : 'Enable access' ?></button></form><?php endif; ?></div><?php endforeach; ?>
   </section>
 </div>
 <?php endif; ?>
