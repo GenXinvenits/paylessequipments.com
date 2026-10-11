@@ -40,11 +40,15 @@ The website saves equipment and gravel enquiries to the `customer_requests` tabl
 
 1. Deploy the latest `paylessequipment` branch to the site.
 2. Import `database/admin-dashboard.sql` into the existing `db_example_com` database using phpMyAdmin. This creates the admin-account and login-rate-limit tables; it does not modify existing customer requests.
-3. From the project directory on the server, run the owner provisioning script using PHP CLI (not a browser):
+3. From the project directory on the server, provide the database password to the CLI process without putting it in shell history, then create the first owner:
    ```sh
+   read -rsp "MariaDB password: " PAYLESS_DB_PASSWORD
+   export PAYLESS_DB_PASSWORD
+   echo
    /usr/local/lsws/lsphp83/bin/php tools/create-owner.php owner@your-company.example
+   unset PAYLESS_DB_PASSWORD
    ```
-   Enter the owner's display name and a strong password of at least 14 characters when prompted. The script refuses to create another owner if one already exists.
+   Enter the owner's display name and a strong password of at least 14 characters when prompted. Configure the same `PAYLESS_DB_PASSWORD` variable in OpenLiteSpeed's PHP environment for the live website. The script refuses to create another owner if one already exists.
 4. Sign in at `https://YOUR-DOMAIN/admin/login.php`. The owner can assign or disable admin accounts from the dashboard. Assigned admins can view and update requests but cannot grant access to other people.
 5. Keep HTTPS enabled. Do not share owner credentials. Disable an admin account immediately when that person no longer needs access.
 
