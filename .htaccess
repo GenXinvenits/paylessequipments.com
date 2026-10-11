@@ -8,3 +8,8 @@ DirectoryIndex index.php
 <FilesMatch "^(\.env|README\.md)$">
   Require all denied
 </FilesMatch>
+
+# Keep SQL schema and other database support files out of public access.
+<FilesMatch "\\.(sql)$">
+  Require all denied
+</FilesMatch>
