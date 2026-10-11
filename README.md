@@ -24,15 +24,12 @@ sudo mariadb db_example_com < database/schema.sql
 
 ## Database connection configuration
 
-The connection code reads these environment variables from the PHP environment configured for OpenLiteSpeed:
+The connection code supports either the PHP environment or a server-only local file. This avoids depending on environment variables being inherited by OpenLiteSpeed:
 
-- `PAYLESS_DB_HOST` (default `localhost`)
-- `PAYLESS_DB_PORT` (default `3306`)
-- `PAYLESS_DB_NAME` (default `db_example_com`)
-- `PAYLESS_DB_USER` (default `admin`)
-- `PAYLESS_DB_PASSWORD` (required; do not commit it)
+- Environment variables: `PAYLESS_DB_HOST` (default `localhost`), `PAYLESS_DB_PORT` (default `3306`), `PAYLESS_DB_NAME` (default `db_example_com`), `PAYLESS_DB_USER` (default `admin`), and `PAYLESS_DB_PASSWORD`.
+- Server-only file: copy `includes/database.local.php.example` to `includes/database.local.php` on the server and enter the real password in that local file. The `database.local.php` file is ignored by Git and must never be committed.
 
-Configure `PAYLESS_DB_PASSWORD` in the OpenLiteSpeed PHP environment before deploying this change; otherwise database-backed forms and the admin dashboard will stop connecting. Use the same environment for PHP CLI when running the owner-provisioning command. Because a real database credential was previously present in repository content, rotate that MariaDB password immediately and update the server configuration. A dedicated database user with only the necessary privileges is safer than a database administrator account.
+If OpenLiteSpeed does not have `PAYLESS_DB_PASSWORD` configured, create the local file before testing database-backed forms or the admin dashboard. For the owner-provisioning CLI command, you can still set `PAYLESS_DB_PASSWORD` in the shell as shown below. Because a real database credential was previously present in repository history, rotate that MariaDB password when practical and update the server configuration. A dedicated database user with only the necessary privileges is safer than a database administrator account.
 
 The website saves equipment and gravel enquiries to the `customer_requests` table. A private owner/admin dashboard is available at `/admin/login.php`; it is not linked from the public customer navigation.
 
