@@ -13,11 +13,11 @@ function payless_db(): PDO {
     return $connection;
   }
 
-  $host = '127.0.0.1';
+  $host = 'localhost';
   $port = '3306';
   $name = 'db_example_com';
   $user = 'admin';
-  $password = 'SET_YOUR_DATABASE_PASSWORD_HERE';
+  $password = 'MySQL@2017';
 
   if ($name === '' || $user === '' || $password === '' || $password === 'SET_YOUR_DATABASE_PASSWORD_HERE') {
     throw new RuntimeException('Set the MariaDB password in includes/database.php on the server.');
