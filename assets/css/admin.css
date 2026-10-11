@@ -9,3 +9,47 @@ html[data-theme=dark]{color-scheme:dark;--admin-bg:#151815;--admin-paper:#1d221d
 @media(max-width:900px){.admin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-head{align-items:start;flex-direction:column}.admin-detail{grid-template-columns:1fr}}
 @media(max-width:520px){.admin-top{align-items:flex-start;padding:15px 12px}.admin-who{align-items:flex-end;flex-direction:column;gap:7px}.admin-wrap{width:calc(100% - 24px);margin-top:22px}.admin-grid{gap:8px}.admin-stat{padding:14px}.admin-stat strong{font-size:25px}.admin-form-grid{grid-template-columns:1fr}.admin-form-grid .wide{grid-column:auto}.admin-detail{padding:16px}.admin-pager{align-items:flex-start;flex-direction:column}.admin-login-page{padding:12px}.admin-login{padding:25px 20px}}
 @media(prefers-reduced-motion:reduce){.admin-body,.admin-btn{transition:none}}
+
+
+/* Keep admin button backgrounds and text readable even when public-site button rules load. */
+.admin-body .admin-btn,
+.admin-body a.admin-btn,
+.admin-body button.admin-btn,
+.admin-body input.admin-btn{
+  background-color:var(--admin-ink);
+  border-color:var(--admin-ink);
+  color:var(--admin-bg) !important;
+  -webkit-text-fill-color:var(--admin-bg);
+  text-decoration:none;
+  opacity:1;
+}
+.admin-body .admin-btn--light,
+.admin-body a.admin-btn--light,
+.admin-body button.admin-btn--light{
+  background-color:transparent;
+  border-color:var(--admin-line);
+  color:var(--admin-ink) !important;
+  -webkit-text-fill-color:var(--admin-ink);
+}
+.admin-body .admin-btn--accent,
+.admin-body a.admin-btn--accent,
+.admin-body button.admin-btn--accent{
+  background-color:var(--admin-accent);
+  border-color:var(--admin-accent);
+  color:var(--admin-accent-ink) !important;
+  -webkit-text-fill-color:var(--admin-accent-ink);
+}
+.admin-body .admin-btn:hover,
+.admin-body a.admin-btn:hover,
+.admin-body button.admin-btn:hover{filter:brightness(.96)}
+.admin-body .admin-btn:focus-visible,
+.admin-body a.admin-btn:focus-visible,
+.admin-body button.admin-btn:focus-visible{
+  outline:3px solid var(--admin-accent);
+  outline-offset:3px;
+}
+.admin-body .admin-btn:disabled,
+.admin-body button.admin-btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.admin-body .admin-user-row button.admin-btn{color:var(--admin-ink) !important;-webkit-text-fill-color:var(--admin-ink)}
+.admin-body .admin-user-row button.admin-btn--accent{color:var(--admin-accent-ink) !important;-webkit-text-fill-color:var(--admin-accent-ink)}
+.admin-body .admin-signout{color:#eff1e9 !important;-webkit-text-fill-color:#eff1e9;background:transparent}
