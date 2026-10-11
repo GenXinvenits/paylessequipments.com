@@ -1,0 +1,123 @@
+<section class="hero">
+  <div class="hero__grid container">
+    <div class="hero__copy">
+      <p class="eyebrow" data-reveal><span class="eyebrow-line"></span> EQUIPMENT RENTAL / BEAVERTON, OR</p>
+      <h1 data-reveal>PayLess.<br>Get More.<br><span>Get The Job Done.</span></h1>
+      <p class="hero__sub" data-reveal>Construction equipment rentals without the corporate markup.</p>
+      <p class="hero__body" data-reveal>Dependable equipment for construction, landscaping, excavation and site work. Choose your machines, tell us what you need and we’ll help you get moving.</p>
+      <div class="hero__actions" data-reveal><a class="button button--primary" href="#request">Build your equipment list <span aria-hidden="true">↗</span></a><a class="button button--outline" href="tel:<?= e(SITE_PHONE_LINK) ?>"><span class="button__phone" aria-hidden="true">↗</span> <?= e(SITE_PHONE) ?></a></div>
+      <div class="hero__meta" data-reveal><span><i>01</i> DAILY & WEEKLY RENTALS</span><span><i>02</i> PRACTICAL PRICING</span><span><i>03</i> LOCAL SERVICE</span></div>
+    </div>
+    <div class="hero__visual" data-reveal>
+      <div class="hero__image" role="img" aria-label="Heavy construction equipment at work on a job site"></div>
+      <div class="hero__image-shade"></div>
+      <div class="hero__image-label"><span class="label-dot"></span> READY WHEN THE JOB CALLS</div>
+      <div class="hero__vertical">PAYLESS EQUIPMENT RENTAL LLC / EST. FOR THE WORK</div>
+      <div class="hero-sticker"><span>GET</span><strong>IT<br>DONE.</strong><span>NO RUNAROUND ↗</span></div>
+      <div class="hero__coordinates">45°29' N<br>122°49' W</div>
+    </div>
+  </div>
+  <div class="hero__bottom container"><span>BUILT FOR THE PEOPLE WHO BUILD THINGS.</span><span>SCROLL TO EXPLORE <b>↓</b></span></div>
+</section>
+
+<section class="value-bar" aria-label="PayLess service benefits">
+  <div class="container value-bar__inner"><div><span class="value-icon">↗</span><span><strong>COST-EFFECTIVE RATES</strong><small>Practical pricing for real projects</small></span></div><div><span class="value-icon">▦</span><span><strong>EQUIPMENT THAT WORKS</strong><small>Capable machines for demanding jobs</small></span></div><div><span class="value-icon">◷</span><span><strong>FLEXIBLE RENTALS</strong><small>Daily, weekly & selected monthly</small></span></div><div><span class="value-icon">⌖</span><span><strong>LOCAL SERVICE</strong><small>Based in Beaverton, Oregon</small></span></div></div>
+</section>
+
+<section class="section equipment-finder" id="finder">
+  <div class="container">
+    <div class="section-heading section-heading--split"><div><p class="eyebrow"><span class="eyebrow-line"></span> FIND YOUR MACHINE / 01</p><h2>Right tool.<br><span>Right on time.</span></h2></div><div class="section-heading__aside"><p>Not sure where to start? Browse by the work you need to get done. We’ll help you confirm the right equipment for your project.</p><a class="text-link" href="<?= e(page_url('equipment')) ?>">Explore all equipment <span>↗</span></a></div></div>
+    <div class="category-grid">
+      <?php foreach ($categories as $i => $category): ?>
+      <a class="category-card" id="<?= e($category['anchor']) ?>" href="<?= e(page_url('equipment')) ?>#<?= e($category['anchor']) ?>" data-reveal>
+        <span class="category-card__index">0<?= $i + 1 ?></span><span class="category-card__icon"><?= e($category['icon']) ?></span><span class="category-card__content"><strong><?= e($category['name']) ?></strong><small><?= e($category['detail']) ?></small></span><span class="category-card__arrow">↗</span>
+      </a>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+
+<section class="section featured-section" id="equipment">
+  <div class="container">
+    <div class="section-heading section-heading--split"><div><p class="eyebrow"><span class="eyebrow-line"></span> THE FLEET / 02</p><h2>Equipment ready<br><span>for the job.</span></h2></div><div class="section-heading__aside"><p>Six equipment options to get your project moving. Rates shown are the current supplied pricing; contact us to confirm availability and monthly terms.</p><a class="text-link" href="<?= e(page_url('equipment')) ?>">View full catalogue <span>↗</span></a></div></div>
+    <div class="equipment-grid">
+      <?php foreach ($equipment as $i => $item): ?>
+      <article class="equipment-card" data-reveal>
+        <a class="equipment-card__image" href="<?= e(page_url('equipment')) ?>#<?= e($item['id']) ?>" aria-label="View <?= e($item['name']) ?>"><img src="<?= e($item['image']) ?>" alt="<?= e($item['alt']) ?>" loading="lazy"><span class="equipment-card__number">0<?= $i + 1 ?> / 06</span><span class="equipment-card__image-arrow">↗</span></a>
+        <div class="equipment-card__body"><p class="equipment-card__category"><?= e($item['category']) ?> <span>•</span> <?= e($item['tag']) ?></p><h3><?= e($item['name']) ?></h3><p class="equipment-card__description"><?= e($item['description']) ?></p><p class="equipment-card__spec"><?= e($item['spec']) ?></p><div class="equipment-card__rates"><div><small>DAILY FROM</small><strong><?= e($item['daily']) ?></strong></div><div><small>WEEKLY FROM</small><strong><?= e($item['weekly']) ?></strong></div></div><div class="equipment-card__actions"><a href="<?= e(page_url('equipment')) ?>#<?= e($item['id']) ?>">View details <span>↗</span></a><button type="button" class="add-equipment" data-add-equipment="<?= e($item['name']) ?>">+ Add to list</button></div></div>
+      </article>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+
+<section class="request-section section" id="request">
+  <div class="container request-layout">
+    <div class="request-intro"><p class="eyebrow"><span class="eyebrow-line"></span> LET'S GET TO WORK / 03</p><h2>Build your<br><span>equipment list.</span></h2><p>Need more than one machine? Send your equipment list, timing and job-site details in one request. We’ll follow up with availability, pricing and next steps.</p><div class="request-step"><span>01</span><div><strong>Choose your machines</strong><small>Add one or more equipment options.</small></div></div><div class="request-step"><span>02</span><div><strong>Tell us about the job</strong><small>Dates, location and project type.</small></div></div><div class="request-step"><span>03</span><div><strong>We’ll follow up</strong><small>Confirm availability and current pricing.</small></div></div><p class="request-phone">Prefer to talk? <a href="tel:<?= e(SITE_PHONE_LINK) ?>"><?= e(SITE_PHONE) ?> ↗</a></p></div>
+    <form class="request-form" action="/request.php" method="post">
+      <input type="hidden" name="form_type" value="equipment">
+      <div class="form-heading"><span>REQUEST / 001</span><span class="form-required">* REQUIRED</span></div>
+      <fieldset class="equipment-choice"><legend>What equipment do you need? <em>*</em></legend><div class="equipment-choice__grid">
+        <?php foreach ($equipment as $item): ?><label class="choice-chip"><input type="checkbox" name="equipment[]" value="<?= e($item['name']) ?>" data-equipment-option><span><?= e($item['name']) ?></span><b>+</b></label><?php endforeach; ?>
+        <label class="choice-chip"><input type="checkbox" name="equipment[]" value="Other / not sure"><span>Other / not sure</span><b>+</b></label>
+      </div><small class="field-error" data-equipment-error hidden>Please select at least one equipment option.</small></fieldset>
+      <div class="form-row"><label>Rental period <em>*</em><select name="rental_period" required><option value="">Choose a rental period</option><option>Daily</option><option>Weekly</option><option>Monthly</option><option>Not sure yet</option></select></label><label>Preferred start date<input type="date" name="start_date"></label></div>
+      <div class="form-row"><label>Project type <em>*</em><select name="project_type" required><option value="">Select project type</option><option>Construction</option><option>Landscaping</option><option>Residential</option><option>Commercial</option><option>Utility</option><option>Site preparation</option><option>Material handling</option><option>Other</option></select></label><label>Job-site ZIP code <input name="zip" autocomplete="postal-code" placeholder="e.g. 97078"></label></div>
+      <label>Job-site location <em>*</em><input name="job_location" required placeholder="Street, city or job-site address" autocomplete="street-address"></label>
+      <label>Project details / attachments needed<textarea name="details" rows="3" placeholder="Tell us about the work, access, attachments or delivery needs."></textarea></label>
+      <div class="form-row"><label>Your name <em>*</em><input name="name" required autocomplete="name" placeholder="Full name"></label><label>Company<input name="company" autocomplete="organization" placeholder="Company name"></label></div>
+      <div class="form-row"><label>Phone <em>*</em><input type="tel" name="phone" required autocomplete="tel" placeholder="(503) 555-0123"></label><label>Email <em>*</em><input type="email" name="email" required autocomplete="email" placeholder="you@company.com"></label></div>
+      <label class="consent"><input type="checkbox" name="contact_consent" value="yes" required><span>I agree that PayLess may contact me about this request.</span></label>
+      <button class="button button--primary button--wide" type="submit">Send equipment request <span aria-hidden="true">↗</span></button>
+      <p class="form-disclaimer">Submitting a request does not reserve equipment. Availability, final pricing and delivery are confirmed by the PayLess team.</p>
+    </form>
+  </div>
+</section>
+
+<section class="section why-section">
+  <div class="container"><div class="section-heading"><p class="eyebrow"><span class="eyebrow-line"></span> THE PAYLESS DIFFERENCE / 04</p><h2>Less runaround.<br><span>More doing.</span></h2></div>
+    <div class="why-grid"><article data-reveal><span class="why-number">01 / PAY LESS</span><h3>Practical rental rates</h3><p>Keep project costs in check with clear daily and weekly pricing on selected machines.</p></article><article data-reveal><span class="why-number">02 / GET MORE</span><h3>Equipment for real jobs</h3><p>From compact access work to excavation and material handling, find options for the work ahead.</p></article><article data-reveal><span class="why-number">03 / LESS HASSLE</span><h3>A straightforward process</h3><p>Build one list, share your requirements and get a direct follow-up from the local team.</p></article><article data-reveal><span class="why-number">04 / LOCAL SERVICE</span><h3>People close to the job</h3><p>Based in Beaverton, Oregon. Share your job-site location so we can confirm availability and delivery options.</p></article></div>
+  </div>
+</section>
+
+<section class="gravel-feature">
+  <div class="gravel-feature__image" role="img" aria-label="Gravel aggregate at a construction site"></div><div class="gravel-feature__content"><p class="eyebrow"><span class="eyebrow-line"></span> ANOTHER WAY WE HELP / 05</p><h2>Need gravel<br>on the ground?</h2><p>From driveway improvements to active construction sites, ask PayLess about gravel delivery options and project-specific pricing.</p><div class="gravel-feature__actions"><a class="button button--light" href="<?= e(page_url('gravel')) ?>">Request gravel pricing <span>↗</span></a><a class="gravel-phone" href="tel:<?= e(SITE_PHONE_LINK) ?>">Call <?= e(SITE_PHONE) ?></a></div></div><div class="gravel-feature__stamp">GRAVEL<br>DELIVERY<br><span>BEAVERTON / OR</span></div>
+</section>
+
+<section class="section process-section">
+  <div class="container"><div class="section-heading section-heading--split"><div><p class="eyebrow"><span class="eyebrow-line"></span> HOW IT WORKS / 06</p><h2>Three steps.<br><span>Then get moving.</span></h2></div><div class="section-heading__aside"><p>Keep the process simple. Tell us what you need and where you’re working; we’ll help with the next step.</p></div></div>
+    <div class="process-grid"><article data-reveal><span class="process-grid__number">01</span><div class="process-grid__icon">↗</div><h3>Choose your equipment</h3><p>Browse the fleet and select the machines that fit your project.</p></article><article data-reveal><span class="process-grid__number">02</span><div class="process-grid__icon">＋</div><h3>Send your requirements</h3><p>Tell us the rental period, job-site location and project details.</p></article><article data-reveal><span class="process-grid__number">03</span><div class="process-grid__icon">✓</div><h3>Confirm the next step</h3><p>Our team follows up with availability, pricing and delivery details.</p></article></div>
+  </div>
+</section>
+
+<section class="section serve-section">
+  <div class="container serve-layout"><div><p class="eyebrow"><span class="eyebrow-line"></span> MADE FOR THE WORK / 07</p><h2>Whatever the site.<br><span>Let's get it done.</span></h2><p>Practical equipment options for the people who keep projects moving.</p></div><div class="serve-list"><div><span>01</span><strong>General contractors</strong><small>Construction & site work</small></div><div><span>02</span><strong>Landscapers</strong><small>Grading, clearing & material handling</small></div><div><span>03</span><strong>Residential builders</strong><small>Foundations, drainage & access</small></div><div><span>04</span><strong>Utility contractors</strong><small>Trenching & excavation</small></div><div><span>05</span><strong>Commercial teams</strong><small>Material handling & larger projects</small></div><div><span>06</span><strong>Property owners</strong><small>Driveways & property projects</small></div></div></div>
+</section>
+
+<section class="local-section">
+  <div class="container local-layout"><div><p class="eyebrow"><span class="eyebrow-line"></span> YOUR LOCAL EQUIPMENT PARTNER / 08</p><h2>Construction equipment rental in <span>Beaverton, Oregon.</span></h2><p>PayLess Equipment Rental LLC is based at 4480 SW 185th Ave, Beaverton, OR 97078. If your project is outside Beaverton, send us your job-site location and equipment needs so we can confirm availability and delivery options.</p><a class="button button--outline" href="<?= e(page_url('contact')) ?>">Contact PayLess <span>↗</span></a></div><a class="local-map" href="https://maps.google.com/?q=4480+SW+185th+Ave+Beaverton+OR+97078" target="_blank" rel="noopener"><div class="map-grid"></div><span class="map-pin">⌖</span><span class="local-map__label"><strong>PAYLESS EQUIPMENT RENTAL</strong><small>4480 SW 185th Ave<br>Beaverton, OR 97078</small><b>GET DIRECTIONS ↗</b></span></a></div>
+</section>
+
+<section class="section proof-section">
+  <div class="container proof-layout"><div><p class="eyebrow"><span class="eyebrow-line"></span> EQUIPMENT THAT GETS IT DONE / 09</p><h2>Built for the<br><span>work ahead.</span></h2></div><div><p class="proof-copy">Good equipment is only part of the job. Clear information and a practical rental process matter too. Explore the current fleet, check the specifications and send us what you need.</p><a class="text-link" href="<?= e(page_url('equipment')) ?>">Explore the equipment catalogue <span>↗</span></a><p class="proof-note">Customer testimonials and project stories will be added when verified reviews and approved project materials are supplied.</p></div></div>
+</section>
+
+<section class="section faq-section">
+  <div class="container faq-layout"><div><p class="eyebrow"><span class="eyebrow-line"></span> GOOD TO KNOW / 10</p><h2>Questions before<br><span>you get started?</span></h2><p>Quick answers to common equipment rental questions.</p><a class="text-link" href="<?= e(page_url('contact')) ?>">Still have a question? Contact us <span>↗</span></a></div><div class="faq-list">
+    <?php $faqs = [
+      ['What equipment can I rent from PayLess?', 'The current featured fleet includes excavators, mini excavators, mini skid steers, track loaders, dump trucks and forklifts. Contact us to confirm current availability.'],
+      ['How much does construction equipment rental cost?', 'Rates depend on the machine and rental period. Supplied daily rates start at $200 for selected equipment, with weekly rates also available. Some equipment requires a current quote.'],
+      ['Do you offer weekly or monthly rentals?', 'Weekly rentals are available for selected machines. Monthly rentals may be possible depending on the machine and fleet availability; contact PayLess for current pricing.'],
+      ['Can equipment be delivered to my job site?', 'Delivery options and charges depend on the equipment and job-site location. Share your address and timing so the team can confirm details.'],
+      ['Does PayLess deliver gravel?', 'Yes. PayLess offers gravel delivery for construction and property projects. Contact the team for current availability and project-specific pricing.'],
+      ['Where is PayLess Equipment Rental located?', 'PayLess Equipment Rental LLC is located at 4480 SW 185th Ave, Beaverton, Oregon 97078 and serves customers in the surrounding Portland-area market.'],
+      ['How do I request more than one machine?', 'Use the equipment request builder to select multiple machines, choose a rental period, provide job-site details and send one request. You can also call (503) 259-0252.'],
+      ['What information should I include in a request?', 'Include the equipment you need, rental start date, rental duration, job-site location, project type, delivery needs and any attachments or access requirements.']
+    ]; foreach ($faqs as $i => $faq): ?>
+    <details class="faq-item" <?= $i === 0 ? 'open' : '' ?>><summary><span class="faq-item__number">0<?= $i + 1 ?></span><span><?= e($faq[0]) ?></span><b aria-hidden="true">+</b></summary><div class="faq-item__answer"><p><?= e($faq[1]) ?></p></div></details>
+    <?php endforeach; ?>
+  </div></div>
+  <script type="application/ld+json"><?= json_encode(['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => array_map(fn($faq) => ['@type' => 'Question', 'name' => $faq[0], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq[1]]], $faqs)], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
+</section>
+
+<section class="final-cta"><div class="container final-cta__inner"><p class="eyebrow"><span class="eyebrow-line"></span> YOUR NEXT JOB STARTS HERE</p><h2>Ready to get<br><span>the job done?</span></h2><p>Tell us what you need, when you need it and where you’re working.</p><div><a class="button button--primary" href="#request">Build your equipment list <span>↗</span></a><a class="final-cta__phone" href="tel:<?= e(SITE_PHONE_LINK) ?>">Or call <?= e(SITE_PHONE) ?> ↗</a></div><span class="final-cta__ghost" aria-hidden="true">PL</span></div></section>
