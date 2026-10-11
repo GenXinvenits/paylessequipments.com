@@ -33,14 +33,28 @@ The connection settings are in `includes/database.php`. On the server, set the a
 
 **Important:** this repository is public. Never commit the actual password to GitHub. Keep the server's real password in the server copy of `includes/database.php` and avoid pushing that modified file. A dedicated database user with only the necessary privileges is safer than using an administrator account; consider this before production.
 
-The website saves equipment and gravel enquiries to the `customer_requests` table. There is no public enquiry-management page; review submissions using phpMyAdmin or another authorised database client.
+The website saves equipment and gravel enquiries to the `customer_requests` table. A private owner/admin dashboard is available at `/admin/login.php`; it is not linked from the public customer navigation.
+
+### Install the private admin dashboard
+
+1. Deploy the latest `paylessequipment` branch to the site.
+2. Import `database/admin-dashboard.sql` into the existing `db_example_com` database using phpMyAdmin. This creates the admin-account and login-rate-limit tables; it does not modify existing customer requests.
+3. From the project directory on the server, run the owner provisioning script using PHP CLI (not a browser):
+   ```sh
+   /usr/local/lsws/lsphp83/bin/php tools/create-owner.php owner@your-company.example
+   ```
+   Enter the owner's display name and a strong password of at least 14 characters when prompted. The script refuses to create another owner if one already exists.
+4. Sign in at `https://YOUR-DOMAIN/admin/login.php`. The owner can assign or disable admin accounts from the dashboard. Assigned admins can view and update requests but cannot grant access to other people.
+5. Keep HTTPS enabled. Do not share owner credentials. Disable an admin account immediately when that person no longer needs access.
+
+The dashboard uses hashed passwords, CSRF-protected forms, secure session cookies, a login-attempt limit, no-index metadata, and server-side role checks. It still needs testing on the deployed host before being considered production-verified.
 
 ## Email notifications
 
 Database storage does not depend on email. Set `PAYLESS_CONTACT_EMAIL` to the monitored business inbox and configure working PHP mail delivery on the server. A successful form submission is saved first; the customer is shown a separate message if the email notification is not configured or fails.
 
 ## Customer data and security
-- Keep real database credentials out of the public repository.
+- Keep real database credentials out of the public repository. If a real database password has ever been committed, rotate it in MariaDB and update the server configuration immediately.
 - Use HTTPS in production and restrict access to database backups and administrative tools.
 - Limit access to customer enquiries to authorised staff.
 - Establish an appropriate retention/deletion schedule and include actual storage and retention practices in the privacy notice.
