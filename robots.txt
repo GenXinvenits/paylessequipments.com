@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /request.php
+Sitemap: https://www.paylessequipmentrental.com/sitemap.xml

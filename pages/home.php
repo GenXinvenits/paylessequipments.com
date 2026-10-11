@@ -43,7 +43,7 @@
     <div class="equipment-grid">
       <?php foreach ($equipment as $i => $item): ?>
       <article class="equipment-card" data-reveal>
-        <a class="equipment-card__image" href="<?= e(page_url('equipment')) ?>#<?= e($item['id']) ?>" aria-label="View <?= e($item['name']) ?>"><img src="<?= e($item['image']) ?>" alt="<?= e($item['alt']) ?>" loading="lazy"><span class="equipment-card__number">0<?= $i + 1 ?> / 06</span><span class="equipment-card__image-arrow">↗</span></a>
+        <a class="equipment-card__image" href="<?= e(page_url('equipment')) ?>&amp;item=<?= e($item['id']) ?>" aria-label="View <?= e($item['name']) ?>"><img src="<?= e($item['image']) ?>" alt="<?= e($item['alt']) ?>" loading="lazy"><span class="equipment-card__number">0<?= $i + 1 ?> / 06</span><span class="equipment-card__image-arrow">↗</span></a>
         <div class="equipment-card__body"><p class="equipment-card__category"><?= e($item['category']) ?> <span>•</span> <?= e($item['tag']) ?></p><h3><?= e($item['name']) ?></h3><p class="equipment-card__description"><?= e($item['description']) ?></p><p class="equipment-card__spec"><?= e($item['spec']) ?></p><div class="equipment-card__rates"><div><small>DAILY FROM</small><strong><?= e($item['daily']) ?></strong></div><div><small>WEEKLY FROM</small><strong><?= e($item['weekly']) ?></strong></div></div><div class="equipment-card__actions"><a href="<?= e(page_url('equipment')) ?>#<?= e($item['id']) ?>">View details <span>↗</span></a><button type="button" class="add-equipment" data-add-equipment="<?= e($item['name']) ?>">+ Add to list</button></div></div>
       </article>
       <?php endforeach; ?>
