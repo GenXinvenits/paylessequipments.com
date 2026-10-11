@@ -53,10 +53,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 ?><!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>Admin sign in · PayLess</title>
-<style>
-*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px;background:#202720;color:#f3f4ed;font:14px/1.6 system-ui,-apple-system,sans-serif}.login{width:min(100%,440px);background:#fffefa;color:#1a201a;padding:clamp(26px,6vw,44px);box-shadow:0 25px 80px #0005}.brand{font-weight:900;letter-spacing:-.04em;font-size:18px}.brand small{display:block;color:#666d63;font:10px ui-monospace,monospace;letter-spacing:.13em;margin-top:3px}.eyebrow{font:10px ui-monospace,monospace;letter-spacing:.13em;color:#666d63;text-transform:uppercase;margin:32px 0 9px}.login h1{font-size:38px;letter-spacing:-.07em;line-height:1.05;margin:0}.intro{color:#666d63;font-size:13px;margin:12px 0 24px}.field{display:grid;gap:6px;margin-top:15px;font-size:12px;font-weight:700}input{width:100%;padding:12px;border:1px solid #cfd2c6;background:white;color:#1a201a;border-radius:0;font:inherit;min-height:46px}.submit{margin-top:22px;width:100%;padding:13px;background:#d8f15b;color:#1a201a;border:0;font-weight:850;cursor:pointer}.error{padding:11px 12px;background:#f7dfdb;border:1px solid #e5bcb5;color:#74231c;font-size:12px;margin:18px 0}.secure{margin-top:20px;font-size:11px;color:#666d63}.back{display:inline-block;margin-top:18px;font-size:12px;text-decoration:underline}
-</style></head><body><main class="login"><a href="/" class="brand">PAYLESS<small>PRIVATE ADMINISTRATION</small></a><p class="eyebrow">Authorized personnel only</p><h1>Sign in to your workspace.</h1><p class="intro">Customer enquiries and business information are restricted to approved PayLess staff.</p>
-<?php if ($error !== ''): ?><div class="error" role="alert"><?= admin_escape($error) ?></div><?php elseif (($_GET['status'] ?? '') === 'expired'): ?><div class="error" role="alert">Your session expired or your account was disabled. Please sign in again.</div><?php endif; ?>
-<form method="post" action="/admin/login.php" autocomplete="on"><input type="hidden" name="_csrf" value="<?= admin_escape(admin_csrf_token()) ?>"><label class="field">Work email<input type="email" name="email" autocomplete="username" maxlength="254" required autofocus></label><label class="field">Password<input type="password" name="password" autocomplete="current-password" maxlength="4096" required></label><button class="submit" type="submit">Sign in securely →</button></form>
-<p class="secure">This area is not available to customers. Accounts must be created by the owner.</p><a class="back" href="/">← Return to public website</a></main></body></html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3f2ed">
+<title>Admin sign in · PayLess</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/admin.css">
+<script>(()=>{try{const s=localStorage.getItem("payless-theme");document.documentElement.dataset.theme=(s==="light"||s==="dark")?s:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(_){}})();</script>
+</head>
+<body class="admin-body admin-login-page">
+<main class="admin-login">
+  <div class="admin-login__top">
+    <a href="/" class="admin-login__brand">PAYLESS<small>PRIVATE ADMINISTRATION</small></a>
+    <button class="admin-icon-button" type="button" data-admin-theme-toggle aria-label="Switch to dark theme" aria-pressed="false" title="Switch theme"><span data-admin-theme-icon aria-hidden="true">◐</span></button>
+  </div>
+  <p class="admin-eyebrow">Authorized personnel only</p>
+  <h1>Sign in to your workspace.</h1>
+  <p class="admin-login__intro">Customer enquiries and business information are restricted to approved PayLess staff.</p>
+  <?php if ($error !== ''): ?><div class="admin-error" role="alert"><?= admin_escape($error) ?></div><?php elseif (($_GET['status'] ?? '') === 'expired'): ?><div class="admin-error" role="alert">Your session expired or your account was disabled. Please sign in again.</div><?php endif; ?>
+  <form method="post" action="/admin/login.php" autocomplete="on">
+    <input type="hidden" name="_csrf" value="<?= admin_escape(admin_csrf_token()) ?>">
+    <label class="admin-field">Work email<input type="email" name="email" autocomplete="username" maxlength="254" required autofocus></label>
+    <label class="admin-field">Password<input type="password" name="password" autocomplete="current-password" maxlength="4096" required></label>
+    <button class="admin-submit" type="submit">Sign in securely →</button>
+  </form>
+  <p class="admin-login__secure">This area is not available to customers. Accounts must be created by the owner.</p>
+  <a class="admin-login__back" href="/">← Return to public website</a>
+</main>
+<script src="/assets/js/admin-theme.js" defer></script>
+</body>
+</html>
