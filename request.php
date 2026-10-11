@@ -4,6 +4,10 @@ require_once __DIR__ . '/includes/site.php';
 require_once __DIR__ . '/includes/database.php';
 session_start();
 
+function request_length(string $value): int {
+  return function_exists('mb_strlen') ? request_length($value, 'UTF-8') : strlen($value);
+}
+
 function request_redirect(string $status): never {
   header('Location: /?page=contact&status=' . rawurlencode($status) . '#equipment-request');
   exit;
@@ -22,7 +26,7 @@ $phone = trim(strip_tags((string) ($_POST['phone'] ?? '')));
 $location = trim(strip_tags((string) ($_POST['job_location'] ?? '')));
 $consent = isset($_POST['contact_consent']);
 if ($name === '' || !$email || $phone === '' || $location === '' || !$consent) { request_redirect('missing'); }
-if (mb_strlen($name) > 160 || mb_strlen((string) $email) > 254 || mb_strlen($phone) > 60 || mb_strlen($location) > 500) { request_redirect('invalid'); }
+if (request_length($name) > 160 || request_length((string) $email) > 254 || request_length($phone) > 60 || request_length($location) > 500) { request_redirect('invalid'); }
 
 if (!isset($_SESSION['request_last_sent'])) { $_SESSION['request_last_sent'] = 0; }
 if (time() - (int) $_SESSION['request_last_sent'] < 15) { request_redirect('throttle'); }
@@ -50,7 +54,7 @@ $company = trim(strip_tags((string) ($_POST['company'] ?? '')));
 $zip = trim(strip_tags((string) ($_POST['zip'] ?? '')));
 $quantity = trim(strip_tags((string) ($_POST['quantity'] ?? '')));
 $details = trim(strip_tags((string) ($_POST['details'] ?? '')));
-if (mb_strlen($company) > 160 || mb_strlen($zip) > 20 || mb_strlen($rentalPeriod) > 40 || mb_strlen($projectType) > 80 || mb_strlen($quantity) > 120 || mb_strlen($details) > 10000) {
+if (request_length($company) > 160 || request_length($zip) > 20 || request_length($rentalPeriod) > 40 || request_length($projectType) > 80 || request_length($quantity) > 120 || request_length($details) > 10000) {
   request_redirect('invalid');
 }
 
