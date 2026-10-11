@@ -1,5 +1,6 @@
 (() => {
   'use strict';
+  document.documentElement.classList.add('js-motion');
   const root = document.documentElement;
   const themeButton = document.querySelector('.theme-toggle');
   const themeIcon = document.querySelector('.theme-toggle__icon');
