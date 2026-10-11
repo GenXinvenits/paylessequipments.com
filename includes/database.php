@@ -17,7 +17,7 @@ function payless_db(): PDO {
   $user = getenv('PAYLESS_DB_USER') ?: '';
   $password = getenv('PAYLESS_DB_PASSWORD');
 
-  if ($name === '' || $user === '' || $password === false) {
+  if ($name === '' || $user === '' || $password === false || $password === '') {
     throw new RuntimeException('PayLess database settings are not configured.');
   }
   if (!preg_match('/^[a-zA-Z0-9_]+$/', $name)) {
