@@ -7,8 +7,8 @@ $legalPages = [
     'sections' => [
       ['Information you submit', 'Equipment requests may include your name, company, phone number, email, job-site location, dates, project details and equipment selections. Please do not submit sensitive personal information that is not needed for your request.'],
       ['How requests are used', 'Details submitted through the form are used to review your inquiry and respond about equipment availability, pricing, delivery options and next steps. The website does not take online payments.'],
-      ['Hosting and email', 'When the form is configured for live use, submissions are sent to the business inbox configured by the site operator. Website hosting and email providers may process information to deliver their services, and hosting systems may maintain technical logs.'],
-      ['Questions or corrections', 'For questions about a request or to ask about your information, contact PayLess at (503) 259-0252. The business owner should review this notice against the actual hosting and email setup before launch.']
+      ['Database storage, hosting and email', 'Equipment and gravel enquiries are stored in the website operator’s MariaDB database so PayLess can review and respond to requests. If configured, an email notification is also sent to the business inbox. Hosting and email providers may process information to deliver their services, and hosting systems may maintain technical logs. Access to stored enquiries should be limited to authorised staff.'],
+      ['Retention and your choices', 'The business operator should retain enquiries only as long as needed for business, legal and recordkeeping purposes, then securely delete them. To ask about your information or request a correction or deletion, contact PayLess at (503) 259-0252. This notice should be reviewed against the actual hosting setup and applicable privacy laws before launch.']
     ]
   ],
   'terms' => [
