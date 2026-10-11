@@ -461,3 +461,44 @@ html[data-theme=dark]{color-scheme:dark;--admin-bg:#151815;--admin-paper:#1d221d
   .admin-app-shell>.admin-footer{margin-left:12px;margin-right:12px}
   .admin-body.admin-sidebar-collapsed .admin-app-shell>.admin-footer{margin-left:12px}
 }
+
+
+/* Profile dropdown inspired by PrivacyVista's account menu. */
+.admin-user-menu{position:relative;display:flex;align-items:center;min-width:0}
+.admin-user-trigger{display:flex;align-items:center;gap:9px;min-width:0;padding:5px 8px 5px 5px;border:1px solid transparent;border-radius:5px;background:transparent;color:inherit;text-align:left;cursor:pointer;transition:background .16s,border-color .16s}
+.admin-user-trigger:hover,.admin-user-trigger[aria-expanded="true"]{background:#ffffff12;border-color:#ffffff25}
+.admin-user-trigger:focus-visible{outline:3px solid var(--admin-accent);outline-offset:3px}
+.admin-user-trigger .admin-user-identity{min-width:0}
+.admin-user-chevron{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#b9c2b4;font-size:17px;line-height:1;transition:transform .18s ease}
+.admin-user-trigger[aria-expanded="true"] .admin-user-chevron{transform:rotate(180deg)}
+.admin-user-dropdown[hidden]{display:none!important}
+.admin-user-dropdown{position:absolute;top:calc(100% + 12px);right:0;z-index:1300;width:290px;max-width:calc(100vw - 24px);padding:9px;background:var(--admin-paper);color:var(--admin-ink);border:1px solid var(--admin-line);border-radius:7px;box-shadow:0 18px 48px #00000030;animation:admin-dropdown-in .14s ease-out}
+.admin-user-dropdown-header{display:flex;align-items:center;gap:11px;padding:12px 10px 13px;min-width:0}
+.admin-user-dropdown-avatar{display:grid;place-items:center;flex:0 0 40px;width:40px;height:40px;border:1px solid var(--admin-line);border-radius:50%;background:var(--admin-accent);color:var(--admin-accent-ink);font-size:15px;font-weight:900}
+.admin-user-dropdown-identity{display:grid;gap:3px;min-width:0}
+.admin-user-dropdown-identity strong{font-size:12px;overflow-wrap:anywhere}
+.admin-user-dropdown-identity small{font-size:10px;color:var(--admin-muted);overflow-wrap:anywhere}
+.admin-user-role{justify-self:start;margin-top:2px;padding:3px 7px;background:var(--admin-surface-2);color:var(--admin-muted);font:9px 'DM Mono',monospace;letter-spacing:.07em;text-transform:uppercase;border-radius:3px}
+.admin-user-dropdown-divider{height:1px;margin:3px 2px;background:var(--admin-line)}
+.admin-user-dropdown-item{display:flex;align-items:center;gap:11px;width:100%;min-height:42px;padding:10px 11px;border:0;border-radius:4px;background:transparent;color:var(--admin-ink)!important;font-size:12px;font-weight:700;text-align:left;text-decoration:none;cursor:pointer}
+.admin-user-dropdown-item:hover{background:var(--admin-surface-2);color:var(--admin-ink)!important}
+.admin-user-dropdown-item:focus-visible{outline:2px solid var(--admin-accent);outline-offset:1px}
+.admin-dropdown-item-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 22px;width:22px;height:22px;color:var(--admin-muted);font-size:17px}
+.admin-user-dropdown-signout{margin:0}
+.admin-user-dropdown-logout{color:var(--admin-red)!important}
+.admin-user-dropdown-logout .admin-dropdown-item-icon{color:var(--admin-red)}
+.admin-user-dropdown-logout:hover{background:var(--admin-danger-bg);color:var(--admin-danger-ink)!important}
+@keyframes admin-dropdown-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:820px){
+  .admin-user-trigger{gap:5px;padding:4px}
+  .admin-user-chevron{width:13px}
+  .admin-user-dropdown{top:calc(100% + 10px)}
+}
+@media(max-width:680px){
+  .admin-user-trigger{gap:5px;padding:3px;border-radius:50%}
+  .admin-user-trigger .admin-user-copy{display:none}
+  .admin-user-trigger .admin-user-avatar{flex-basis:33px;width:33px;height:33px}
+  .admin-user-chevron{width:12px;font-size:14px}
+  .admin-user-dropdown{position:fixed;top:72px;right:12px;width:290px;max-height:calc(100dvh - 150px);overflow-y:auto}
+}
+@media(prefers-reduced-motion:reduce){.admin-user-chevron,.admin-user-dropdown{transition:none;animation:none}}
