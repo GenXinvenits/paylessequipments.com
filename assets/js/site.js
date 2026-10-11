@@ -142,6 +142,24 @@
     const modal = document.createElement('div');
     modal.className = 'request-modal request-modal--' + feedback.type;
     modal.setAttribute('role', 'presentation');
+    // Critical layout is injected inline so the dialog remains a real viewport popup
+    // even if the stylesheet is cached, missing, or overridden by page styles.
+    modal.style.cssText = 'position:fixed!important;inset:0!important;z-index:2147483000!important;display:grid!important;place-items:center!important;padding:22px!important;background:rgba(8,12,8,.72)!important;backdrop-filter:blur(5px)!important;overflow-y:auto!important;';
+    const modalStyle = document.createElement('style');
+    modalStyle.textContent = `
+      .request-modal__panel{position:relative!important;display:block!important;width:min(100%,480px)!important;max-height:calc(100vh - 44px)!important;overflow-y:auto!important;margin:auto!important;padding:clamp(28px,6vw,42px)!important;background:var(--surface,#fffefa)!important;color:var(--ink,#1a201a)!important;border:1px solid var(--line,rgba(26,32,26,.16))!important;box-shadow:0 28px 90px #0008!important;transform:none!important;opacity:1!important;z-index:1!important}
+      .request-modal__mark{display:grid!important;place-items:center!important;width:48px!important;height:48px!important;margin:0 0 22px!important;border-radius:50%!important;background:var(--accent,#d8f15b)!important;color:var(--accent-ink,#1a2016)!important;font-size:25px!important;font-weight:800!important}
+      .request-modal--warning .request-modal__mark{background:#f2dfb8!important;color:#70440b!important}
+      .request-modal--error .request-modal__mark{background:#f5d6d2!important;color:#8e211b!important}
+      .request-modal__eyebrow{margin:0 0 10px!important;color:var(--muted,#666d63)!important;font:10px 'DM Mono',monospace!important;letter-spacing:.12em!important;text-transform:uppercase!important}
+      .request-modal__title{margin:0 0 12px!important;font-size:clamp(27px,5vw,36px)!important;line-height:1.05!important;letter-spacing:-.06em!important}
+      .request-modal__message{margin:0!important;color:var(--muted,#666d63)!important;font-size:13px!important;line-height:1.8!important}
+      .request-modal__actions{display:flex!important;gap:10px!important;flex-wrap:wrap!important;margin-top:27px!important}
+      .request-modal__actions .button{flex:1 1 130px!important}
+      .request-modal__close{position:absolute!important;top:14px!important;right:14px!important;display:grid!important;place-items:center!important;width:36px!important;height:36px!important;border:1px solid var(--line,rgba(26,32,26,.16))!important;background:transparent!important;color:inherit!important;font-size:22px!important;cursor:pointer!important}
+      @media(max-width:480px){.request-modal{padding:14px!important}.request-modal__panel{max-height:calc(100vh - 28px)!important;padding:28px 22px!important}}
+    `;
+    document.head.append(modalStyle);
     modal.innerHTML = `<section class="request-modal__panel" role="dialog" aria-modal="true" aria-labelledby="request-modal-title" aria-describedby="request-modal-message" tabindex="-1">
       <button class="request-modal__close" type="button" aria-label="Close message">×</button>
       <div class="request-modal__mark" aria-hidden="true">${feedback.type === 'success' ? '✓' : feedback.type === 'warning' ? '!' : '×'}</div>
@@ -155,6 +173,7 @@
     const closeButton = modal.querySelector('.request-modal__close');
     const dismiss = () => {
       modal.remove();
+      modalStyle.remove();
       if (window.history?.replaceState) {
         const cleanUrl = new URL(window.location.href);
         cleanUrl.searchParams.delete('status');
