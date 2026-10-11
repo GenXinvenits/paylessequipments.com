@@ -13,6 +13,14 @@ $pageTitles = [
   '404' => 'Page Not Found'
 ];
 $pageTitle = $pageTitles[$page] ?? $pageTitles['404'];
+if ($page === 'equipment' && isset($_GET['item'])) {
+  foreach ($equipment as $listedItem) {
+    if ($listedItem['id'] === (string) $_GET['item']) {
+      $pageTitle = $listedItem['name'] . ' Rental in Beaverton, OR';
+      break;
+    }
+  }
+}
 $pageDescription = $page === 'home'
   ? 'Rent excavators, skid steers, dump trucks, forklifts and more in Beaverton, Oregon. Practical daily and weekly rates. Build your equipment list with PayLess.'
   : 'Explore practical construction equipment rental options from PayLess Equipment Rental LLC in Beaverton, Oregon.';

@@ -27,6 +27,10 @@ if (time() - (int) $_SESSION['request_last_sent'] < 15) { request_redirect('thro
 $equipmentList = $_POST['equipment'] ?? [];
 if (!is_array($equipmentList)) { $equipmentList = []; }
 $equipmentList = array_values(array_filter(array_map(static fn($v) => trim(strip_tags((string) $v)), $equipmentList)));
+if ($formType === 'equipment' && count($equipmentList) === 0) { request_redirect('missing'); }
+$allowedEquipmentNames = array_column($equipment, 'name');
+$equipmentList = array_values(array_intersect($equipmentList, array_merge($allowedEquipmentNames, ['Other / not sure'])));
+if ($formType === 'equipment' && count($equipmentList) === 0) { request_redirect('invalid'); }
 $rentalPeriod = trim(strip_tags((string) ($_POST['rental_period'] ?? 'Not specified')));
 $startDate = trim(strip_tags((string) ($_POST['start_date'] ?? 'Not specified')));
 $projectType = trim(strip_tags((string) ($_POST['project_type'] ?? 'Not specified')));

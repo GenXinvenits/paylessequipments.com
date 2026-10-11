@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://www.paylessequipmentrental.com/</loc></url>
-<url><loc>https://www.paylessequipmentrental.com/?page=equipment</loc></url>
-<url><loc>https://www.paylessequipmentrental.com/?page=about</loc></url>
-<url><loc>https://www.paylessequipmentrental.com/?page=gravel</loc></url>
-<url><loc>https://www.paylessequipmentrental.com/?page=contact</loc></url>
+  <url><loc>https://www.paylessequipmentrental.com/</loc></url>
+  <url><loc>https://www.paylessequipmentrental.com/?page=equipment</loc></url>
+  <url><loc>https://www.paylessequipmentrental.com/?page=equipment&amp;item=freightliner-m2</loc></url>
+  <url><loc>https://www.paylessequipmentrental.com/?page=equipment&amp;item=sl-1050k</loc></url>
+  <url><loc>https://www.paylessequipmentrental.com/?page=equipment&amp;item=rhf30-forklift</loc></url>
+  <url><loc>https://www.paylessequipmentrental.com/?page=equipment&amp;item=john-deere-35</loc></url>
+  <url><loc>https://www.paylessequipmentrental.com/?page=equipment&amp;item=bobcat-mt120</loc></url>
+  <url><loc>https://www.paylessequipmentrental.com/?page=equipment&amp;item=cat-306-cr</loc></url>
+  <url><loc>https://www.paylessequipmentrental.com/?page=about</loc></url>
+  <url><loc>https://www.paylessequipmentrental.com/?page=gravel</loc></url>
+  <url><loc>https://www.paylessequipmentrental.com/?page=contact</loc></url>
 </urlset>
