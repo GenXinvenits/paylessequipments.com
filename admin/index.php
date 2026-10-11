@@ -101,7 +101,7 @@ function admin_url(array $replace = []): string {
 }
 admin_layout_start('Request dashboard', $user);
 ?>
-<div class="admin-head"><div><div class="admin-eyebrow">PAYLESS / PRIVATE WORKSPACE</div><h1>Request dashboard</h1><p>Review customer enquiries, follow up, and keep the team’s queue organized.</p></div><a class="admin-btn admin-btn--accent" href="/admin/">↻ Refresh data</a></div>
+<div class="admin-head" id="dashboard"><div><div class="admin-eyebrow">PAYLESS / PRIVATE WORKSPACE</div><h1>Request dashboard</h1><p>Review customer enquiries, follow up, and keep the team’s queue organized.</p></div><a class="admin-btn admin-btn--accent" href="/admin/">↻ Refresh data</a></div>
 <?php if ($notice !== ''): ?><div class="admin-notice" role="status"><?= admin_escape($notice) ?></div><?php endif; ?>
 <?php if ($error !== ''): ?><div class="admin-notice error" role="alert"><?= admin_escape($error) ?></div><?php endif; ?>
 <div class="admin-grid">
@@ -140,7 +140,7 @@ admin_layout_start('Request dashboard', $user);
 </section>
 <?php endif; ?>
 
-<section class="admin-card">
+<section class="admin-card" id="requests">
   <form class="admin-filters" method="get" action="/admin/">
     <?php if ($detailId): ?><input type="hidden" name="request" value="<?= (int) $detailId ?>"><?php endif; ?>
     <input type="search" name="q" value="<?= admin_escape($q) ?>" placeholder="Search name, company, phone, email, location or request #">
@@ -160,12 +160,12 @@ admin_layout_start('Request dashboard', $user);
 </section>
 
 <?php if (($user['role'] ?? '') === 'owner'): ?>
-<h2 class="admin-section-title">Access management · Owner only</h2>
+<h2 class="admin-section-title" id="access-management">Access management · Owner only</h2>
 <p class="admin-helper">Only the owner can create or disable admin accounts. Admins can manage requests but cannot grant access to other people.</p>
 <div class="admin-grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);align-items:start">
   <section class="admin-card" style="padding:20px"><h2 style="margin:0 0 5px;font-size:20px">Assign an admin</h2><p class="admin-helper">Use a unique work email and a strong temporary password. Give the credentials to the person privately.</p>
   <form method="post" action="/admin/#access-management" class="admin-form-grid"><input type="hidden" name="_csrf" value="<?= admin_escape($csrf) ?>"><input type="hidden" name="action" value="create_admin"><label>Full name<input name="display_name" maxlength="120" required></label><label>Work email<input type="email" name="email" maxlength="254" required></label><label class="wide">Temporary password (14+ characters)<input type="password" name="password" minlength="14" maxlength="4096" autocomplete="new-password" required></label><div class="wide"><button class="admin-btn admin-btn--accent" type="submit">Create admin account</button></div></form></section>
-  <section class="admin-card" id="access-management" style="padding:20px"><h2 style="margin:0 0 5px;font-size:20px">Authorized accounts</h2>
+  <section class="admin-card" style="padding:20px"><h2 style="margin:0 0 5px;font-size:20px">Authorized accounts</h2>
   <?php foreach ($admins as $admin): ?><div class="admin-user-row"><div><strong><?= admin_escape((string) $admin['display_name']) ?> <?= $admin['role'] === 'owner' ? '<span class="admin-pill">Owner</span>' : '' ?></strong><small><?= admin_escape((string) $admin['email']) ?> · <?= (int) $admin['is_active'] ? 'Active' : 'Disabled' ?></small><small><?= $admin['last_login_at'] ? 'Last login: ' . admin_escape((string) $admin['last_login_at']) : 'Never signed in' ?></small></div><?php if ($admin['role'] === 'admin'): ?><form method="post" action="/admin/#access-management"><input type="hidden" name="_csrf" value="<?= admin_escape($csrf) ?>"><input type="hidden" name="action" value="toggle_admin"><input type="hidden" name="admin_id" value="<?= (int) $admin['id'] ?>"><button class="admin-btn <?= (int) $admin['is_active'] ? 'admin-btn--light' : 'admin-btn--accent' ?>" type="submit"><?= (int) $admin['is_active'] ? 'Disable access' : 'Enable access' ?></button></form><?php endif; ?></div><?php endforeach; ?>
   </section>
 </div>
