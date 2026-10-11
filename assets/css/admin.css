@@ -420,3 +420,20 @@ html[data-theme=dark]{color-scheme:dark;--admin-bg:#151815;--admin-paper:#1d221d
     min-height:42px;
   }
 }
+
+
+/* Mobile bottom navigation: make the active destination visibly distinct in both themes. */
+@media(max-width:680px){
+  .admin-body .admin-sidebar .admin-nav-link.is-active,
+  .admin-body.admin-sidebar-collapsed .admin-sidebar .admin-nav-link.is-active{
+    background:var(--admin-accent)!important;
+    border:1px solid var(--admin-accent)!important;
+    color:var(--admin-accent-ink)!important;
+    box-shadow:inset 0 -3px 0 var(--admin-accent-ink)!important;
+  }
+  .admin-body .admin-sidebar .admin-nav-link.is-active .admin-nav-icon,
+  .admin-body .admin-sidebar .admin-nav-link.is-active>span:last-child{
+    color:var(--admin-accent-ink)!important;
+    -webkit-text-fill-color:var(--admin-accent-ink);
+  }
+}
