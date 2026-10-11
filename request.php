@@ -5,7 +5,7 @@ require_once __DIR__ . '/includes/database.php';
 session_start();
 
 function request_length(string $value): int {
-  return function_exists('mb_strlen') ? request_length($value, 'UTF-8') : strlen($value);
+  return function_exists('mb_strlen') ? mb_strlen($value, 'UTF-8') : strlen($value);
 }
 
 function request_redirect(string $status): never {
