@@ -170,7 +170,7 @@ html[data-theme=dark]{color-scheme:dark;--admin-bg:#151815;--admin-paper:#1d221d
 
 
 /* Tablet and phone layout corrections */
-.admin-body{overflow-x:hidden}
+.admin-body{overflow-x:clip}
 .admin-app-shell{grid-template-columns:248px minmax(0,1fr);align-items:start}
 .admin-app-shell>.admin-wrap{min-width:0}
 .admin-card,.admin-stat,.admin-detail,.admin-form-grid>*{min-width:0}
