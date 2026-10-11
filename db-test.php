@@ -2,17 +2,12 @@
 declare(strict_types=1);
 
 /**
- * Temporary, localhost-only database connectivity check.
- * Remove this file after verification.
+ * Temporary database connectivity check.
+ * Remove this file after verification; it exposes only connection status.
  */
-$remoteAddress = (string) ($_SERVER['REMOTE_ADDR'] ?? '');
-if (!in_array($remoteAddress, ['127.0.0.1', '::1'], true)) {
-  http_response_code(404);
-  exit;
-}
-
 header('Content-Type: text/plain; charset=utf-8');
 header('Cache-Control: no-store, no-cache, must-revalidate');
+header('X-Robots-Tag: noindex, nofollow');
 
 require_once __DIR__ . '/includes/database.php';
 
