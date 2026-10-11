@@ -1,0 +1,14 @@
+<?php
+declare(strict_types=1);
+
+/*
+ * Copy this file to database.local.php on the server and enter the real
+ * credentials there. database.local.php is ignored by Git.
+ */
+return [
+  'host' => 'localhost',
+  'port' => '3306',
+  'name' => 'db_example_com',
+  'user' => 'admin',
+  'password' => 'SET_DATABASE_PASSWORD_HERE',
+];
