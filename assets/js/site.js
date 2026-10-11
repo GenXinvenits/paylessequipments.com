@@ -125,23 +125,51 @@
     }));
   });
 
+  // Show a clear, accessible popup after an equipment or gravel request submission.
   const params = new URLSearchParams(window.location.search);
   const status = params.get('status');
   const statusMessages = {
-    sent: 'Your request was sent. PayLess will follow up with availability and next steps.',
-    'not-configured': 'The request form is not connected yet. Please call (503) 259-0252 to send your request.',
-    'send-failed': 'The email could not be sent right now. Please call (503) 259-0252.',
-    missing: 'Please complete all required fields before submitting.',
-    throttle: 'Please wait a moment before submitting another request.',
-    invalid: 'The request could not be processed. Please try again or call PayLess.'
+    sent: { type: 'success', title: 'Request received', message: 'Thanks for contacting PayLess. Your request was saved and the team has been notified. We’ll follow up about availability, pricing and next steps.', action: 'Done' },
+    'saved-email-not-configured': { type: 'warning', title: 'Request saved', message: 'Your request is safely saved, but email notifications are not set up yet. To make sure the team sees it promptly, please call (503) 259-0252.', action: 'Got it', call: true },
+    'saved-email-failed': { type: 'warning', title: 'Request saved', message: 'Your request is safely saved, but the email notification could not be sent. If you need a timely response, please call (503) 259-0252.', action: 'Got it', call: true },
+    'database-error': { type: 'error', title: 'Request not saved', message: 'Sorry, we couldn’t save your request. Please try again. If the problem continues, call (503) 259-0252.', action: 'Close', call: true },
+    missing: { type: 'error', title: 'A few details are missing', message: 'Please complete the required fields and choose at least one equipment option, then submit the form again.', action: 'Review form' },
+    invalid: { type: 'error', title: 'Please check your details', message: 'Some information couldn’t be validated. Please review the form and try again.', action: 'Review form' },
+    throttle: { type: 'warning', title: 'One moment, please', message: 'Please wait a few seconds before sending another request.', action: 'Got it' }
   };
-  if (status && statusMessages[status]) {
-    const message = document.createElement('div');
-    message.className = 'form-status' + (status === 'sent' ? ' form-status--success' : '');
-    message.setAttribute('role', 'status');
-    message.textContent = statusMessages[status];
-    const target = document.querySelector('.contact-form-wrap') || document.querySelector('.request-form');
-    target?.prepend(message);
-    if (status === 'sent') message.scrollIntoView({ block: 'center' });
+  const feedback = statusMessages[status];
+  if (feedback) {
+    const modal = document.createElement('div');
+    modal.className = 'request-modal request-modal--' + feedback.type;
+    modal.setAttribute('role', 'presentation');
+    modal.innerHTML = `<section class="request-modal__panel" role="dialog" aria-modal="true" aria-labelledby="request-modal-title" aria-describedby="request-modal-message" tabindex="-1">
+      <button class="request-modal__close" type="button" aria-label="Close message">×</button>
+      <div class="request-modal__mark" aria-hidden="true">${feedback.type === 'success' ? '✓' : feedback.type === 'warning' ? '!' : '×'}</div>
+      <p class="request-modal__eyebrow">PAYLESS EQUIPMENT RENTAL</p>
+      <h2 class="request-modal__title" id="request-modal-title">${feedback.title}</h2>
+      <p class="request-modal__message" id="request-modal-message">${feedback.message}</p>
+      <div class="request-modal__actions">${feedback.call ? '<a class="button button--primary" href="tel:5032590252">Call PayLess ↗</a>' : ''}<button class="button ${feedback.call ? 'button--outline' : 'button--primary'}" type="button" data-request-modal-dismiss>${feedback.action}</button></div>
+    </section>`;
+    document.body.append(modal);
+    const panel = modal.querySelector('.request-modal__panel');
+    const closeButton = modal.querySelector('.request-modal__close');
+    const dismiss = () => {
+      modal.remove();
+      if (window.history?.replaceState) {
+        const cleanUrl = new URL(window.location.href);
+        cleanUrl.searchParams.delete('status');
+        window.history.replaceState({}, '', cleanUrl.pathname + cleanUrl.search + cleanUrl.hash);
+      }
+    };
+    closeButton.addEventListener('click', dismiss);
+    modal.querySelector('[data-request-modal-dismiss]').addEventListener('click', dismiss);
+    modal.addEventListener('click', event => { if (event.target === modal) dismiss(); });
+    document.addEventListener('keydown', function onEscape(event) {
+      if (event.key === 'Escape' && document.body.contains(modal)) {
+        dismiss();
+        document.removeEventListener('keydown', onEscape);
+      }
+    });
+    panel.focus();
   }
 })();
