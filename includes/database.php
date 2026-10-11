@@ -3,8 +3,9 @@ declare(strict_types=1);
 
 /**
  * MariaDB connection for website form submissions.
- * Keep the database password in the OpenLiteSpeed PHP environment;
- * never commit credentials to this public repository.
+ *
+ * Set the password directly in this file on the server. Do not commit the
+ * real password to this public GitHub repository.
  */
 function payless_db(): PDO {
   static $connection = null;
@@ -12,14 +13,14 @@ function payless_db(): PDO {
     return $connection;
   }
 
-  $host = getenv('PAYLESS_DB_HOST') ?: '127.0.0.1';
-  $port = getenv('PAYLESS_DB_PORT') ?: '3306';
-  $name = getenv('PAYLESS_DB_NAME') ?: 'db_example_com';
-  $user = getenv('PAYLESS_DB_USER') ?: 'admin';
-  $password = getenv('PAYLESS_DB_PASSWORD');
+  $host = '127.0.0.1';
+  $port = '3306';
+  $name = 'db_example_com';
+  $user = 'admin';
+  $password = 'SET_YOUR_DATABASE_PASSWORD_HERE';
 
-  if ($name === '' || $user === '' || $password === false || $password === '') {
-    throw new RuntimeException('PayLess database settings are not configured.');
+  if ($name === '' || $user === '' || $password === '' || $password === 'SET_YOUR_DATABASE_PASSWORD_HERE') {
+    throw new RuntimeException('Set the MariaDB password in includes/database.php on the server.');
   }
   if (!preg_match('/^[a-zA-Z0-9_]+$/', $name)) {
     throw new RuntimeException('Invalid PayLess database name configuration.');
