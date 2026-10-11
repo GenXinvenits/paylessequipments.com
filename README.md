@@ -5,7 +5,7 @@ This branch contains the PHP-first, responsive website for PayLess Equipment Ren
 ## Stack
 - PHP 8.1+ (server-rendered pages and shared templates)
 - MariaDB for persistent equipment and gravel enquiries
-- PDO MySQL driver (pdo_mysql)
+- PDO MySQL driver (`pdo_mysql`)
 - Semantic HTML and responsive CSS
 - Vanilla JavaScript for navigation, equipment-list interactions and theme controls
 - GSAP + ScrollTrigger for restrained motion
@@ -16,7 +16,7 @@ This branch contains the PHP-first, responsive website for PayLess Equipment Ren
 
 The current hosting setup uses the existing MariaDB database `db_example_com`, with database user `admin`. Do not create a second database or user just to deploy this branch.
 
-The schema is in `database/schema.sql`. It should be imported into the existing database only if the `customer_requests` table has not already been created:
+The schema is in `database/schema.sql`. Import it into the existing database only if the `customer_requests` table has not already been created:
 
 ```sh
 sudo mariadb db_example_com < database/schema.sql
@@ -24,26 +24,20 @@ sudo mariadb db_example_com < database/schema.sql
 
 ## Database connection password
 
-The connection settings are in `includes/database.php`. On the server, edit that file and replace:
+The connection settings are in `includes/database.php`. On the server, set the actual MariaDB password for the configured user in that file. The connection defaults are:
 
-```php
-$password = 'SET_YOUR_DATABASE_PASSWORD_HERE';
-```
-
-with the actual MariaDB password for the configured `admin` user. The connection defaults are:
-
-- Host: `127.0.0.1`
+- Host: `localhost`
 - Port: `3306`
 - Database: `db_example_com`
 - Username: `admin`
 
-**Important:** this repository is public. Never commit the actual password to GitHub. Set the real password in the server's copy of `includes/database.php` after deployment, and avoid pushing that modified file. A dedicated database user with only the necessary permissions is safer than using an administrator account; that can be considered separately after the existing setup works.
+**Important:** this repository is public. Never commit the actual password to GitHub. Keep the server's real password in the server copy of `includes/database.php` and avoid pushing that modified file. A dedicated database user with only the necessary privileges is safer than using an administrator account; consider this before production.
 
 The website saves equipment and gravel enquiries to the `customer_requests` table. There is no public enquiry-management page; review submissions using phpMyAdmin or another authorised database client.
 
 ## Email notifications
 
-Database storage does not depend on email. To also notify the business inbox, configure `PAYLESS_CONTACT_EMAIL` with the monitored email address and configure working PHP mail delivery on the server. A successful form submission is saved first; the customer is shown a separate message if the email notification is not configured or fails.
+Database storage does not depend on email. Set `PAYLESS_CONTACT_EMAIL` to the monitored business inbox and configure working PHP mail delivery on the server. A successful form submission is saved first; the customer is shown a separate message if the email notification is not configured or fails.
 
 ## Customer data and security
 - Keep real database credentials out of the public repository.
