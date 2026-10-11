@@ -4,5 +4,20 @@
 .footer-legal{display:flex;gap:14px}.footer-legal a{color:#aeb6a9}.footer-legal a:hover{color:var(--accent)}.legal-layout{display:grid;grid-template-columns:.65fr 1.35fr;gap:70px}.legal-layout>aside{position:sticky;top:130px;align-self:start}.legal-layout>aside>p:not(.eyebrow){font-size:12px;color:var(--muted);line-height:1.8}.legal-review-note{margin-top:35px;padding-top:15px;border-top:1px solid var(--line);font-size:10px!important}.legal-content{border-top:1px solid var(--line)}.legal-content article{display:grid;grid-template-columns:40px 1fr;gap:15px;padding:25px 0;border-bottom:1px solid var(--line)}.legal-number{font:10px 'DM Mono',monospace;color:var(--muted);padding-top:6px}.legal-content h2{font-size:18px;letter-spacing:-.04em;margin:0 0 8px}.legal-content p{font-size:12px;color:var(--muted);line-height:1.9;margin:0}@media(max-width:780px){.footer-legal{order:4;width:100%;gap:18px}.legal-layout{grid-template-columns:1fr;gap:30px}.legal-layout>aside{position:static}}
 
 
-/* Clear feedback after equipment and gravel request submissions. */
-.request-feedback{display:flex;flex-direction:column;gap:7px;margin:22px 0;padding:18px 20px;border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--surface);color:var(--ink);font-size:13px;line-height:1.65;scroll-margin-top:110px}.request-feedback strong{font-size:11px;letter-spacing:.06em;text-transform:uppercase}.request-feedback--success{border-left-color:#27834a}.request-feedback--warning{border-left-color:#b87916}.request-feedback--error{border-left-color:#c33b32}.request-feedback:focus{outline:2px solid var(--accent);outline-offset:3px}
+
+/* Accessible request confirmation popup. */
+.request-modal{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:22px;background:rgba(8,12,8,.68);backdrop-filter:blur(5px)}
+.request-modal[hidden]{display:none}
+.request-modal__panel{position:relative;width:min(100%,480px);padding:clamp(28px,6vw,42px);background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:0 28px 90px #0005;animation:request-modal-in .22s ease-out}
+.request-modal__mark{display:grid;place-items:center;width:48px;height:48px;margin-bottom:22px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:25px;font-weight:800}
+.request-modal--warning .request-modal__mark{background:#f2dfb8;color:#70440b}
+.request-modal--error .request-modal__mark{background:#f5d6d2;color:#8e211b}
+.request-modal__eyebrow{margin:0 0 10px;color:var(--muted);font:10px 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+.request-modal__title{margin:0 0 12px;font-size:clamp(27px,5vw,36px);line-height:1.05;letter-spacing:-.06em}
+.request-modal__message{margin:0;color:var(--muted);font-size:13px;line-height:1.8}
+.request-modal__actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:27px}
+.request-modal__actions .button{flex:1}
+.request-modal__close{position:absolute;top:14px;right:14px;display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--line);background:transparent;font-size:22px;cursor:pointer}
+.request-modal__close:hover{background:var(--surface-2)}
+@keyframes request-modal-in{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.request-modal__panel{animation:none}}
