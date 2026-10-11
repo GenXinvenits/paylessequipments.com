@@ -298,3 +298,125 @@ html[data-theme=dark]{color-scheme:dark;--admin-bg:#151815;--admin-paper:#1d221d
   .admin-body.admin-sidebar-collapsed .admin-sidebar{width:68px}
   .admin-body.admin-sidebar-collapsed .admin-app-shell>.admin-wrap{width:calc(100% - 26px)}
 }
+
+
+/* Access management: keep account creation and account rows usable on narrow screens. */
+#access-management + .admin-helper + .admin-grid{
+  grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);
+  gap:16px;
+  align-items:start;
+}
+#access-management + .admin-helper + .admin-grid > .admin-card{
+  min-width:0;
+  padding:clamp(14px,2vw,22px)!important;
+}
+#access-management + .admin-helper + .admin-grid .admin-form-grid{
+  grid-template-columns:minmax(0,1fr);
+  gap:12px;
+}
+#access-management + .admin-helper + .admin-grid .admin-form-grid label,
+#access-management + .admin-helper + .admin-grid .admin-form-grid input{
+  min-width:0;
+  width:100%;
+  max-width:100%;
+}
+#access-management + .admin-helper + .admin-grid .admin-form-grid .wide{
+  grid-column:1/-1;
+}
+#access-management + .admin-helper + .admin-grid .admin-form-grid button{
+  max-width:100%;
+  white-space:normal;
+}
+#access-management + .admin-helper + .admin-grid .admin-user-row{
+  min-width:0;
+  gap:12px;
+}
+#access-management + .admin-helper + .admin-grid .admin-user-row>div{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+#access-management + .admin-helper + .admin-grid .admin-user-row small{
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+#access-management + .admin-helper + .admin-grid .admin-user-row form{
+  flex:0 0 auto;
+  max-width:100%;
+}
+#access-management + .admin-helper + .admin-grid .admin-user-row button{
+  max-width:100%;
+  white-space:normal;
+}
+@media(max-width:900px){
+  #access-management + .admin-helper + .admin-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:12px;
+  }
+}
+@media(max-width:680px){
+  #access-management + .admin-helper{
+    font-size:12px;
+    line-height:1.65;
+    overflow-wrap:anywhere;
+  }
+  #access-management + .admin-helper + .admin-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:12px;
+    margin-bottom:18px;
+  }
+  #access-management + .admin-helper + .admin-grid > .admin-card{
+    padding:15px!important;
+    overflow:hidden;
+  }
+  #access-management + .admin-helper + .admin-grid .admin-card h2{
+    font-size:18px!important;
+    line-height:1.3;
+    overflow-wrap:anywhere;
+  }
+  #access-management + .admin-helper + .admin-grid .admin-form-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    gap:11px;
+  }
+  #access-management + .admin-helper + .admin-grid .admin-form-grid label{
+    display:block;
+    font-size:12px;
+  }
+  #access-management + .admin-helper + .admin-grid .admin-form-grid input{
+    display:block;
+    box-sizing:border-box;
+    width:100%;
+    min-width:0;
+    margin-top:5px;
+  }
+  #access-management + .admin-helper + .admin-grid .admin-form-grid button{
+    width:100%;
+    min-height:44px;
+    padding:10px 12px;
+  }
+  #access-management + .admin-helper + .admin-grid .admin-user-row{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:10px;
+    padding:14px 0;
+  }
+  #access-management + .admin-helper + .admin-grid .admin-user-row>div{
+    width:100%;
+  }
+  #access-management + .admin-helper + .admin-grid .admin-user-row strong{
+    display:block;
+    overflow-wrap:anywhere;
+  }
+  #access-management + .admin-helper + .admin-grid .admin-user-row small{
+    display:block;
+    line-height:1.55;
+  }
+  #access-management + .admin-helper + .admin-grid .admin-user-row form,
+  #access-management + .admin-helper + .admin-grid .admin-user-row button{
+    width:100%;
+  }
+  #access-management + .admin-helper + .admin-grid .admin-user-row button{
+    min-height:42px;
+  }
+}
