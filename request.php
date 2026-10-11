@@ -9,7 +9,7 @@ function request_length(string $value): int {
 }
 
 function request_redirect(string $status): never {
-  header('Location: /?page=contact&status=' . rawurlencode($status) . '#equipment-request');
+  header('Location: /?page=contact&status=' . rawurlencode($status) . '#request-feedback');
   exit;
 }
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: /?page=contact'); exit; }
