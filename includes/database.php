@@ -3,7 +3,8 @@ declare(strict_types=1);
 
 /**
  * MariaDB connection for website form submissions.
- * Configure credentials with environment variables; never commit passwords.
+ * Keep the database password in the OpenLiteSpeed PHP environment;
+ * never commit credentials to this public repository.
  */
 function payless_db(): PDO {
   static $connection = null;
@@ -13,8 +14,8 @@ function payless_db(): PDO {
 
   $host = getenv('PAYLESS_DB_HOST') ?: '127.0.0.1';
   $port = getenv('PAYLESS_DB_PORT') ?: '3306';
-  $name = getenv('PAYLESS_DB_NAME') ?: '';
-  $user = getenv('PAYLESS_DB_USER') ?: '';
+  $name = getenv('PAYLESS_DB_NAME') ?: 'db_example_com';
+  $user = getenv('PAYLESS_DB_USER') ?: 'admin';
   $password = getenv('PAYLESS_DB_PASSWORD');
 
   if ($name === '' || $user === '' || $password === false || $password === '') {
