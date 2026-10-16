@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Gravel delivery illustration</title><desc id="desc">Original illustration of a dump truck hauling a fresh load of gravel to a Northwest work site.</desc>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#81917d"/><stop offset="1" stop-color="#d4c9a7"/></linearGradient>
+    <linearGradient id="earth" x2="0" y2="1"><stop stop-color="#9d835e"/><stop offset="1" stop-color="#554d3c"/></linearGradient>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h1200v700H0z"/><circle cx="993" cy="122" r="52" fill="#e6d89f" opacity=".85"/>
+  <path fill="#687962" d="m0 344 132-120 113 101 162-176 181 204 154-131 155 138 128-121 175 147v126H0z"/>
+  <g fill="#425344"><path d="m72 312 37-95 38 95h-24v48h-27v-48zM295 297l32-79 32 79h-20v42h-24v-42zM1015 301l39-97 39 97h-25v51h-28v-51z"/></g>
+  <path fill="url(#earth)" d="M0 430q209-32 404 8t414-8q207-35 382 6v264H0z"/>
+  <path fill="#c3a773" d="M0 528q216-48 409 4t414-7q213-38 377 0v33q-197-17-405 23t-401-7Q190 536 0 565z" opacity=".55"/>
+  <ellipse cx="625" cy="550" rx="342" ry="35" fill="#242c26" opacity=".3"/>
+  <g stroke="#354136" stroke-width="10" stroke-linejoin="round">
+    <path fill="#71816d" d="m283 286 490 2 29 184-504-2z"/><path fill="#d8f15b" d="m307 307 443 1 15 127-438-2z"/>
+    <path fill="#75846f" d="M736 378h112l72 81v44H719z"/><path fill="#d8f15b" d="M771 397h71l51 59H770z"/><path fill="#a9b59f" d="m782 405 51 1 37 42h-88z"/>
+    <path fill="#5e6d5a" d="M834 483h87v27h-87z"/>
+  </g>
+  <g fill="#28332b" stroke="#d0d5c4" stroke-width="8"><circle cx="391" cy="491" r="49"/><circle cx="391" cy="491" r="17"/><circle cx="717" cy="491" r="49"/><circle cx="717" cy="491" r="17"/><circle cx="858" cy="491" r="43"/><circle cx="858" cy="491" r="14"/></g>
+  <path fill="#d8c293" d="M974 495q42-82 96-13 34-68 85 13z"/><path fill="#b19a6d" d="M951 500q64-29 111 7t107-7v27H951z"/>
+  <g fill="#eee5cf" opacity=".75"><circle cx="178" cy="478" r="4"/><circle cx="204" cy="487" r="3"/><circle cx="1022" cy="469" r="4"/><circle cx="1041" cy="482" r="3"/></g>
+  <path fill="none" stroke="#f0e7cf" stroke-width="4" opacity=".35" d="M60 623q226-39 399 0m495 1q90-16 173-2"/>
+</svg>

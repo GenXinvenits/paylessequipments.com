@@ -105,7 +105,6 @@
   window.addEventListener('load', () => {
     if (reduceMotion || !window.gsap) return;
     if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
-    gsap.from('.hero__visual', { opacity: 0, y: 24, duration: 0.9, ease: 'power2.out', delay: 0.12 });
     if (window.ScrollTrigger) {
       gsap.utils.toArray('.section-heading, .request-intro, .gravel-feature__content, .local-layout').forEach(el => {
         gsap.from(el, { opacity: 0, y: 24, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 86%', once: true } });

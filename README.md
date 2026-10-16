@@ -67,12 +67,12 @@ Database storage does not depend on email. Set `PAYLESS_CONTACT_EMAIL` to the mo
 - Availability, delivery charges and monthly rates are marked for confirmation where appropriate.
 - No fabricated testimonials or project stories are published.
 - Update the equipment data in `includes/site.php` when approved fleet information changes.
-- Images currently use remote Unsplash URLs as design placeholders; replace them with approved PayLess fleet photography before launch.
+- The homepage hero uses a locally served animated excavator illustration; it is representative artwork, not PayLess fleet footage. Other locally served SVG illustrations represent the equipment and gravel scenes; they are artwork, not photographs of the actual PayLess fleet. Replace these with approved PayLess fleet media when available.
 
 ## Deployment checks
 - Confirm database connectivity and test an equipment request and a gravel request end to end.
 - Set `PAYLESS_CONTACT_EMAIL` to the monitored request inbox and verify server mail delivery.
-- Replace placeholder photography with licensed/approved PayLess fleet photography.
+- Replace the illustrative equipment and gravel artwork with approved PayLess fleet photography when available.
 - Validate current pricing/specifications, delivery area, accessibility, structured data and all form flows.
 - Configure HTTPS, secure backups and host-level security/rate limiting before launch.
 - Remove the temporary `db-test.php` diagnostic endpoint after database testing is complete.

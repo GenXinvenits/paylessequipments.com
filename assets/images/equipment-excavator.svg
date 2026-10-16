@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
+  <title id="title">Excavator illustration</title>
+  <desc id="desc">Minimal line illustration of an excavator digging on a job site, with a gently moving boom and bucket.</desc>
+  <style>
+    .line{fill:none;stroke:#899196;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+    .fine{fill:none;stroke:#a2a7a6;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    .gold{fill:#f7e6c8;stroke:#e7a84f;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+    .glass{fill:#d8e9e8;stroke:#899196;stroke-width:4;stroke-linejoin:round}
+    .boom{transform-box:view-box;transform-origin:328px 300px;animation:dig 5.2s ease-in-out infinite}
+    .stick{transform-box:view-box;transform-origin:468px 188px;animation:reach 5.2s ease-in-out infinite}
+    .bucket{transform-box:view-box;transform-origin:588px 161px;animation:curl 5.2s ease-in-out infinite}
+    .dust{transform-box:view-box;transform-origin:center;animation:dust 2.8s ease-out infinite}
+    .dust.delay{animation-delay:1.4s}
+    @keyframes dig{0%,100%{transform:rotate(0)}45%,66%{transform:rotate(-2.2deg)}}
+    @keyframes reach{0%,100%{transform:rotate(0)}45%,66%{transform:rotate(2deg)}}
+    @keyframes curl{0%,100%{transform:rotate(0)}45%,66%{transform:rotate(7deg)}}
+    @keyframes dust{0%{opacity:0;transform:translate(0,5px) scale(.65)}32%{opacity:.5}100%{opacity:0;transform:translate(14px,-9px) scale(1.2)}}
+    @media(prefers-reduced-motion:reduce){.boom,.stick,.bucket,.dust{animation:none}}
+  </style>
+  <path class="fine" d="M58 414H742M82 434h110m428 0h92" opacity=".75"/>
+  <path d="M139 407q171-15 326 0t196-1" fill="none" stroke="#e7e2d3" stroke-width="9" stroke-linecap="round"/>
+  <g aria-hidden="true">
+    <path d="M223 350q8-46 52-51h208q46 5 53 52l-18 43H241z" fill="#fbf7ec" stroke="#899196" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M247 355h265v25H247z" fill="#f3eee0" stroke="#899196" stroke-width="3"/>
+    <g fill="#fffdf6" stroke="#899196" stroke-width="4"><circle cx="267" cy="367" r="10"/><circle cx="319" cy="367" r="10"/><circle cx="371" cy="367" r="10"/><circle cx="423" cy="367" r="10"/><circle cx="475" cy="367" r="10"/></g>
+    <path class="gold" d="M280 286q19-65 76-67h74l39 42-4 85H284z"/>
+    <path class="glass" d="m366 224 58 3 27 76h-92z"/>
+    <path class="fine" d="m377 235 38 2 20 55h-58z"/>
+    <path class="fine" d="M300 313h131m-111 12h93"/>
+    <circle cx="327" cy="298" r="11" fill="#e7a84f" stroke="#fffdf6" stroke-width="4"/>
+    <g class="boom">
+      <path class="gold" d="m315 276 34-37 124-76 28 23-107 101-51 31z"/>
+      <path class="fine" d="m343 258 125-78"/>
+      <circle cx="467" cy="186" r="9" fill="#e7a84f" stroke="#fffdf6" stroke-width="4"/>
+    </g>
+    <g class="stick">
+      <path class="gold" d="m466 177 19-39 99-31 15 25-81 34-27 31z"/>
+      <path class="fine" d="m487 168 90-34"/>
+      <circle cx="584" cy="141" r="8" fill="#e7a84f" stroke="#fffdf6" stroke-width="4"/>
+    </g>
+    <g class="bucket">
+      <path d="m580 132 24-23 28 17-9 31-27 17-27-10z" fill="#f3e2c3" stroke="#899196" stroke-width="5" stroke-linejoin="round"/>
+      <path class="fine" d="m572 164 30 10 21-15"/>
+    </g>
+    <g fill="#e7a84f" opacity=".6"><circle class="dust" cx="614" cy="402" r="7"/><circle class="dust delay" cx="632" cy="402" r="5"/></g>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
+  <title id="title">Forklift illustration</title><desc id="desc">Original illustration of a forklift moving a pallet of building materials.</desc>
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#c2cec0"/><stop offset="1" stop-color="#e6dbbb"/></linearGradient><linearGradient id="ground" x2="0" y2="1"><stop stop-color="#a18a65"/><stop offset="1" stop-color="#71634d"/></linearGradient></defs>
+  <path fill="url(#sky)" d="M0 0h800v520H0z"/><circle cx="665" cy="92" r="34" fill="#e8dda9"/>
+  <path fill="#84917c" d="m0 252 102-101 77 81 125-123 119 154 112-87 116 95 76-84 73 75v122H0z"/><path fill="url(#ground)" d="M0 322q185-22 397 10t403-8v196H0z"/>
+  <ellipse cx="410" cy="414" rx="242" ry="23" fill="#323c32" opacity=".25"/>
+  <g stroke="#354136" stroke-width="8" stroke-linejoin="round">
+    <path fill="#d8f15b" d="M253 276h201l63 92v37H242z"/><path fill="#83917b" d="M314 231h109l49 98H298z"/><path fill="#9fb09a" d="m327 244 78 1 32 66h-98z"/>
+    <path fill="#66765f" d="M467 205h34v177h-34z"/><path fill="#d8f15b" d="m499 316 198 2 25 19-22 18H499z"/>
+    <path fill="#b98c57" d="M580 219h87v95h-87z"/><path fill="#d8bb85" d="M588 227h71v79h-71z"/><path fill="#9f7449" d="M574 308h101v10H574z"/>
+    <path fill="#66765f" d="M311 371h176v23H311z"/>
+  </g>
+  <g fill="#29342d" stroke="#d1d4c3" stroke-width="6"><circle cx="304" cy="383" r="36"/><circle cx="304" cy="383" r="11"/><circle cx="448" cy="383" r="34"/><circle cx="448" cy="383" r="11"/></g>
+  <path fill="none" stroke="#f3ebd4" stroke-width="3" opacity=".5" d="M53 459h179m487 0h44"/>
+</svg>

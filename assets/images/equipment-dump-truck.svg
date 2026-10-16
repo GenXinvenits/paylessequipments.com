@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
+  <title id="title">Dump truck illustration</title>
+  <desc id="desc">Minimal line illustration of a dump truck unloading material, with a gently lifting bed and drifting dust.</desc>
+  <style>
+    .line{fill:none;stroke:#899196;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+    .fine{fill:none;stroke:#a2a7a6;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    .gold{fill:#f7e6c8;stroke:#e7a84f;stroke-width:5;stroke-linejoin:round}
+    .glass{fill:#d8e9e8;stroke:#899196;stroke-width:4;stroke-linejoin:round}
+    .bed{transform-box:view-box;transform-origin:178px 356px;animation:tip 6s ease-in-out infinite}
+    .wheel-spoke{transform-box:view-box;animation:spin 3s linear infinite}
+    .wheel-a{transform-origin:254px 386px}
+    .wheel-b{transform-origin:508px 386px}
+    .wheel-c{transform-origin:632px 386px}
+    .dust{transform-box:view-box;transform-origin:center;animation:dust 2.8s ease-out infinite}
+    .dust.delay{animation-delay:1.4s}
+    @keyframes tip{0%,100%{transform:rotate(0)}42%,66%{transform:rotate(-3deg)}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes dust{0%{opacity:0;transform:translate(0,5px) scale(.65)}32%{opacity:.5}100%{opacity:0;transform:translate(-15px,-9px) scale(1.2)}}
+    @media(prefers-reduced-motion:reduce){.bed,.wheel-spoke,.dust{animation:none}}
+  </style>
+  <path class="fine" d="M58 414H742M80 434h118m426 0h92" opacity=".75"/>
+  <path d="M105 408q187-16 340 0t251-2" fill="none" stroke="#e7e2d3" stroke-width="9" stroke-linecap="round"/>
+  <g aria-hidden="true">
+    <path d="M164 350h496v28H164z" fill="#fbf7ec" stroke="#899196" stroke-width="5" stroke-linejoin="round"/>
+    <path class="fine" d="M185 361h445"/>
+    <g class="bed">
+      <path class="gold" d="m176 348 4-139 341 4 20 135z"/>
+      <path d="m195 333 4-101 298 3 14 100z" fill="#fbf4e5" stroke="#e7a84f" stroke-width="3" stroke-linejoin="round"/>
+      <path class="fine" d="M218 250h248m-249 24h252m-252 24h255"/>
+      <path d="m515 218 12 129" fill="none" stroke="#899196" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="518" cy="348" r="8" fill="#e7a84f" stroke="#fffdf6" stroke-width="3"/>
+    </g>
+    <path class="gold" d="M522 291h84l57 66v33H516z"/>
+    <path class="glass" d="M545 306h53l39 44h-92z"/>
+    <path class="fine" d="M554 316h37l26 28h-63z"/>
+    <path class="line" d="M620 390h44m-122 0h29"/>
+    <g fill="#fffdf6" stroke="#899196" stroke-width="5">
+      <circle cx="254" cy="386" r="36"/><circle cx="508" cy="386" r="36"/><circle cx="632" cy="386" r="34"/>
+    </g>
+    <g fill="none" stroke="#e7a84f" stroke-width="4" stroke-linecap="round">
+      <g class="wheel-spoke wheel-a"><path d="M254 358v56m-28-28h56"/></g>
+      <g class="wheel-spoke wheel-b"><path d="M508 358v56m-28-28h56"/></g>
+      <g class="wheel-spoke wheel-c"><path d="M632 360v52m-26-26h52"/></g>
+    </g>
+    <g fill="#fffdf6" stroke="#e7a84f" stroke-width="3"><circle cx="254" cy="386" r="7"/><circle cx="508" cy="386" r="7"/><circle cx="632" cy="386" r="7"/></g>
+    <g fill="#e7a84f" opacity=".6"><circle class="dust" cx="165" cy="405" r="7"/><circle class="dust delay" cx="183" cy="404" r="5"/></g>
+  </g>
+</svg>
