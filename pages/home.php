@@ -9,7 +9,9 @@
       <div class="hero__meta" data-reveal><span>DAILY & WEEKLY RENTALS</span><span>PRACTICAL PRICING</span><span>LOCAL SERVICE</span></div>
     </div>
     <div class="hero__visual" data-reveal>
-      <div class="hero__image" role="img" aria-label="Heavy construction equipment at work on a job site"></div>
+      <video class="hero__image" autoplay muted loop playsinline preload="metadata" poster="/assets/images/hero-excavator-poster.jpg" aria-label="Excavator working on a job site">
+        <source src="/assets/videos/hero-excavator.mp4" type="video/mp4">
+      </video>
       <div class="hero__image-shade"></div>
       <div class="hero__image-label"><span class="label-dot"></span> READY WHEN THE JOB CALLS</div>
       <div class="hero__vertical">PAYLESS EQUIPMENT RENTAL LLC / EST. FOR THE WORK</div>
