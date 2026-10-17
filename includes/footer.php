@@ -2,7 +2,7 @@
 <footer class="site-footer">
   <div class="container footer-top">
     <div class="footer-brand">
-      <a class="brand brand--footer" href="/"><span class="brand__mark" aria-hidden="true">P<span>L</span></span><span class="brand__wordmark">PAYLESS<span>EQUIPMENT RENTAL</span></span></a>
+      <a class="brand brand--footer" href="/" aria-label="PayLess Equipment Rental home"><span class="brand__footer-logo-frame"><img class="brand__footer-logo" src="/assets/images/payless-equipment-rental-logo-dark-animated.svg?v=embedded-1" alt=""></span></a>
       <p>PayLess. Get More. Get The Job Done.</p>
       <p class="footer-note">Professional equipment. Practical pricing. Straightforward communication.</p>
     </div>

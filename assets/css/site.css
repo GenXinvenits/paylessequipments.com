@@ -62,6 +62,29 @@
 @media(max-width:780px){.hero__crane{top:auto;right:-5%;bottom:50px;width:min(92%,500px)}}
 @media(max-width:440px){.hero__crane{right:-8%;width:100%}}
 
+/* Horizontal logo lockup cropped from the official artwork to retain its exact lettering. */
+.brand{gap:9px}
+.brand__symbol-frame{position:relative;display:block;flex:0 0 auto;width:94px;height:54px;overflow:hidden}
+.brand__symbol{position:absolute;top:-13px;left:0;width:94px;height:auto;max-width:none}
+.brand__wordmark-frame{position:relative;display:block;flex:0 0 auto;width:180px;height:35px;overflow:hidden}
+.brand__wordmark-art{position:absolute;top:-139px;left:-5px;width:198px;height:auto;max-width:none}
+.brand__wordmark-art--dark{display:none}
+html[data-theme=dark] .brand__wordmark-art--light{display:none}
+html[data-theme=dark] .brand__wordmark-art--dark{display:block}
+.brand__footer-logo-frame{position:relative;display:block;flex:0 0 auto;width:176px;height:132px;overflow:hidden}
+.brand__footer-logo{position:absolute;top:-24px;left:0;width:176px;height:auto;max-width:none}
+@media(max-width:780px){.brand{gap:7px}.brand__symbol-frame{width:80px;height:46px}.brand__symbol{top:-11px;width:80px}.brand__wordmark-frame{width:158px;height:31px}.brand__wordmark-art{top:-122px;left:-4px;width:174px}.brand__footer-logo-frame{width:160px;height:120px}.brand__footer-logo{top:-22px;width:160px}}
+
+/* A brief brand entrance with a restrained hover response. */
+.brand__symbol-frame,.brand__wordmark-frame{transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.brand__symbol-frame{animation:brand-mark-enter 1s cubic-bezier(.2,.8,.25,1) both}
+.brand__wordmark-frame{animation:brand-wordmark-enter .85s cubic-bezier(.2,.7,.2,1) .18s both}
+.brand:hover .brand__symbol-frame,.brand:focus-visible .brand__symbol-frame{transform:translateY(-2px)}
+.brand:hover .brand__wordmark-frame,.brand:focus-visible .brand__wordmark-frame{transform:translateX(2px)}
+@keyframes brand-mark-enter{0%{opacity:0;transform:translateY(14px) scale(.78)}68%{opacity:1;transform:translateY(-3px) scale(1.05)}86%{transform:translateY(1px) scale(.99)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes brand-wordmark-enter{0%{opacity:0;clip-path:inset(0 100% 0 0)}72%{opacity:1;clip-path:inset(0 0 0 0)}100%{opacity:1;clip-path:inset(0 0 0 0)}}
+@media(prefers-reduced-motion:reduce){.brand__symbol-frame,.brand__wordmark-frame{animation:none;transition:none}}
+
 /* Stack category artwork above its title and description. */
 .category-card{grid-template-columns:minmax(0,1fr) 20px;grid-template-rows:56px minmax(0,1fr);align-items:start;min-height:194px}
 .category-card__icon{grid-area:1/1;width:56px;height:56px;font-size:28px;color:var(--ink)}

@@ -19,7 +19,7 @@ $navItems = [
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/site.css?v=brand-motion-2">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23d8f15b'/%3E%3Cpath d='M9 11h22v6H15v3h13v6H15v3H9z' fill='%231a2016'/%3E%3C/svg%3E">
   <script>
     (() => {
@@ -46,8 +46,8 @@ $navItems = [
 <header class="site-header" id="top">
   <div class="container nav-wrap">
     <a class="brand" href="/" aria-label="PayLess Equipment Rental home">
-      <span class="brand__mark" aria-hidden="true">P<span>L</span></span>
-      <span class="brand__wordmark">PAYLESS<span>EQUIPMENT RENTAL</span></span>
+      <span class="brand__symbol-frame"><img class="brand__symbol" src="/assets/images/payless-equipment-rental-logo-animated.svg?v=embedded-1" alt=""></span>
+      <span class="brand__wordmark-frame" aria-hidden="true"><img class="brand__wordmark-art brand__wordmark-art--light" src="/assets/images/payless-equipment-rental-logo-animated.svg?v=embedded-1" alt=""><img class="brand__wordmark-art brand__wordmark-art--dark" src="/assets/images/payless-equipment-rental-logo-dark-animated.svg?v=embedded-1" alt=""></span>
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation"><span></span><span></span></button>
     <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
