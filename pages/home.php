@@ -16,6 +16,7 @@
       <div class="hero-sticker"><span>GET</span><strong>IT<br>DONE.</strong><span>NO RUNAROUND ↗</span></div>
       <div class="hero__coordinates">45°29' N<br>122°49' W</div>
     </div>
+    <img class="hero__crane" src="/assets/images/animated-crane.svg" alt="" aria-hidden="true">
   </div>
   <div class="hero__bottom container"><span>BUILT FOR THE PEOPLE WHO BUILD THINGS.</span><span>SCROLL TO EXPLORE <b>↓</b></span></div>
 </section>

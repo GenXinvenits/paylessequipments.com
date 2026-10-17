@@ -54,6 +54,14 @@
 @media(max-width:560px){.why-section .why-grid{grid-template-columns:1fr}.why-section .why-grid article,.why-section .why-grid article:not(:first-child){padding:18px 0;border-right:0;border-bottom:1px solid var(--line)}.why-section .why-grid article:last-child{border-bottom:0}.why-section .why-grid h3{min-height:0}.why-image-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 10px}.why-image-row figure:last-child{grid-column:1/-1;width:calc(50% - 5px);justify-self:center}.why-image-row figcaption{font-size:8px}}
 @media(max-width:440px){.why-image-row{grid-template-columns:1fr}.why-image-row figure:last-child{grid-column:auto;width:auto}.why-image-row figure img{max-height:220px}}
 
+/* The crane sits behind the hero photo panel and overhangs its top/right edges. */
+.hero__grid{position:relative;isolation:isolate}
+.hero__copy{position:relative;z-index:2}
+.hero__visual{z-index:1}
+.hero__crane{position:absolute;z-index:0;top:-80px;right:-7%;width:min(68%,680px);height:auto;pointer-events:none;filter:drop-shadow(0 12px 14px rgba(15,23,15,.25))}
+@media(max-width:780px){.hero__crane{top:auto;right:-5%;bottom:50px;width:min(92%,500px)}}
+@media(max-width:440px){.hero__crane{right:-8%;width:100%}}
+
 /* Stack category artwork above its title and description. */
 .category-card{grid-template-columns:minmax(0,1fr) 20px;grid-template-rows:56px minmax(0,1fr);align-items:start;min-height:194px}
 .category-card__icon{grid-area:1/1;width:56px;height:56px;font-size:28px;color:var(--ink)}

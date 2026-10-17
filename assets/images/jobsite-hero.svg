@@ -5,11 +5,6 @@
     <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#b9c9b7"/><stop offset="1" stop-color="#e3d9b8"/></linearGradient>
     <linearGradient id="hill" x2="0" y2="1"><stop stop-color="#71816a"/><stop offset="1" stop-color="#495c4a"/></linearGradient>
     <linearGradient id="soil" x2="0" y2="1"><stop stop-color="#9c815d"/><stop offset="1" stop-color="#645744"/></linearGradient>
-    <style>
-      .boom{transform-box:fill-box;transform-origin:12% 89%;animation:dig 5s ease-in-out infinite}
-      @keyframes dig{0%,100%{transform:rotate(0)}50%{transform:rotate(-4deg)}}
-      @media(prefers-reduced-motion:reduce){.boom{animation:none}}
-    </style>
   </defs>
   <path fill="url(#sky)" d="M0 0h1200v820H0z"/>
   <circle cx="957" cy="155" r="62" fill="#e7dcaa" opacity=".85"/>
@@ -31,7 +26,7 @@
     <path fill="#78866e" stroke-width="8" d="M535 524h-46l-28-17 22-26 65 3z"/>
     <path fill="#d8f15b" stroke-width="8" d="M482 535h101l28 64H463z"/>
   </g>
-  <g class="boom" fill="#d8f15b" stroke="#354136" stroke-width="11" stroke-linejoin="round" stroke-linecap="round">
+  <g fill="#d8f15b" stroke="#354136" stroke-width="11" stroke-linejoin="round" stroke-linecap="round">
     <path d="m532 534 71-67 175 25-13 35-151-10-52 55z"/>
     <path d="m753 493 62 15 106 109-30 27-105-98-66-11z"/>
     <path d="m903 614 28-17 24 32-19 44q-6 13-22 5l-27-20 14-17z"/>
