@@ -132,3 +132,165 @@ html[data-theme=dark] .equipment-card,html[data-theme=dark] .catalogue-card,html
 @media(max-width:780px){.equipment-tabs{margin-right:-18px;padding-right:18px}.equipment-tab{min-height:42px;padding-inline:13px;font-size:10px}.equipment-tab-detail{margin-bottom:18px}}
 @media(prefers-reduced-motion:reduce){.equipment-tab,.equipment-tab>i,.equipment-tab>span{transition:none}.equipment-tab:hover,.equipment-tab:active{transform:none}}
 
+/* Use a live map embed in place of the illustrated location panel. */
+.local-map{min-height:0;border:1px solid var(--line);border-radius:10px;background:var(--surface);box-shadow:0 12px 32px rgba(27,36,29,.1)}
+.local-map:before,.local-map:after,.local-map .map-grid,.local-map .map-pin{display:none}
+.local-map__embed{display:block;width:100%;height:315px;border:0}
+.local-map__label{position:static;min-width:0;width:100%;flex-direction:row;align-items:center;justify-content:space-between;gap:16px;padding:16px 18px;background:var(--surface)}
+.local-map__label>span{display:flex;flex-direction:column;gap:5px}
+.local-map__label strong{color:var(--ink)}
+.local-map__label small{color:var(--muted)}
+.local-map__label a{display:inline-flex;align-items:center;gap:7px;flex:0 0 auto;color:var(--ink);font:9px 'DM Mono',monospace;font-weight:500}
+.local-map__label a:hover{color:#9a6800}
+.local-map__label a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+@media(max-width:560px){.local-map__embed{height:260px}.local-map__label{align-items:flex-start;flex-direction:column;padding:14px}.local-map__label a{padding-top:4px}}
+
+/* Shared visual refresh */
+:root{--bg:#f5f3ee;--surface:#fffefa;--surface-2:#ece9e1;--ink:#1b241d;--muted:#68736b;--line:rgba(27,36,29,.13);--accent:#ffbd28;--accent-ink:#1b241d;--dark:#18211b;--dark-2:#26342a;--radius:8px}
+html[data-theme=dark]{--bg:#111813;--surface:#19231c;--surface-2:#222d25;--ink:#f0f2eb;--muted:#a8b2a9;--line:rgba(240,242,235,.13);--accent:#ffc43d;--accent-ink:#1b241d;--dark:#0c120e;--dark-2:#1a261d}
+body{font-size:15px;line-height:1.7}
+.announcement{height:38px;background:#18211b}
+.site-header{border-bottom-color:var(--line);box-shadow:0 4px 18px rgba(22,32,24,.035)}
+.primary-nav a{font-size:12px}
+.primary-nav a:hover,.primary-nav a.is-active{color:var(--ink)}
+.button{border-radius:4px;min-height:54px;box-shadow:0 2px 5px rgba(27,36,29,.06)}
+.button--primary{background:var(--accent);color:var(--accent-ink)}
+.button--primary:hover{background:#f0aa00}
+.button--outline{border-color:color-mix(in srgb,var(--ink) 22%,transparent)}
+.button--light{background:#fffefa;color:#1b241d}
+.button:focus-visible,.text-link:focus-visible,.gravel-phone:focus-visible,.primary-nav a:focus-visible,.footer-column a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.hero__grid{gap:clamp(32px,5vw,68px)}
+.hero__visual{border-radius:10px;background:#333d34;box-shadow:0 22px 55px rgba(22,32,24,.14)}
+.hero__image{width:100%;height:100%;object-fit:cover}
+.hero-sticker{box-shadow:0 12px 26px rgba(0,0,0,.16)}
+.value-bar{background:#202c23}
+.value-icon{border-radius:4px;background:#ffffff14}
+.section{padding:clamp(76px,9vw,112px) 0}
+.section-heading{margin-bottom:46px}
+.section-heading h2,.request-intro h2,.why-section h2,.gravel-feature h2,.process-section h2,.serve-layout h2,.local-layout h2,.proof-layout h2,.faq-layout h2,.final-cta h2,.about-intro h2,.gravel-detail h2,.contact-sidebar h2{letter-spacing:-.065em}
+.equipment-fleet,.featured-section{background:var(--bg)}
+.equipment-card,.catalogue-card{overflow:hidden;border-radius:8px;border-color:var(--line);box-shadow:0 9px 28px rgba(27,36,29,.055)}
+.equipment-card:hover,.catalogue-card:hover{box-shadow:0 18px 38px rgba(27,36,29,.13)}
+.equipment-card__image{height:232px}
+.equipment-card__image-arrow{border-radius:4px}
+.equipment-card__body{padding:23px}
+.equipment-card__actions{border-top-color:var(--line)}
+.equipment-tab{border-radius:5px}
+.request-section{background:var(--surface-2)}
+.request-form,.contact-form-wrap{border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 44px rgba(27,36,29,.075)}
+.request-form input:not([type=checkbox]),.request-form select,.request-form textarea{border-radius:5px;background:var(--bg)}
+.request-form input:focus,.request-form select:focus,.request-form textarea:focus{border-color:#bd870f;box-shadow:0 0 0 3px rgba(255,189,40,.23)}
+.choice-chip{border-radius:5px}
+.why-section{background:var(--surface-2)}
+.why-section .why-grid article,.process-grid article{border-color:var(--line)}
+.why-image-row figure{border-radius:8px;overflow:hidden}
+.gravel-feature{min-height:460px;background:#1b241d}
+.gravel-feature__image{background-image:url('/assets/images/product-dump-truck.webp');background-position:center 64%;background-size:cover;transform:scale(1.01)}
+.gravel-feature__image:after{background:linear-gradient(90deg,rgba(17,25,19,.94) 0%,rgba(17,25,19,.79) 38%,rgba(17,25,19,.25) 100%),linear-gradient(0deg,rgba(17,25,19,.36),transparent 58%)}
+.gravel-feature__content{width:min(var(--container),calc(100% - 64px));padding:86px 0}
+.gravel-feature__content>p:not(.eyebrow){font-size:14px;line-height:1.8}
+.gravel-feature h2{max-width:600px}
+.gravel-feature__stamp{border-color:#ffffff80;border-radius:4px;background:rgba(18,26,20,.18);backdrop-filter:blur(4px)}
+.gravel-feature--page{margin-top:12px}
+.process-grid article{border-radius:8px;background:var(--surface);padding:25px}
+.local-section{background:var(--surface-2)}
+.local-map{border-radius:10px;overflow:hidden}
+.faq-item{border-color:var(--line)}
+.final-cta{background:#18211b}
+.final-cta__inner{padding:clamp(76px,9vw,108px) 0}
+.final-cta__ghost{color:#ffffff09}
+.site-footer{background:#111813}
+.footer-column>a,.footer-bottom a{transition:color .2s}
+.footer-bottom{flex-wrap:wrap}
+.page-hero{background:#18211b}
+.page-hero:after{background:linear-gradient(90deg,#18211b 0%,rgba(24,33,27,.76) 42%,rgba(24,33,27,.16) 100%),url('/assets/images/hero-excavator-poster.jpg') center 48%/cover;opacity:.58}
+.page-hero__inner{padding-top:clamp(76px,9vw,106px);padding-bottom:clamp(76px,9vw,106px)}
+.page-hero__inner>p:not(.eyebrow){font-size:14px;line-height:1.8}
+.category-card,.category-card__icon{border-radius:6px}
+.contact-tabs a{transition:background .2s,color .2s}
+.equipment-picker{position:relative;margin:0 0 8px}
+.equipment-picker>summary{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:50px;padding:11px 14px;border:1px solid var(--line);border-radius:5px;background:var(--bg);font-size:11px;font-weight:700;cursor:pointer;list-style:none}
+.equipment-picker>summary::-webkit-details-marker{display:none}
+.equipment-picker>summary::marker{content:""}
+.equipment-picker>summary:hover,.equipment-picker[open]>summary{border-color:color-mix(in srgb,var(--ink) 30%,transparent)}
+.equipment-picker>summary:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 72%,transparent);outline-offset:3px}
+.equipment-picker__chevron{font-size:18px;font-weight:500;line-height:1;transition:transform .2s}
+.equipment-picker[open] .equipment-picker__chevron{transform:rotate(180deg)}
+.equipment-picker__options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:8px;padding:10px;border:1px solid var(--line);border-radius:5px;background:var(--surface)}
+.equipment-picker__option{display:flex!important;align-items:center;gap:9px;min-width:0;min-height:42px;margin:0!important;padding:8px 10px;border:1px solid var(--line);border-radius:4px;cursor:pointer}
+.equipment-picker__option input[type=checkbox]{width:17px;height:17px;flex:0 0 auto;margin:0;accent-color:#c88a00}
+.equipment-picker__option span{font-size:10px;line-height:1.4;font-weight:600}
+.equipment-picker__option:has(input:checked){border-color:#bd870f;background:rgba(255,189,40,.12)}
+.equipment-picker__option:focus-within{outline:2px solid color-mix(in srgb,var(--accent) 72%,transparent);outline-offset:2px}
+.equipment-choice .field-error{margin:4px 0 10px}
+@media(max-width:560px){.equipment-picker__options{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.equipment-picker__chevron{transition:none}}
+
+/* Improve equipment category tab contrast and interaction feedback. */
+.equipment-tabs{gap:10px;padding:6px 3px 14px}
+.equipment-tab{min-height:49px;padding:0 17px;border:1px solid color-mix(in srgb,var(--ink) 20%,transparent);border-radius:6px;background:var(--surface);color:var(--ink);font-size:11px;box-shadow:0 3px 9px rgba(27,36,29,.08);transition:background .18s ease,color .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.equipment-tab>i{color:#9b6b00;font-size:14px}
+.equipment-tab>span{min-width:23px;height:23px;border-radius:4px;background:color-mix(in srgb,var(--accent) 22%,var(--surface));color:var(--ink);font-weight:700}
+.equipment-tab:hover:not(.is-active){transform:translateY(-2px);border-color:#c78d11;background:color-mix(in srgb,var(--accent) 13%,var(--surface));color:var(--ink);box-shadow:0 7px 16px rgba(27,36,29,.15)}
+.equipment-tab:hover:not(.is-active)>i{color:#805500;transform:translateY(-1px)}
+.equipment-tab.is-active{border-color:#d89c10;background:var(--accent);color:#1b241d;box-shadow:0 3px 0 #a66d00,0 6px 15px rgba(255,189,40,.28)}
+.equipment-tab.is-active>i{color:#1b241d}
+.equipment-tab.is-active>span{background:#1b241d;color:#ffcf63}
+.equipment-tab.is-active:hover{transform:translateY(-2px);border-color:#e5a50b;background:#ffca4c;box-shadow:0 4px 0 #a66d00,0 9px 20px rgba(255,189,40,.35)}
+.equipment-tab:active,.equipment-tab.is-active:active{transform:translateY(0);box-shadow:0 1px 2px rgba(27,36,29,.15)}
+.equipment-tab:focus-visible{outline:3px solid #c78d11;outline-offset:3px;z-index:2}
+.equipment-tab-detail{font-size:10px}
+html[data-theme=dark] .equipment-tab{border-color:#526156;background:#26332a;color:#f0f2eb;box-shadow:0 3px 10px rgba(0,0,0,.24)}
+html[data-theme=dark] .equipment-tab>i{color:#ffd064}
+html[data-theme=dark] .equipment-tab>span{background:rgba(255,189,40,.2);color:#ffe3a0}
+html[data-theme=dark] .equipment-tab:hover:not(.is-active){border-color:#ffc43d;background:#344438;color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.36)}
+html[data-theme=dark] .equipment-tab:hover:not(.is-active)>i{color:#ffdc8a}
+html[data-theme=dark] .equipment-tab.is-active{border-color:#ffc43d;background:#ffc43d;color:#1b241d;box-shadow:0 3px 0 #b77d09,0 6px 16px rgba(255,196,61,.25)}
+html[data-theme=dark] .equipment-tab.is-active>i{color:#1b241d}
+html[data-theme=dark] .equipment-tab.is-active>span{background:#1b241d;color:#ffcf63}
+html[data-theme=dark] .equipment-tab.is-active:hover{border-color:#ffd36e;background:#ffd36e}
+@media(max-width:780px){.equipment-tabs{gap:8px;padding:5px 3px 13px}.equipment-tab{min-height:45px;padding-inline:14px}}
+@media(prefers-reduced-motion:reduce){.equipment-tab,.equipment-tab>i,.equipment-tab>span{transition:none}.equipment-tab:hover,.equipment-tab:active{transform:none}}
+html[data-theme=dark] .equipment-card,html[data-theme=dark] .catalogue-card,html[data-theme=dark] .request-form,html[data-theme=dark] .contact-form-wrap{box-shadow:0 14px 38px rgba(0,0,0,.26)}
+html[data-theme=dark] .hero__visual{box-shadow:0 22px 55px rgba(0,0,0,.35)}
+@media(max-width:900px){.hero__grid{gap:28px}.equipment-card__image{height:210px}.footer-top{gap:26px}}
+@media(max-width:780px){.section{padding:76px 0}.hero__visual{min-height:440px}.gravel-feature{min-height:430px}.gravel-feature__content{width:calc(100% - 40px);padding:70px 0}.gravel-feature__stamp{right:20px;bottom:24px}.page-hero:after{width:65%;background-position:58% center}}
+@media(max-width:560px){.hero__visual{min-height:370px;border-radius:7px}.hero__grid{padding-top:32px;padding-bottom:32px}.hero__meta{margin-top:30px}.gravel-feature{min-height:460px}.gravel-feature__image{background-position:58% center}.gravel-feature__content{width:calc(100% - 36px);padding:62px 0 110px}.gravel-feature__stamp{right:18px;bottom:16px;padding:10px 12px;font-size:9px}.gravel-feature__actions{gap:14px}.footer-bottom{padding:14px 0;align-items:flex-start}.page-hero:after{width:100%;opacity:.34;background:linear-gradient(90deg,rgba(24,33,27,.9),rgba(24,33,27,.45)),url('/assets/images/hero-excavator-poster.jpg') center/cover}}
+@media(prefers-reduced-motion:reduce){.button,.footer-column>a,.footer-bottom a{transition:none}}
+
+/* Improve light-theme text contrast and reading sizes without changing dark mode. */
+html[data-theme=light]{--bg:#f7f6f1;--surface:#fffefa;--surface-2:#eeece4;--ink:#1b261e;--muted:#4d5d51;--line:rgba(27,38,30,.18);--accent:#f5b82e;--accent-ink:#1b261e;--dark:#1b261e;--dark-2:#29392d}
+html[data-theme=light] body{font-size:16px;line-height:1.75}
+html[data-theme=light] .primary-nav a{font-size:13px;color:#4d5d51}
+html[data-theme=light] .primary-nav a:hover,html[data-theme=light] .primary-nav a.is-active{color:#1b261e}
+html[data-theme=light] .hero h1 span,html[data-theme=light] .section-heading h2 span,html[data-theme=light] .why-section h2 span,html[data-theme=light] .process-section h2 span,html[data-theme=light] .serve-layout h2 span,html[data-theme=light] .local-layout h2 span,html[data-theme=light] .proof-layout h2 span,html[data-theme=light] .faq-layout h2 span,html[data-theme=light] .about-intro h2 span,html[data-theme=light] .gravel-detail h2 span,html[data-theme=light] .contact-sidebar h2 span{color:#52664f}
+html[data-theme=light] .hero__body{font-size:15px;line-height:1.8;color:#4d5d51}
+html[data-theme=light] .hero__meta span{font-size:10px;color:#4d5d51}
+html[data-theme=light] .eyebrow{font-size:11px;color:#4d5d51}
+html[data-theme=light] .section-heading__aside p,html[data-theme=light] .faq-layout>div>p:not(.eyebrow){font-size:14px;line-height:1.8;color:#4d5d51}
+html[data-theme=light] .text-link{font-size:12px}
+html[data-theme=light] .equipment-card__category{font-size:10px;color:#4d5d51}
+html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1.7;color:#4d5d51;min-height:0}
+html[data-theme=light] .equipment-card__spec{font-size:11px;line-height:1.6}
+html[data-theme=light] .equipment-card__rates small{font-size:10px;color:#526157}
+html[data-theme=light] .why-grid p,html[data-theme=light] .process-grid p{font-size:13px;line-height:1.8;color:#4d5d51}
+html[data-theme=light] .local-layout>div>p:not(.eyebrow),html[data-theme=light] .about-intro p:not(.eyebrow),html[data-theme=light] .gravel-detail p:not(.eyebrow){font-size:15px;line-height:1.8;color:#4d5d51}
+html[data-theme=light] .proof-copy{font-size:15px;line-height:1.8}
+html[data-theme=light] .proof-note{font-size:12px;line-height:1.7;color:#4d5d51}
+html[data-theme=light] .equipment-tab-detail{font-size:11px;color:#4d5d51}
+html[data-theme=light] .request-intro>p:not(.eyebrow){font-size:14px;line-height:1.8}
+html[data-theme=light] .request-form label,html[data-theme=light] .request-form legend{font-size:12px}
+html[data-theme=light] .request-form input:not([type=checkbox]),html[data-theme=light] .request-form select,html[data-theme=light] .request-form textarea{font-size:13px}
+html[data-theme=light] .form-disclaimer{font-size:11px;line-height:1.7}
+html[data-theme=light] .page-hero__inner>p:not(.eyebrow){font-size:15px;line-height:1.8}
+html[data-theme=light] .footer-note,html[data-theme=light] .footer-column>a,html[data-theme=light] .footer-contact>p:not(.footer-label){font-size:12px;color:#c4ccc1}
+html[data-theme=light] .footer-label{font-size:10px;color:#c4ccc1}
+html[data-theme=light] .footer-bottom{font-size:10px;color:#b7c0b4}
+html[data-theme=light] .footer-bottom a{color:#f2f4ed}
+html[data-theme=light] .button{font-size:12px}
+html[data-theme=light] .equipment-picker__option span{font-size:11px}
+html[data-theme=light] .equipment-picker>summary{font-size:12px}
+html[data-theme=light] .request-section{background:#1b261e;color:#f0f1e9}
+html[data-theme=light] .page-hero h1 span,html[data-theme=light] .request-intro h2 span,html[data-theme=light] .final-cta h2 span{color:#d0d9ca}
+html[data-theme=light] .page-hero .eyebrow,html[data-theme=light] .request-intro .eyebrow,html[data-theme=light] .final-cta .eyebrow,html[data-theme=light] .gravel-feature__content .eyebrow{color:#d0d9ca}
+@media(max-width:780px){html[data-theme=light] .hero__body{font-size:14px}html[data-theme=light] .section-heading__aside p,html[data-theme=light] .local-layout>div>p:not(.eyebrow){font-size:14px}}

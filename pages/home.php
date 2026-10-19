@@ -55,10 +55,16 @@
     <form class="request-form" action="/request.php" method="post">
       <input type="hidden" name="form_type" value="equipment">
       <div class="form-heading"><span>REQUEST</span><span class="form-required">* REQUIRED</span></div>
-      <fieldset class="equipment-choice"><legend>What equipment do you need? <em>*</em></legend><div class="equipment-choice__grid">
-        <?php foreach ($equipment as $item): ?><label class="choice-chip"><input type="checkbox" name="equipment[]" value="<?= e($item['name']) ?>" data-equipment-option><span><?= e($item['name']) ?></span><b>+</b></label><?php endforeach; ?>
-        <label class="choice-chip"><input type="checkbox" name="equipment[]" value="Other / not sure"><span>Other / not sure</span><b>+</b></label>
-      </div><small class="field-error" data-equipment-error hidden>Please select at least one equipment option.</small></fieldset>
+      <fieldset class="equipment-choice"><legend>What equipment do you need? <em>*</em></legend>
+        <details class="equipment-picker">
+          <summary><span data-equipment-summary>Choose equipment</span><span class="equipment-picker__chevron" aria-hidden="true">⌄</span></summary>
+          <div class="equipment-picker__options">
+            <?php foreach ($equipment as $item): ?><label class="equipment-picker__option"><input type="checkbox" name="equipment[]" value="<?= e($item['name']) ?>" data-equipment-option><span><?= e($item['name']) ?></span></label><?php endforeach; ?>
+            <label class="equipment-picker__option"><input type="checkbox" name="equipment[]" value="Other / not sure" data-equipment-option><span>Other / not sure</span></label>
+          </div>
+        </details>
+        <small class="field-error" data-equipment-error hidden>Please select at least one equipment option.</small>
+      </fieldset>
       <div class="form-row"><label>Rental period <em>*</em><select name="rental_period" required><option value="">Choose a rental period</option><option>Daily</option><option>Weekly</option><option>Monthly</option><option>Not sure yet</option></select></label><label>Preferred start date<input type="date" name="start_date"></label></div>
       <div class="form-row"><label>Project type <em>*</em><select name="project_type" required><option value="">Select project type</option><option>Construction</option><option>Landscaping</option><option>Residential</option><option>Commercial</option><option>Utility</option><option>Site preparation</option><option>Material handling</option><option>Other</option></select></label><label>Job-site ZIP code <input name="zip" autocomplete="postal-code" placeholder="e.g. 97078"></label></div>
       <label>Job-site location <em>*</em><input name="job_location" required placeholder="Street, city or job-site address" autocomplete="street-address"></label>
@@ -80,7 +86,7 @@
 </section>
 
 <section class="gravel-feature">
-  <div class="gravel-feature__image" role="img" aria-label="Illustration of a dump truck delivering gravel"></div><div class="gravel-feature__content"><p class="eyebrow"><span class="eyebrow-line"></span> ANOTHER WAY WE HELP</p><h2>Need gravel<br>on the ground?</h2><p>From driveway improvements to active construction sites, ask PayLess about gravel delivery options and project-specific pricing.</p><div class="gravel-feature__actions"><a class="button button--light" href="<?= e(page_url('gravel')) ?>">Request gravel pricing <span>↗</span></a><a class="gravel-phone" href="tel:<?= e(SITE_PHONE_LINK) ?>">Call <?= e(SITE_PHONE) ?></a></div></div><div class="gravel-feature__stamp">GRAVEL<br>DELIVERY<br><span>BEAVERTON / OR</span></div>
+  <div class="gravel-feature__image" role="img" aria-label="Photograph of a dump truck used for gravel and material hauling"></div><div class="gravel-feature__content"><p class="eyebrow"><span class="eyebrow-line"></span> ANOTHER WAY WE HELP</p><h2>Need gravel<br>on the ground?</h2><p>From driveway improvements to active construction sites, ask PayLess about gravel delivery options and project-specific pricing.</p><div class="gravel-feature__actions"><a class="button button--light" href="<?= e(page_url('gravel')) ?>">Request gravel pricing <span>↗</span></a><a class="gravel-phone" href="tel:<?= e(SITE_PHONE_LINK) ?>">Call <?= e(SITE_PHONE) ?></a></div></div><div class="gravel-feature__stamp">GRAVEL<br>DELIVERY<br><span>BEAVERTON / OR</span></div>
 </section>
 
 <section class="section process-section">
@@ -94,7 +100,7 @@
 </section>
 
 <section class="local-section">
-  <div class="container local-layout"><div><p class="eyebrow"><span class="eyebrow-line"></span> YOUR LOCAL EQUIPMENT PARTNER</p><h2>Construction equipment rental in <span>Beaverton, Oregon.</span></h2><p>PayLess Equipment Rental LLC is based at 4480 SW 185th Ave, Beaverton, OR 97078. If your project is outside Beaverton, send us your job-site location and equipment needs so we can confirm availability and delivery options.</p><a class="button button--outline" href="<?= e(page_url('contact')) ?>">Contact PayLess <span>↗</span></a></div><a class="local-map" href="https://maps.google.com/?q=4480+SW+185th+Ave+Beaverton+OR+97078" target="_blank" rel="noopener"><div class="map-grid"></div><span class="map-pin"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span><span class="local-map__label"><strong>PAYLESS EQUIPMENT RENTAL</strong><small><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> 4480 SW 185th Ave<br>Beaverton, OR 97078</small><b>GET DIRECTIONS <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></b></span></a></div>
+  <div class="container local-layout"><div><p class="eyebrow"><span class="eyebrow-line"></span> YOUR LOCAL EQUIPMENT PARTNER</p><h2>Construction equipment rental in <span>Beaverton, Oregon.</span></h2><p>PayLess Equipment Rental LLC is based at 4480 SW 185th Ave, Beaverton, OR 97078. If your project is outside Beaverton, send us your job-site location and equipment needs so we can confirm availability and delivery options.</p><a class="button button--outline" href="<?= e(page_url('contact')) ?>">Contact PayLess <span>↗</span></a></div><div class="local-map"><iframe class="local-map__embed" src="https://maps.google.com/maps?q=4480%20SW%20185th%20Ave%2C%20Beaverton%2C%20OR%2097078&amp;z=14&amp;output=embed" title="Google Map showing PayLess Equipment Rental in Beaverton, Oregon" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><div class="local-map__label"><span><strong>PAYLESS EQUIPMENT RENTAL</strong><small>4480 SW 185th Ave, Beaverton, OR 97078</small></span><a href="https://maps.google.com/?q=4480+SW+185th+Ave+Beaverton+OR+97078" target="_blank" rel="noopener">GET DIRECTIONS <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></div></div>
 </section>
 
 <section class="section proof-section">

@@ -46,12 +46,22 @@
   }));
 
   // Multi-machine selection helpers: card buttons check the matching request form option.
+  function syncEquipmentPicker(picker) {
+    const selected = picker.querySelectorAll('input[name="equipment[]"]:checked');
+    const summary = picker.querySelector('[data-equipment-summary]');
+    if (summary) summary.textContent = selected.length ? `${selected.length} selected` : 'Choose equipment';
+  }
+
   function selectEquipment(name) {
     const options = [...document.querySelectorAll('[data-equipment-option], .equipment-choice input[type="checkbox"]')];
     const matching = options.find(input => input.value === name);
     if (matching) {
       matching.checked = true;
-      matching.closest('.choice-chip')?.classList.add('is-selected');
+      const picker = matching.closest('.equipment-picker');
+      if (picker) {
+        picker.open = true;
+        syncEquipmentPicker(picker);
+      }
     }
   }
   document.querySelectorAll('[data-add-equipment]').forEach(button => button.addEventListener('click', () => {
@@ -70,10 +80,15 @@
     }
   } catch (_) {}
 
-  document.querySelectorAll('.choice-chip input').forEach(input => {
-    const sync = () => input.closest('.choice-chip')?.classList.toggle('is-selected', input.checked);
-    input.addEventListener('change', sync);
-    sync();
+  document.querySelectorAll('.equipment-picker').forEach(picker => {
+    picker.querySelectorAll('input[name="equipment[]"]').forEach(input => {
+      input.addEventListener('change', () => {
+        syncEquipmentPicker(picker);
+        const error = picker.closest('.equipment-choice')?.querySelector('[data-equipment-error]');
+        if (error) error.hidden = picker.querySelectorAll('input[name="equipment[]"]:checked').length > 0;
+      });
+    });
+    syncEquipmentPicker(picker);
   });
 
   document.querySelectorAll('.request-form').forEach(form => form.addEventListener('submit', event => {

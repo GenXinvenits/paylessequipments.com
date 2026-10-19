@@ -19,7 +19,7 @@ $navItems = [
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="/assets/css/site.css?v=hero-motion-2">
+  <link rel="stylesheet" href="/assets/css/site.css?v=light-theme-3">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23d8f15b'/%3E%3Cpath d='M9 11h22v6H15v3h13v6H15v3H9z' fill='%231a2016'/%3E%3C/svg%3E">
   <script>
     (() => {

@@ -15,6 +15,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.8/dist/lenis.min.js" defer></script>
-<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/site.js?v=equipment-picker-1" defer></script>
 </body>
 </html>
