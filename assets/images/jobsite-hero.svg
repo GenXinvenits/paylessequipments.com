@@ -20,13 +20,13 @@
   <g stroke="#354136" stroke-linejoin="round" stroke-linecap="round">
     <path fill="#344238" stroke-width="8" d="M394 641q8-49 62-55h354q61 5 67 56l-26 38H419z"/>
     <path fill="#6e7b68" stroke-width="6" d="M425 633h404v28H425z"/>
-    <path fill="#d8f15b" stroke-width="8" d="M469 541q43-76 145-70l83 42-16 89H469z"/>
+    <path fill="#ffb900" stroke-width="8" d="M469 541q43-76 145-70l83 42-16 89H469z"/>
     <path fill="#c7d0bd" stroke-width="6" d="m596 482 72 7 25 91H580z"/>
     <path fill="#7a8b78" stroke-width="5" d="m607 492 48 4 19 70h-68z"/>
     <path fill="#78866e" stroke-width="8" d="M535 524h-46l-28-17 22-26 65 3z"/>
-    <path fill="#d8f15b" stroke-width="8" d="M482 535h101l28 64H463z"/>
+    <path fill="#ffb900" stroke-width="8" d="M482 535h101l28 64H463z"/>
   </g>
-  <g fill="#d8f15b" stroke="#354136" stroke-width="11" stroke-linejoin="round" stroke-linecap="round">
+  <g fill="#ffb900" stroke="#354136" stroke-width="11" stroke-linejoin="round" stroke-linecap="round">
     <path d="m532 534 71-67 175 25-13 35-151-10-52 55z"/>
     <path d="m753 493 62 15 106 109-30 27-105-98-66-11z"/>
     <path d="m903 614 28-17 24 32-19 44q-6 13-22 5l-27-20 14-17z"/>

@@ -7,10 +7,10 @@
   <g stroke="#354136" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
     <path fill="#344238" d="M249 351q6-65 65-70h252q46 4 58 68l-19 55H270z"/>
     <path fill="#70806f" d="M282 348h294v37H282z"/>
-    <path fill="#d8f15b" d="M301 255q22-83 101-87h91l56 55-5 115H308z"/>
+    <path fill="#ffb900" d="M301 255q22-83 101-87h91l56 55-5 115H308z"/>
     <path fill="#7b8b78" d="m407 183 76 2 39 114H399z"/>
     <path fill="#cbd2bd" d="m424 195 51 2 30 89h-76z"/>
-    <path fill="#d8f15b" d="m535 277 45-14 84 72-15 31-89-53z"/>
+    <path fill="#ffb900" d="m535 277 45-14 84 72-15 31-89-53z"/>
     <path fill="#717c69" d="M641 327h86l29 42-16 32h-91l-28-38z"/>
   </g>
   <g fill="#26332c"><circle cx="314" cy="367" r="13"/><circle cx="375" cy="367" r="13"/><circle cx="436" cy="367" r="13"/><circle cx="498" cy="367" r="13"/><circle cx="554" cy="367" r="13"/></g>

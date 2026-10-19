@@ -25,7 +25,7 @@
       themeButton.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
       themeButton.setAttribute('aria-pressed', String(theme === 'dark'));
     }
-    if (metaTheme) metaTheme.setAttribute('content', theme === 'dark' ? '#151815' : '#f3f2ed');
+    if (metaTheme) metaTheme.setAttribute('content', theme === 'dark' ? '#101712' : '#f4f6f2');
   }
   setTheme(root.dataset.theme || 'light', false);
   themeButton?.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
@@ -94,6 +94,39 @@
     tabLinks.forEach(tab => tab.classList.toggle('is-active', tab === link));
   }));
 
+  // Homepage machine finder and fleet share one category-filtered equipment list.
+  const machineTabs = [...document.querySelectorAll('.equipment-tab[data-machine-filter]')];
+  const machineCards = [...document.querySelectorAll('[data-machine-category]')];
+  const machineList = document.querySelector('#equipment-list');
+  const machineDescription = document.querySelector('.equipment-tab-detail');
+  function activateMachineTab(tab, moveFocus = false) {
+    const filter = tab.dataset.machineFilter || 'all';
+    machineTabs.forEach(item => {
+      const active = item === tab;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+    });
+    machineCards.forEach(card => { card.hidden = filter !== 'all' && card.dataset.machineCategory !== filter; });
+    if (machineList) machineList.setAttribute('aria-labelledby', tab.id);
+    if (machineDescription) machineDescription.textContent = tab.dataset.machineDescription || '';
+    if (moveFocus) tab.focus();
+  }
+  machineTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateMachineTab(tab));
+    tab.addEventListener('keydown', event => {
+      let nextIndex = index;
+      if (event.key === 'ArrowRight') nextIndex = (index + 1) % machineTabs.length;
+      else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + machineTabs.length) % machineTabs.length;
+      else if (event.key === 'Home') nextIndex = 0;
+      else if (event.key === 'End') nextIndex = machineTabs.length - 1;
+      else return;
+      event.preventDefault();
+      activateMachineTab(machineTabs[nextIndex], true);
+    });
+  });
+  if (machineTabs[0]) activateMachineTab(machineTabs[0]);
+
   // Honor reduced-motion preferences; enhance rather than block core navigation.
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduceMotion && 'IntersectionObserver' in window) {
@@ -156,7 +189,7 @@
     const modalStyle = document.createElement('style');
     modalStyle.textContent = `
       .request-modal__panel{position:relative!important;display:block!important;width:min(100%,480px)!important;max-height:calc(100vh - 44px)!important;overflow-y:auto!important;margin:auto!important;padding:clamp(28px,6vw,42px)!important;background:var(--surface,#fffefa)!important;color:var(--ink,#1a201a)!important;border:1px solid var(--line,rgba(26,32,26,.16))!important;box-shadow:0 28px 90px #0008!important;transform:none!important;opacity:1!important;z-index:1!important}
-      .request-modal__mark{display:grid!important;place-items:center!important;width:48px!important;height:48px!important;margin:0 0 22px!important;border-radius:50%!important;background:var(--accent,#d8f15b)!important;color:var(--accent-ink,#1a2016)!important;font-size:25px!important;font-weight:800!important}
+      .request-modal__mark{display:grid!important;place-items:center!important;width:48px!important;height:48px!important;margin:0 0 22px!important;border-radius:50%!important;background:var(--accent,#ffb900)!important;color:var(--accent-ink,#1a2016)!important;font-size:25px!important;font-weight:800!important}
       .request-modal--warning .request-modal__mark{background:#f2dfb8!important;color:#70440b!important}
       .request-modal--error .request-modal__mark{background:#f5d6d2!important;color:#8e211b!important}
       .request-modal__eyebrow{margin:0 0 10px!important;color:var(--muted,#666d63)!important;font:10px 'DM Mono',monospace!important;letter-spacing:.12em!important;text-transform:uppercase!important}

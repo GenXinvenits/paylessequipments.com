@@ -20,36 +20,36 @@
     <!-- concrete footing and tower mast -->
     <path d="M170 340h60l-10 20h-40z" fill="#354136"/>
     <rect x="180" y="325" width="40" height="15" rx="2" fill="#536351"/>
-    <rect x="192" y="90" width="16" height="235" fill="#26352b" fill-opacity=".38" stroke="#d8f15b" stroke-width="2.5"/>
-    <g stroke="#d8f15b" stroke-width="1.5" opacity=".9">
+    <rect x="192" y="90" width="16" height="235" fill="#26352b" fill-opacity=".38" stroke="#ffb900" stroke-width="2.5"/>
+    <g stroke="#ffb900" stroke-width="1.5" opacity=".9">
       <path d="m192 100 16 30m0-30-16 30m0 0 16 30m0-30-16 30m0 0 16 30m0-30-16 30m0 0 16 30m0-30-16 30m0 0 16 30m0-30-16 30m0 0 16 30m0-30-16 30m0 0 16 30m0-30-16 30m0 0 16 30m0-30-16 30"/>
       <path d="M192 100h16m-16 30h16m-16 30h16m-16 30h16m-16 30h16m-16 30h16m-16 30h16m-16 30h16"/>
     </g>
     <!-- operator cab and mast cap -->
-    <rect x="182" y="72" width="36" height="22" rx="3" fill="#26352b" stroke="#d8f15b" stroke-width="2"/>
+    <rect x="182" y="72" width="36" height="22" rx="3" fill="#26352b" stroke="#ffb900" stroke-width="2"/>
     <rect x="186" y="75" width="14" height="14" rx="2" fill="#a6c5bd"/>
-    <path d="m200 24-15 48h30z" fill="#26352b" fill-opacity=".45" stroke="#d8f15b" stroke-width="2.5"/>
-    <path d="M200 24v48" stroke="#d8f15b" stroke-width="1.5"/>
+    <path d="m200 24-15 48h30z" fill="#26352b" fill-opacity=".45" stroke="#ffb900" stroke-width="2.5"/>
+    <path d="M200 24v48" stroke="#ffb900" stroke-width="1.5"/>
     <circle class="beacon" cx="200" cy="22" r="4" fill="#ed593c"/>
     <!-- moving jib, trolley, hoist and suspended beam -->
     <g class="jib">
-      <path d="M200 72 90 72m110 0 280 0m-280 12 280-12M200 24l-90 48m90-48 140 48m-140-48 250 48" fill="none" stroke="#d8f15b" stroke-width="3.5"/>
+      <path d="M200 72 90 72m110 0 280 0m-280 12 280-12M200 24l-90 48m90-48 140 48m-140-48 250 48" fill="none" stroke="#ffb900" stroke-width="3.5"/>
       <path d="M92 65h28v24H92z" fill="#36453a" stroke="#7d8b76" stroke-width="1"/>
       <path d="M96 68v18m12-18v18" stroke="#7d8b76" stroke-width="2"/>
       <g stroke="#a3b394" stroke-width="1.2">
         <path d="m220 73 15 10m15-11 15 10m15-11 15 9m15-10 15 9m15-10 15 8m15-9 15 8m15-9 15 7m15-8 15 7m15-8 15 6"/>
       </g>
       <g class="trolley">
-        <rect x="0" y="68" width="22" height="10" rx="2" fill="#26352b" stroke="#d8f15b" stroke-width="1.5"/>
-        <circle cx="5" cy="68" r="2.5" fill="#d8f15b"/><circle cx="17" cy="68" r="2.5" fill="#d8f15b"/>
+        <rect x="0" y="68" width="22" height="10" rx="2" fill="#26352b" stroke="#ffb900" stroke-width="1.5"/>
+        <circle cx="5" cy="68" r="2.5" fill="#ffb900"/><circle cx="17" cy="68" r="2.5" fill="#ffb900"/>
         <g class="cable">
           <g class="wire"><path d="M8 78v107m6-107v107" fill="none" stroke="#dce3d4" stroke-width="1.2"/></g>
           <g class="hoist">
-            <rect x="5" y="185" width="12" height="14" rx="2" fill="#d8f15b" stroke="#26352b"/>
+            <rect x="5" y="185" width="12" height="14" rx="2" fill="#ffb900" stroke="#26352b"/>
             <circle cx="11" cy="192" r="3" fill="#26352b"/>
             <path d="M11 199c0 7-6 9-6 15 0 5 9 6 11 1 1-4-1-7-3-7" fill="none" stroke="#354136" stroke-width="2.5"/>
             <path d="m11 216-31 19m31-19 31 19" fill="none" stroke="#536351" stroke-width="1.5"/>
-            <rect x="-35" y="235" width="92" height="12" rx="2" fill="#d8f15b" stroke="#26352b" stroke-width="1.5"/>
+            <rect x="-35" y="235" width="92" height="12" rx="2" fill="#ffb900" stroke="#26352b" stroke-width="1.5"/>
             <text x="11" y="244" fill="#1a201a" font-family="Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" letter-spacing="1">PAYLESS RENTALS</text>
           </g>
         </g>

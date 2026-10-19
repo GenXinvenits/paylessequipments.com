@@ -11,8 +11,8 @@
   <path fill="#c3a773" d="M0 528q216-48 409 4t414-7q213-38 377 0v33q-197-17-405 23t-401-7Q190 536 0 565z" opacity=".55"/>
   <ellipse cx="625" cy="550" rx="342" ry="35" fill="#242c26" opacity=".3"/>
   <g stroke="#354136" stroke-width="10" stroke-linejoin="round">
-    <path fill="#71816d" d="m283 286 490 2 29 184-504-2z"/><path fill="#d8f15b" d="m307 307 443 1 15 127-438-2z"/>
-    <path fill="#75846f" d="M736 378h112l72 81v44H719z"/><path fill="#d8f15b" d="M771 397h71l51 59H770z"/><path fill="#a9b59f" d="m782 405 51 1 37 42h-88z"/>
+    <path fill="#71816d" d="m283 286 490 2 29 184-504-2z"/><path fill="#ffb900" d="m307 307 443 1 15 127-438-2z"/>
+    <path fill="#75846f" d="M736 378h112l72 81v44H719z"/><path fill="#ffb900" d="M771 397h71l51 59H770z"/><path fill="#a9b59f" d="m782 405 51 1 37 42h-88z"/>
     <path fill="#5e6d5a" d="M834 483h87v27h-87z"/>
   </g>
   <g fill="#28332b" stroke="#d0d5c4" stroke-width="8"><circle cx="391" cy="491" r="49"/><circle cx="391" cy="491" r="17"/><circle cx="717" cy="491" r="49"/><circle cx="717" cy="491" r="17"/><circle cx="858" cy="491" r="43"/><circle cx="858" cy="491" r="14"/></g>

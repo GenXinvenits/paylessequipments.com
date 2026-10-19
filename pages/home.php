@@ -27,25 +27,20 @@
   <div class="container value-bar__inner"><div><span class="value-icon"><i class="fa-solid fa-tags" aria-hidden="true"></i></span><span><strong>COST-EFFECTIVE RATES</strong><small>Practical pricing for real projects</small></span></div><div><span class="value-icon"><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i></span><span><strong>EQUIPMENT THAT WORKS</strong><small>Capable machines for demanding jobs</small></span></div><div><span class="value-icon"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i></span><span><strong>FLEXIBLE RENTALS</strong><small>Daily, weekly & selected monthly</small></span></div><div><span class="value-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span><span><strong>LOCAL SERVICE</strong><small>Based in Beaverton, Oregon</small></span></div></div>
 </section>
 
-<section class="section equipment-finder" id="finder">
+<section class="section equipment-fleet" id="equipment">
   <div class="container">
-    <div class="section-heading section-heading--split"><div><p class="eyebrow"><span class="eyebrow-line"></span> FIND YOUR MACHINE</p><h2>Right tool.<br><span>Right on time.</span></h2></div><div class="section-heading__aside"><p>Not sure where to start? Browse by the work you need to get done. We’ll help you confirm the right equipment for your project.</p><a class="text-link" href="<?= e(page_url('equipment')) ?>">Explore all equipment <span>↗</span></a></div></div>
-    <div class="category-grid">
-      <?php foreach ($categories as $i => $category): ?>
-      <a class="category-card" id="<?= e($category['anchor']) ?>" href="<?= e(page_url('equipment')) ?>" data-reveal>
-        <span class="category-card__icon"><i class="<?= e($category['icon']) ?>" aria-hidden="true"></i></span><span class="category-card__content"><strong><?= e($category['name']) ?></strong><small><?= e($category['detail']) ?></small></span><span class="category-card__arrow"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
-      </a>
+    <div class="section-heading section-heading--split"><div><p class="eyebrow"><span class="eyebrow-line"></span> FIND YOUR MACHINE · THE FLEET</p><h2>Right tool.<br><span>Right on time.</span></h2></div><div class="section-heading__aside"><p>Browse the fleet by equipment type. Product photos are representative; exact rental units and configurations may vary. Contact us to confirm availability and current rates.</p><a class="text-link" href="<?= e(page_url('equipment')) ?>">View full catalogue <span>↗</span></a></div></div>
+    <div class="equipment-tabs" role="tablist" aria-label="Filter equipment by category">
+      <button class="equipment-tab is-active" type="button" role="tab" id="equipment-tab-all" aria-selected="true" aria-controls="equipment-list" tabindex="0" data-machine-filter="all" data-machine-description="Showing all <?= count($equipment) ?> equipment options. Select a category to narrow the fleet.">All equipment <span><?= count($equipment) ?></span></button>
+      <?php foreach ($categories as $category): $count = count(array_filter($equipment, static fn($item) => $item['category'] === $category['name'])); if (!$count) continue; ?>
+      <button class="equipment-tab" type="button" role="tab" id="equipment-tab-<?= e($category['anchor']) ?>" aria-selected="false" aria-controls="equipment-list" tabindex="-1" data-machine-filter="<?= e($category['anchor']) ?>" data-machine-description="<?= e($category['detail']) ?>"><i class="<?= e($category['icon']) ?>" aria-hidden="true"></i> <?= e($category['name']) ?> <span><?= $count ?></span></button>
       <?php endforeach; ?>
     </div>
-  </div>
-</section>
-
-<section class="section featured-section" id="equipment">
-  <div class="container">
-    <div class="section-heading section-heading--split"><div><p class="eyebrow"><span class="eyebrow-line"></span> THE FLEET</p><h2>Equipment ready<br><span>for the job.</span></h2></div><div class="section-heading__aside"><p>Six equipment options to get your project moving. Product photos are representative; exact rental units and configurations may vary. Rates shown are current supplied pricing; contact us to confirm availability and monthly terms.</p><a class="text-link" href="<?= e(page_url('equipment')) ?>">View full catalogue <span>↗</span></a></div></div>
-    <div class="equipment-grid">
+    <p class="equipment-tab-detail" aria-live="polite">Showing all <?= count($equipment) ?> equipment options. Select a category to narrow the fleet.</p>
+    <div class="equipment-grid" id="equipment-list" role="tabpanel" aria-labelledby="equipment-tab-all" tabindex="0">
       <?php foreach ($equipment as $i => $item): ?>
-      <article class="equipment-card" data-reveal>
+      <?php $categoryAnchor = ''; foreach ($categories as $category) { if ($item['category'] === $category['name']) { $categoryAnchor = $category['anchor']; break; } } ?>
+      <article class="equipment-card" data-machine-category="<?= e($categoryAnchor) ?>" data-reveal>
         <a class="equipment-card__image" href="<?= e(page_url('equipment')) ?>&amp;item=<?= e($item['id']) ?>" aria-label="View <?= e($item['name']) ?>"><img src="<?= e($item['image']) ?>" alt="<?= e($item['alt']) ?>" loading="lazy"><span class="equipment-card__image-arrow">↗</span></a>
         <div class="equipment-card__body"><p class="equipment-card__category"><?= e($item['category']) ?> <span>•</span> <?= e($item['tag']) ?></p><h3><?= e($item['name']) ?></h3><p class="equipment-card__description"><?= e($item['description']) ?></p><p class="equipment-card__spec"><?= e($item['spec']) ?></p><div class="equipment-card__rates"><div><small>DAILY FROM</small><strong><?= e($item['daily']) ?></strong></div><div><small>WEEKLY FROM</small><strong><?= e($item['weekly']) ?></strong></div></div><div class="equipment-card__actions"><a href="<?= e(page_url('equipment')) ?>#<?= e($item['id']) ?>">View details <span>↗</span></a><button type="button" class="add-equipment" data-add-equipment="<?= e($item['name']) ?>">+ Add to list</button></div></div>
       </article>
