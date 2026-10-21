@@ -1,4 +1,11 @@
 </main>
+<div class="gravel-fab-wrapper" aria-label="Gravel delivery actions">
+  <a class="gravel-fab" href="<?= e(page_url('contact')) ?>#gravel-request">
+    <span class="gravel-fab__icon" aria-hidden="true"><i class="fa-solid fa-truck" aria-hidden="true"></i></span>
+    <span class="gravel-fab__copy"><strong>Need gravel delivered?</strong><small>Get project pricing</small></span>
+    <span class="gravel-fab__arrow" aria-hidden="true">↗</span>
+  </a>
+</div>
 <footer class="site-footer">
   <div class="container footer-top">
     <div class="footer-brand">
@@ -8,7 +15,7 @@
     </div>
     <div class="footer-column"><p class="footer-label">EXPLORE</p><a href="/">Home</a><a href="<?= e(page_url('equipment')) ?>">Equipment</a><a href="<?= e(page_url('about')) ?>">About Us</a><a href="<?= e(page_url('gravel')) ?>">Gravel Delivery</a><a href="<?= e(page_url('contact')) ?>">Contact</a></div>
     <div class="footer-column"><p class="footer-label">EQUIPMENT</p><?php foreach ($categories as $category): ?><a href="<?= e(page_url('equipment')) ?>"><?= e($category['name']) ?></a><?php endforeach; ?></div>
-    <div class="footer-column footer-contact"><p class="footer-label">LET'S GET TO WORK</p><a class="footer-phone" href="tel:<?= e(SITE_PHONE_LINK) ?>"><?= e(SITE_PHONE) ?> ↗</a><p><?= e(SITE_ADDRESS) ?></p><a href="https://maps.google.com/?q=4480+SW+185th+Ave+Beaverton+OR+97078" target="_blank" rel="noopener">Get directions ↗</a></div>
+    <div class="footer-column footer-contact"><p class="footer-label">LET'S GET TO WORK</p><a class="footer-phone" href="tel:<?= e(SITE_PHONE_LINK) ?>"><?= e(SITE_PHONE) ?> ↗</a><a href="mailto:Rentals@paylessequipments.com">Rentals@paylessequipments.com</a><p><?= e(SITE_ADDRESS) ?></p><a href="https://maps.google.com/?q=4480+SW+185th+Ave+Beaverton+OR+97078" target="_blank" rel="noopener">Get directions ↗</a></div>
   </div>
   <div class="container footer-bottom"><span>© <?= date('Y') ?> PayLess Equipment Rental LLC</span><span>Built around the way you work.</span><span class="footer-legal"><a href="<?= e(page_url('privacy')) ?>">Privacy</a><a href="<?= e(page_url('terms')) ?>">Website terms</a><a href="<?= e(page_url('rental-terms')) ?>">Rental terms</a></span><a href="#top">Back to top ↑</a></div>
 </footer>

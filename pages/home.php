@@ -1,22 +1,16 @@
 <section class="hero">
-  <div class="hero__background" aria-hidden="true">
-    <video class="hero__background-video" autoplay muted loop playsinline preload="metadata" poster="/assets/images/hero-excavator-poster.jpg" tabindex="-1">
-      <source src="/assets/videos/hero-excavator.mp4" type="video/mp4">
-    </video>
-    <div class="hero__background-shade"></div>
-  </div>
+  <div class="hero__background" aria-hidden="true"></div>
+  <div class="hero__background-shade" aria-hidden="true"></div>
   <div class="hero__grid container">
     <div class="hero__copy">
       <p class="eyebrow" data-reveal><span class="eyebrow-line"></span> EQUIPMENT RENTAL / BEAVERTON, OR</p>
       <h1 data-reveal>PayLess.<br>Get More.<br><span>Get The Job Done.</span></h1>
-      <p class="hero__sub" data-reveal>Construction equipment rentals without the corporate markup.</p>
-      <p class="hero__body" data-reveal>Dependable equipment for construction, landscaping, excavation and site work. Choose your machines, tell us what you need and we’ll help you get moving.</p>
-      <div class="hero__actions" data-reveal><a class="button button--primary" href="#request">Build your equipment list <span aria-hidden="true">↗</span></a><a class="button button--outline" href="tel:<?= e(SITE_PHONE_LINK) ?>"><span class="button__phone" aria-hidden="true">↗</span> <?= e(SITE_PHONE) ?></a></div>
-      <div class="hero__meta" data-reveal><span>CURRENT EQUIPMENT OPTIONS</span><span>CLEAR PRICING</span><span>LOCAL SERVICE</span></div>
+      <p class="hero__sub" data-reveal>Cost-effective construction equipment rentals without the corporate markup.</p>
+      <p class="hero__body" data-reveal>Excavators, skid steers, trailers, lifts &amp; more — dependable equipment, straightforward pricing.</p>
+      <div class="hero__actions" data-reveal><a class="button button--primary" href="#equipment">View equipment <span aria-hidden="true">↗</span></a><a class="button button--outline" href="#request">Get a quote <span aria-hidden="true">↗</span></a></div>
+      <div class="hero__meta" data-reveal><span><i class="fa-solid fa-award" aria-hidden="true"></i> Competitive rates</span><span><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Reliable equipment</span><span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Local service</span></div>
     </div>
-    <div class="hero__visual-caption"><span class="label-dot"></span> READY WHEN THE JOB CALLS</div>
   </div>
-  <div class="hero__bottom container"><span>BUILT FOR THE PEOPLE WHO BUILD THINGS.</span><span>SCROLL TO EXPLORE <b>↓</b></span></div>
 </section>
 
 <section class="value-bar" aria-label="PayLess service benefits">
@@ -66,26 +60,12 @@
       <div class="form-row"><label>Project type <em>*</em><select name="project_type" required><option value="">Select project type</option><option>Construction</option><option>Landscaping</option><option>Residential</option><option>Commercial</option><option>Utility</option><option>Site preparation</option><option>Material handling</option><option>Other</option></select></label><label>Job-site ZIP code <input name="zip" autocomplete="postal-code" placeholder="e.g. 97078"></label></div>
       <label>Job-site location <em>*</em><input name="job_location" required placeholder="Street, city or job-site address" autocomplete="street-address"></label>
       <label>Project details / attachments needed<textarea name="details" rows="3" placeholder="Tell us about the work, access, attachments or delivery needs."></textarea></label>
-      <div class="form-row"><label>Your name <em>*</em><input name="name" required autocomplete="name" placeholder="Full name"></label><label>Company<input name="company" autocomplete="organization" placeholder="Company name"></label></div>
+      <div class="form-row"><label>Your name <em>*</em><input name="name" required autocomplete="name" placeholder="Full name"></label><label>Company / Individual<input name="company" autocomplete="organization" placeholder="Company or individual name"></label></div>
       <div class="form-row"><label>Phone <em>*</em><input type="tel" name="phone" required autocomplete="tel" placeholder="(503) 555-0123"></label><label>Email <em>*</em><input type="email" name="email" required autocomplete="email" placeholder="you@company.com"></label></div>
       <label class="consent"><input type="checkbox" name="contact_consent" value="yes" required><span>I agree that PayLess may contact me about this request.</span></label>
       <button class="button button--primary button--wide" type="submit">Send equipment request <span aria-hidden="true">↗</span></button>
       <p class="form-disclaimer">Submitting a request does not reserve equipment. Availability, final pricing and delivery are confirmed by the PayLess team.</p>
     </form>
-  </div>
-</section>
-
-<section class="section why-section">
-  <div class="container">
-    <div class="section-heading"><p class="eyebrow"><span class="eyebrow-line"></span> THE PAYLESS DIFFERENCE</p><h2>Less runaround.<br><span>More doing.</span></h2><p class="why-section__intro">Getting the right equipment should be a clear part of the plan. Browse machines for your project, send the details once, and talk directly with our Beaverton team about current availability, rates and delivery options.</p></div>
-    <div class="why-grid">
-      <article data-reveal><span class="why-grid__number">01</span><h3>Know what you’re asking for</h3><p>Explore equipment by type and compare options for excavation, site preparation, hauling and material handling. Not sure which machine fits? Include the work you need to do and we can help point you in the right direction.</p></article>
-      <article data-reveal><span class="why-grid__number">02</span><h3>Clear rental details</h3><p>Daily, weekly and selected monthly rental periods are available. Tell us your expected dates and the machine you have in mind so we can confirm current pricing and availability for that time frame.</p></article>
-      <article data-reveal><span class="why-grid__number">03</span><h3>One useful request</h3><p>Need more than one machine? Add them to a single equipment list, then share your project type, start date and job-site ZIP code. That gives our team the context to follow up with relevant next steps.</p></article>
-      <article data-reveal><span class="why-grid__number">04</span><h3>Local follow-through</h3><p>PayLess is based in Beaverton and serves customers across the Portland metro area. Share where the work is happening and ask us to confirm whether delivery is available for your equipment and location.</p></article>
-    </div>
-    <div class="why-image-row" aria-label="Examples of equipment and project work"><figure><img src="/assets/images/2026%20CAT%20306%20CR%20Excavator%20(for%20rent).jpeg" alt="2026 CAT 306 CR excavator for digging and trenching work" loading="lazy"><figcaption>Digging &amp; trenching</figcaption></figure><figure><img src="/assets/images/2024%20CAT%20265%20Compact%20Skid%20Steer%20(for%20rent).jpeg" alt="2024 CAT 265 compact skid steer for site preparation" loading="lazy"><figcaption>Site preparation</figcaption></figure><figure><img src="/assets/images/Dump%20Truck%202027%20Freight%20Liner%20M2%20(for%20rent).jpeg" alt="2027 Freightliner M2 dump truck for material hauling" loading="lazy"><figcaption>Material hauling</figcaption></figure></div>
-    <div class="why-section__next"><p><strong>Have a project in mind?</strong> Browse the fleet or send your list to get a direct availability and pricing follow-up.</p><div><a class="text-link" href="<?= e(page_url('equipment')) ?>">Explore equipment <span>↗</span></a><a class="text-link" href="#request">Build your equipment list <span>↗</span></a></div></div>
   </div>
 </section>
 
@@ -100,15 +80,7 @@
 </section>
 
 <section class="section serve-section">
-  <div class="container serve-layout"><div><p class="eyebrow"><span class="eyebrow-line"></span> MADE FOR THE WORK</p><h2>Whatever the site.<br><span>Let's get it done.</span></h2><p>Practical equipment options for the people who keep projects moving.</p></div><div class="serve-list"><div><strong>General contractors</strong><small>Construction & site work</small></div><div><strong>Landscapers</strong><small>Grading, clearing & material handling</small></div><div><strong>Residential builders</strong><small>Foundations, drainage & access</small></div><div><strong>Utility contractors</strong><small>Trenching & excavation</small></div><div><strong>Commercial teams</strong><small>Material handling & larger projects</small></div><div><strong>Property owners</strong><small>Driveways & property projects</small></div></div></div>
-</section>
-
-<section class="local-section">
-  <div class="container local-layout"><div><p class="eyebrow"><span class="eyebrow-line"></span> YOUR LOCAL EQUIPMENT PARTNER</p><h2>Construction equipment rental in <span>Beaverton, Oregon.</span></h2><p>PayLess Equipment Rental LLC is based at 4480 SW 185th Ave, Beaverton, OR 97078. If your project is outside Beaverton, send us your job-site location and equipment needs so we can confirm availability and delivery options.</p><a class="button button--outline" href="<?= e(page_url('contact')) ?>">Contact PayLess <span>↗</span></a></div><div class="local-map"><iframe class="local-map__embed" src="https://maps.google.com/maps?q=4480%20SW%20185th%20Ave%2C%20Beaverton%2C%20OR%2097078&amp;z=14&amp;output=embed" title="Google Map showing PayLess Equipment Rental in Beaverton, Oregon" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><div class="local-map__label"><span><strong>PAYLESS EQUIPMENT RENTAL</strong><small>4480 SW 185th Ave, Beaverton, OR 97078</small></span><a href="https://maps.google.com/?q=4480+SW+185th+Ave+Beaverton+OR+97078" target="_blank" rel="noopener">GET DIRECTIONS <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></div></div>
-</section>
-
-<section class="section proof-section">
-  <div class="container proof-layout"><div><p class="eyebrow"><span class="eyebrow-line"></span> EQUIPMENT THAT GETS IT DONE</p><h2>Built for the<br><span>work ahead.</span></h2></div><div><p class="proof-copy">Good equipment is only part of the job. Clear information and a practical rental process matter too. Explore the current fleet, check the specifications and send us what you need.</p><a class="text-link" href="<?= e(page_url('equipment')) ?>">Explore the equipment catalogue <span>↗</span></a><p class="proof-note">Customer testimonials and project stories will be added when verified reviews and approved project materials are supplied.</p></div></div>
+  <div class="container serve-layout"><div class="serve-intro"><p class="eyebrow"><span class="eyebrow-line"></span> MADE FOR THE WORK</p><h2>Whatever the site.<br><span>Let's get it done.</span></h2><p>Practical equipment options for the people who keep projects moving.</p></div><div class="serve-list"><div><span class="serve-card__icon"><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i></span><span class="serve-card__copy"><strong>General contractors</strong><small>Construction &amp; site work</small></span></div><div><span class="serve-card__icon"><i class="fa-solid fa-leaf" aria-hidden="true"></i></span><span class="serve-card__copy"><strong>Landscapers</strong><small>Grading, clearing &amp; material handling</small></span></div><div><span class="serve-card__icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span><span class="serve-card__copy"><strong>Residential builders</strong><small>Foundations, drainage &amp; access</small></span></div><div><span class="serve-card__icon"><i class="fa-solid fa-road" aria-hidden="true"></i></span><span class="serve-card__copy"><strong>Utility contractors</strong><small>Trenching &amp; excavation</small></span></div><div><span class="serve-card__icon"><i class="fa-solid fa-building" aria-hidden="true"></i></span><span class="serve-card__copy"><strong>Commercial teams</strong><small>Material handling &amp; larger projects</small></span></div><div><span class="serve-card__icon"><i class="fa-solid fa-house-user" aria-hidden="true"></i></span><span class="serve-card__copy"><strong>Property owners</strong><small>Driveways &amp; property projects</small></span></div></div></div>
 </section>
 
 <section class="section faq-section">
@@ -127,6 +99,10 @@
     <?php endforeach; ?>
   </div></div>
   <script type="application/ld+json"><?= json_encode(['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => array_map(fn($faq) => ['@type' => 'Question', 'name' => $faq[0], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq[1]]], $faqs)], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
+</section>
+
+<section class="local-section">
+  <div class="container local-layout"><div><p class="eyebrow"><span class="eyebrow-line"></span> YOUR LOCAL EQUIPMENT PARTNER</p><h2>Construction equipment rental in <span>Beaverton, Oregon.</span></h2><p>PayLess Equipment Rental LLC is based at 4480 SW 185th Ave, Beaverton, OR 97078. If your project is outside Beaverton, send us your job-site location and equipment needs so we can confirm availability and delivery options.</p><a class="button button--outline" href="<?= e(page_url('contact')) ?>">Contact PayLess <span>↗</span></a></div><div class="local-map"><iframe class="local-map__embed" src="https://maps.google.com/maps?q=4480%20SW%20185th%20Ave%2C%20Beaverton%2C%20OR%2097078&amp;z=14&amp;output=embed" title="Google Map showing PayLess Equipment Rental in Beaverton, Oregon" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><div class="local-map__label"><span><strong>PAYLESS EQUIPMENT RENTAL</strong><small>4480 SW 185th Ave, Beaverton, OR 97078</small></span><a href="https://maps.google.com/?q=4480+SW+185th+Ave+Beaverton+OR+97078" target="_blank" rel="noopener">GET DIRECTIONS <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></div></div>
 </section>
 
 <section class="final-cta"><div class="container final-cta__inner"><p class="eyebrow"><span class="eyebrow-line"></span> YOUR NEXT JOB STARTS HERE</p><h2>Ready to get<br><span>the job done?</span></h2><p>Tell us what you need, when you need it and where you’re working.</p><div><a class="button button--primary" href="#request">Build your equipment list <span>↗</span></a><a class="final-cta__phone" href="tel:<?= e(SITE_PHONE_LINK) ?>">Or call <?= e(SITE_PHONE) ?> ↗</a></div><span class="final-cta__ghost" aria-hidden="true">PL</span></div></section>
