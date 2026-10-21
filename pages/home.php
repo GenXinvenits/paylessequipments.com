@@ -1,4 +1,10 @@
 <section class="hero">
+  <div class="hero__background" aria-hidden="true">
+    <video class="hero__background-video" autoplay muted loop playsinline preload="metadata" poster="/assets/images/hero-excavator-poster.jpg" tabindex="-1">
+      <source src="/assets/videos/hero-excavator.mp4" type="video/mp4">
+    </video>
+    <div class="hero__background-shade"></div>
+  </div>
   <div class="hero__grid container">
     <div class="hero__copy">
       <p class="eyebrow" data-reveal><span class="eyebrow-line"></span> EQUIPMENT RENTAL / BEAVERTON, OR</p>
@@ -8,17 +14,7 @@
       <div class="hero__actions" data-reveal><a class="button button--primary" href="#request">Build your equipment list <span aria-hidden="true">↗</span></a><a class="button button--outline" href="tel:<?= e(SITE_PHONE_LINK) ?>"><span class="button__phone" aria-hidden="true">↗</span> <?= e(SITE_PHONE) ?></a></div>
       <div class="hero__meta" data-reveal><span>DAILY & WEEKLY RENTALS</span><span>PRACTICAL PRICING</span><span>LOCAL SERVICE</span></div>
     </div>
-    <div class="hero__visual" data-reveal>
-      <video class="hero__image" autoplay muted loop playsinline preload="metadata" poster="/assets/images/hero-excavator-poster.jpg" aria-label="Excavator working on a job site">
-        <source src="/assets/videos/hero-excavator.mp4" type="video/mp4">
-      </video>
-      <div class="hero__image-shade"></div>
-      <div class="hero__image-label"><span class="label-dot"></span> READY WHEN THE JOB CALLS</div>
-      <div class="hero__vertical">PAYLESS EQUIPMENT RENTAL LLC / EST. FOR THE WORK</div>
-      <div class="hero-sticker"><span>GET</span><strong>IT<br>DONE.</strong><span>NO RUNAROUND ↗</span></div>
-      <div class="hero__coordinates">45°29' N<br>122°49' W</div>
-    </div>
-    <img class="hero__crane" src="/assets/images/animated-crane.svg?v=2" alt="" aria-hidden="true">
+    <div class="hero__visual-caption"><span class="label-dot"></span> READY WHEN THE JOB CALLS</div>
   </div>
   <div class="hero__bottom container"><span>BUILT FOR THE PEOPLE WHO BUILD THINGS.</span><span>SCROLL TO EXPLORE <b>↓</b></span></div>
 </section>
@@ -50,6 +46,7 @@
 </section>
 
 <section class="request-section section" id="request">
+  <img class="request-section__crane" src="/assets/images/animated-crane.svg?v=2" alt="" aria-hidden="true">
   <div class="container request-layout">
     <div class="request-intro"><p class="eyebrow"><span class="eyebrow-line"></span> LET'S GET TO WORK</p><h2>Build your<br><span>equipment list.</span></h2><p>Need more than one machine? Send your equipment list, timing and job-site details in one request. We’ll follow up with availability, pricing and next steps.</p><div class="request-step"><div><strong>Choose your machines</strong><small>Add one or more equipment options.</small></div></div><div class="request-step"><div><strong>Tell us about the job</strong><small>Dates, location and project type.</small></div></div><div class="request-step"><div><strong>We’ll follow up</strong><small>Confirm availability and current pricing.</small></div></div><p class="request-phone">Prefer to talk? <a href="tel:<?= e(SITE_PHONE_LINK) ?>"><?= e(SITE_PHONE) ?> ↗</a></p></div>
     <form class="request-form" action="/request.php" method="post">
@@ -79,9 +76,16 @@
 </section>
 
 <section class="section why-section">
-  <div class="container"><div class="section-heading"><p class="eyebrow"><span class="eyebrow-line"></span> THE PAYLESS DIFFERENCE</p><h2>Less runaround.<br><span>More doing.</span></h2></div>
-    <div class="why-grid"><article data-reveal><h3>Practical rental rates</h3><p>Keep project costs in check with clear daily and weekly pricing on selected machines.</p></article><article data-reveal><h3>Equipment for real jobs</h3><p>From compact access work to excavation and material handling, find options for the work ahead.</p></article><article data-reveal><h3>A straightforward process</h3><p>Build one list, share your requirements and get a direct follow-up from the local team.</p></article><article data-reveal><h3>People close to the job</h3><p>Based in Beaverton, Oregon. Share your job-site location so we can confirm availability and delivery options.</p></article></div>
-    <div class="why-image-row" aria-label="Equipment illustrations"><figure><img src="/assets/images/equipment-excavator.svg" alt="Illustration of an excavator working at a job site" loading="lazy"><figcaption>Excavation</figcaption></figure><figure><img src="/assets/images/equipment-track-loader.svg" alt="Illustration of a compact track loader moving earth" loading="lazy"><figcaption>Site preparation</figcaption></figure><figure><img src="/assets/images/equipment-dump-truck.svg" alt="Illustration of a dump truck at a work site" loading="lazy"><figcaption>Material hauling</figcaption></figure></div>
+  <div class="container">
+    <div class="section-heading"><p class="eyebrow"><span class="eyebrow-line"></span> THE PAYLESS DIFFERENCE</p><h2>Less runaround.<br><span>More doing.</span></h2><p class="why-section__intro">Getting the right equipment should be a clear part of the plan. Browse machines for your project, send the details once, and talk directly with our Beaverton team about current availability, rates and delivery options.</p></div>
+    <div class="why-grid">
+      <article data-reveal><span class="why-grid__number">01</span><h3>Know what you’re asking for</h3><p>Explore equipment by type and compare options for excavation, site preparation, hauling and material handling. Not sure which machine fits? Include the work you need to do and we can help point you in the right direction.</p></article>
+      <article data-reveal><span class="why-grid__number">02</span><h3>Clear rental details</h3><p>Daily, weekly and selected monthly rental periods are available. Tell us your expected dates and the machine you have in mind so we can confirm current pricing and availability for that time frame.</p></article>
+      <article data-reveal><span class="why-grid__number">03</span><h3>One useful request</h3><p>Need more than one machine? Add them to a single equipment list, then share your project type, start date and job-site ZIP code. That gives our team the context to follow up with relevant next steps.</p></article>
+      <article data-reveal><span class="why-grid__number">04</span><h3>Local follow-through</h3><p>PayLess is based in Beaverton and serves customers across the Portland metro area. Share where the work is happening and ask us to confirm whether delivery is available for your equipment and location.</p></article>
+    </div>
+    <div class="why-image-row" aria-label="Examples of equipment and project work"><figure><img src="/assets/images/equipment-excavator.svg" alt="Excavator for digging and trenching work" loading="lazy"><figcaption>Digging &amp; trenching</figcaption></figure><figure><img src="/assets/images/equipment-track-loader.svg" alt="Compact track loader for site preparation" loading="lazy"><figcaption>Site preparation</figcaption></figure><figure><img src="/assets/images/equipment-dump-truck.svg" alt="Dump truck for material hauling" loading="lazy"><figcaption>Material hauling</figcaption></figure></div>
+    <div class="why-section__next"><p><strong>Have a project in mind?</strong> Browse the fleet or send your list to get a direct availability and pricing follow-up.</p><div><a class="text-link" href="<?= e(page_url('equipment')) ?>">Explore equipment <span>↗</span></a><a class="text-link" href="#request">Build your equipment list <span>↗</span></a></div></div>
   </div>
 </section>
 
