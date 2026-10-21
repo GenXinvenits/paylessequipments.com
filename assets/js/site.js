@@ -144,6 +144,8 @@
 
   // Honor reduced-motion preferences; enhance rather than block core navigation.
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealElements = document.querySelectorAll('[data-reveal], .section-heading, .gravel-feature__content, .local-layout');
+  revealElements.forEach(el => el.setAttribute('data-reveal', ''));
   if (!reduceMotion && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -152,22 +154,11 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
-    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
+    revealElements.forEach(el => observer.observe(el));
   } else {
-    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-visible'));
+    revealElements.forEach(el => el.classList.add('is-visible'));
   }
-
-  // GSAP + ScrollTrigger reveal polish.
-  window.addEventListener('load', () => {
-    if (reduceMotion || !window.gsap) return;
-    if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
-    if (window.ScrollTrigger) {
-      gsap.utils.toArray('.section-heading, .request-intro, .gravel-feature__content, .local-layout').forEach(el => {
-        gsap.from(el, { opacity: 0, y: 24, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 86%', once: true } });
-      });
-    }
-  });
 
   // Lenis smooth scrolling, with a native-scroll fallback.
   window.addEventListener('load', () => {

@@ -12,9 +12,7 @@
   </div>
   <div class="container footer-bottom"><span>© <?= date('Y') ?> PayLess Equipment Rental LLC</span><span>Built around the way you work.</span><span class="footer-legal"><a href="<?= e(page_url('privacy')) ?>">Privacy</a><a href="<?= e(page_url('terms')) ?>">Website terms</a><a href="<?= e(page_url('rental-terms')) ?>">Rental terms</a></span><a href="#top">Back to top ↑</a></div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.8/dist/lenis.min.js" defer></script>
-<script src="/assets/js/site.js?v=equipment-picker-1" defer></script>
+<script src="/assets/js/site.js?v=scroll-reveal-2" defer></script>
 </body>
 </html>

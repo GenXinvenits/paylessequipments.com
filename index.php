@@ -25,8 +25,8 @@ if ($page === 'equipment' && isset($_GET['item'])) {
   }
 }
 $pageDescription = $page === 'home'
-  ? 'Rent excavators, skid steers, dump trucks, forklifts and more in Beaverton, Oregon. Practical daily and weekly rates. Build your equipment list with PayLess.'
-  : 'Explore practical construction equipment rental options from PayLess Equipment Rental LLC in Beaverton, Oregon.';
+  ? 'Browse equipment for rent and sale in Beaverton, Oregon. Compare current prices and submit an equipment request with PayLess.'
+  : 'Explore equipment options and current prices from PayLess Equipment Rental LLC in Beaverton, Oregon.';
 require __DIR__ . '/includes/header.php';
 if ($page === 'home') {
   require __DIR__ . '/pages/home.php';

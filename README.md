@@ -8,7 +8,7 @@ This branch contains the PHP-first, responsive website for PayLess Equipment Ren
 - PDO MySQL driver (`pdo_mysql`)
 - Semantic HTML and responsive CSS
 - Vanilla JavaScript for navigation, equipment-list interactions and theme controls
-- GSAP + ScrollTrigger for restrained motion
+- Native IntersectionObserver scroll reveals with reduced-motion and unsupported-browser fallbacks
 - Lenis for smooth scrolling, with reduced-motion and native-scroll fallbacks
 - LocalBusiness and FAQPage JSON-LD structured data
 
