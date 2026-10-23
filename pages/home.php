@@ -22,7 +22,7 @@
     <div class="section-heading section-heading--split"><div><p class="eyebrow"><span class="eyebrow-line"></span> FIND YOUR MACHINE · THE FLEET</p><h2>Right tool.<br><span>Right on time.</span></h2></div><div class="section-heading__aside"><p>Browse the fleet by equipment type. Product photos are representative; exact rental units and configurations may vary. Contact us to confirm availability and current rates.</p><a class="text-link" href="<?= e(page_url('equipment')) ?>">View full catalogue <span>↗</span></a></div></div>
     <div class="equipment-tabs" role="tablist" aria-label="Filter equipment by category">
       <button class="equipment-tab is-active" type="button" role="tab" id="equipment-tab-all" aria-selected="true" aria-controls="equipment-list" tabindex="0" data-machine-filter="all" data-machine-description="Showing all <?= count($equipment) ?> equipment options. Select a category to narrow the fleet.">All equipment <span><?= count($equipment) ?></span></button>
-      <?php foreach ($categories as $category): $count = count(array_filter($equipment, static fn($item) => $item['category'] === $category['name'])); if (!$count) continue; ?>
+      <?php foreach ($categories as $category): $count = count(array_filter($equipment, static fn($item) => $item['category'] === $category['name'])); ?>
       <button class="equipment-tab" type="button" role="tab" id="equipment-tab-<?= e($category['anchor']) ?>" aria-selected="false" aria-controls="equipment-list" tabindex="-1" data-machine-filter="<?= e($category['anchor']) ?>" data-machine-description="<?= e($category['detail']) ?>"><i class="<?= e($category['icon']) ?>" aria-hidden="true"></i> <?= e($category['name']) ?> <span><?= $count ?></span></button>
       <?php endforeach; ?>
     </div>

@@ -53,7 +53,21 @@ $navItems = [
     <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
       <a class="<?= $page === 'home' ? 'is-active' : '' ?>" href="/">Home</a>
       <?php foreach ($navItems as $label => $url): ?>
-        <a class="<?= ($label === 'Equipment' && $page === 'equipment') || ($label === 'About Us' && $page === 'about') || ($label === 'Gravel Delivery' && $page === 'gravel') || ($label === 'Contact' && $page === 'contact') ? 'is-active' : '' ?>" href="<?= e($url) ?>"><?= e($label) ?></a>
+        <?php if ($label === 'Equipment'): ?>
+          <div class="nav-item--mega <?= $page === 'equipment' ? 'is-active' : '' ?>">
+            <button class="nav-mega-trigger" type="button" aria-expanded="false" aria-controls="equipment-mega-menu">Equipments <span class="nav-mega-chevron" aria-hidden="true"></span></button>
+            <div class="mega-menu" id="equipment-mega-menu">
+              <div class="mega-menu__intro"><p class="eyebrow">THE PAYLESS FLEET</p><strong>Find the right machine for the work ahead.</strong><a href="<?= e($url) ?>">View full catalogue <span aria-hidden="true">↗</span></a></div>
+              <div class="mega-menu__categories">
+                <?php foreach ($categories as $category): ?>
+                  <a class="mega-menu__category" href="<?= e(page_url('home')) ?>#equipment" data-machine-nav-filter="<?= e($category['anchor']) ?>"><img src="<?= e($category['image']) ?>" alt="" loading="lazy"><span><strong><?= e($category['name']) ?></strong><small><?= e($category['detail']) ?></small></span><b aria-hidden="true">↗</b></a>
+                <?php endforeach; ?>
+              </div>
+            </div>
+          </div>
+        <?php else: ?>
+          <a class="<?= ($label === 'About Us' && $page === 'about') || ($label === 'Gravel Delivery' && $page === 'gravel') || ($label === 'Contact' && $page === 'contact') ? 'is-active' : '' ?>" href="<?= e($url) ?>"><?= e($label) ?></a>
+        <?php endif; ?>
       <?php endforeach; ?>
     </nav>
     <div class="nav-actions">

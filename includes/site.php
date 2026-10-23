@@ -34,18 +34,18 @@ $equipment = [
 ];
 
 $categories = [
-  ['name' => 'Excavators', 'detail' => 'Digging, trenching & site preparation', 'icon' => 'fa-solid fa-person-digging', 'anchor' => 'cat-excavators'],
-  ['name' => 'Mini Excavators', 'detail' => 'Tight spaces & residential work', 'icon' => 'fa-solid fa-trowel-bricks', 'anchor' => 'cat-mini-excavators'],
-  ['name' => 'Skid Steers', 'detail' => 'Loading, grading & material handling', 'icon' => 'fa-solid fa-truck-front', 'anchor' => 'cat-skid-steers'],
-  ['name' => 'Mini Skid Steers', 'detail' => 'Compact handling & grading', 'icon' => 'fa-solid fa-truck-front', 'anchor' => 'cat-mini-skid-steers'],
-  ['name' => 'Track Loaders', 'detail' => 'Loading, clearing & material movement', 'icon' => 'fa-solid fa-truck-monster', 'anchor' => 'cat-track-loaders'],
-  ['name' => 'Dump Trucks', 'detail' => 'Dirt, gravel & material hauling', 'icon' => 'fa-solid fa-truck', 'anchor' => 'cat-dump-trucks'],
-  ['name' => 'Forklifts', 'detail' => 'Pallets & heavy materials', 'icon' => 'fa-solid fa-people-carry-box', 'anchor' => 'cat-forklifts'],
-  ['name' => 'Trailers', 'detail' => 'Equipment & material transport', 'icon' => 'fa-solid fa-trailer', 'anchor' => 'cat-trailers'],
-  ['name' => 'Compactors', 'detail' => 'Ground preparation & compaction', 'icon' => 'fa-solid fa-road', 'anchor' => 'cat-compactors'],
-  ['name' => 'Concrete Equipment', 'detail' => 'Concrete mixing & job-site work', 'icon' => 'fa-solid fa-cubes-stacked', 'anchor' => 'cat-concrete-equipment'],
-  ['name' => 'Boom Lifts', 'detail' => 'Elevated access equipment', 'icon' => 'fa-solid fa-arrow-up', 'anchor' => 'cat-boom-lifts'],
-  ['name' => 'Scissor Lifts', 'detail' => 'Elevated work platforms', 'icon' => 'fa-solid fa-up-down', 'anchor' => 'cat-scissor-lifts'],
+  ['name' => 'Excavators', 'detail' => 'Digging, trenching & site preparation', 'icon' => 'fa-solid fa-person-digging', 'anchor' => 'cat-excavators', 'image' => '/assets/images/product-excavator.webp', 'alt' => 'Excavator working on a construction site'],
+  ['name' => 'Mini Excavators', 'detail' => 'Tight spaces & residential work', 'icon' => 'fa-solid fa-trowel-bricks', 'anchor' => 'cat-mini-excavators', 'image' => '/assets/images/product-mini-excavator.webp', 'alt' => 'Compact mini excavator'],
+  ['name' => 'Skid Steers', 'detail' => 'Loading, grading & material handling', 'icon' => 'fa-solid fa-truck-front', 'anchor' => 'cat-skid-steers', 'image' => '/assets/images/Bobcat T66-2 Skid Steer (for rent).jpeg', 'alt' => 'Bobcat skid steer'],
+  ['name' => 'Mini Skid Steers', 'detail' => 'Compact handling & grading', 'icon' => 'fa-solid fa-truck-front', 'anchor' => 'cat-mini-skid-steers', 'image' => '/assets/images/product-mini-skid-steer.webp', 'alt' => 'Mini skid steer'],
+  ['name' => 'Track Loaders', 'detail' => 'Loading, clearing & material movement', 'icon' => 'fa-solid fa-truck-monster', 'anchor' => 'cat-track-loaders', 'image' => '/assets/images/product-track-loader.webp', 'alt' => 'Compact track loader'],
+  ['name' => 'Dump Trucks', 'detail' => 'Dirt, gravel & material hauling', 'icon' => 'fa-solid fa-truck', 'anchor' => 'cat-dump-trucks', 'image' => '/assets/images/product-dump-truck.webp', 'alt' => 'Dump truck'],
+  ['name' => 'Forklifts', 'detail' => 'Pallets & heavy materials', 'icon' => 'fa-solid fa-people-carry-box', 'anchor' => 'cat-forklifts', 'image' => '/assets/images/product-forklift.webp', 'alt' => 'Forklift'],
+  ['name' => 'Trailers', 'detail' => 'Equipment & material transport', 'icon' => 'fa-solid fa-trailer', 'anchor' => 'cat-trailers', 'image' => '/assets/images/Trailer.jpeg', 'alt' => 'Equipment trailer'],
+  ['name' => 'Compactors', 'detail' => 'Ground preparation & compaction', 'icon' => 'fa-solid fa-road', 'anchor' => 'cat-compactors', 'image' => '/assets/images/Compactor (for rent).jpeg', 'alt' => 'Ground compactor'],
+  ['name' => 'Concrete Equipment', 'detail' => 'Concrete mixing & job-site work', 'icon' => 'fa-solid fa-cubes-stacked', 'anchor' => 'cat-concrete-equipment', 'image' => '/assets/images/Concrete mixer (for rent).jpeg', 'alt' => 'Concrete mixer'],
+  ['name' => 'Boom Lifts', 'detail' => 'Elevated access equipment', 'icon' => 'fa-solid fa-arrow-up', 'anchor' => 'cat-boom-lifts', 'image' => '/assets/images/Boom lift 450AJ (for rent).jpeg', 'alt' => 'Boom lift'],
+  ['name' => 'Scissor Lifts', 'detail' => 'Elevated work platforms', 'icon' => 'fa-solid fa-up-down', 'anchor' => 'cat-scissor-lifts', 'image' => '/assets/images/Scissor lift (for rent).jpeg', 'alt' => 'Scissor lift'],
 ];
 
 function e(string $value): string { return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); }

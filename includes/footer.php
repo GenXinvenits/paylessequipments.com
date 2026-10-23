@@ -5,6 +5,7 @@
     <span class="gravel-fab__copy"><strong>Need gravel delivered?</strong><small>Get project pricing</small></span>
     <span class="gravel-fab__arrow" aria-hidden="true">↗</span>
   </a>
+  <a class="gravel-fab gravel-fab--call" href="tel:<?= e(SITE_PHONE_LINK) ?>" aria-label="Call PayLess now" title="Call PayLess now"><span class="gravel-fab__icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span><span class="gravel-fab__copy"><i class="fa-solid fa-phone gravel-fab__copy-phone" aria-hidden="true"></i><strong>Call now</strong><small><?= e(SITE_PHONE) ?></small></span></a>
 </div>
 <footer class="site-footer">
   <div class="container footer-top">

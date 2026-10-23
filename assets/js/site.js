@@ -45,6 +45,49 @@
     document.body.classList.remove('menu-open');
   }));
 
+  const megaTrigger = document.querySelector('.nav-mega-trigger');
+  const megaMenu = document.querySelector('.mega-menu');
+  const megaItem = document.querySelector('.nav-item--mega');
+  const siteHeader = document.querySelector('.site-header');
+  let megaCloseTimer;
+  const positionMegaMenu = () => {
+    if (siteHeader && megaMenu && window.innerWidth > 780) megaMenu.style.setProperty('--mega-menu-top', `${siteHeader.getBoundingClientRect().bottom - 8}px`);
+  };
+  const openMegaMenu = () => {
+    clearTimeout(megaCloseTimer);
+    positionMegaMenu();
+    megaTrigger?.setAttribute('aria-expanded', 'true');
+    megaMenu?.classList.add('is-open');
+  };
+  const scheduleMegaClose = () => {
+    clearTimeout(megaCloseTimer);
+    megaCloseTimer = setTimeout(() => {
+      if (!megaItem?.matches(':hover') && !megaMenu?.matches(':hover')) {
+        megaTrigger?.setAttribute('aria-expanded', 'false');
+        megaMenu?.classList.remove('is-open');
+      }
+    }, 180);
+  };
+  megaTrigger?.addEventListener('click', () => {
+    const open = megaTrigger.getAttribute('aria-expanded') === 'true';
+    if (open) {
+      megaTrigger.setAttribute('aria-expanded', 'false');
+      megaMenu?.classList.remove('is-open');
+    } else openMegaMenu();
+  });
+  window.addEventListener('resize', positionMegaMenu);
+  megaItem?.addEventListener('mouseenter', openMegaMenu);
+  megaItem?.addEventListener('mouseleave', scheduleMegaClose);
+  megaItem?.addEventListener('focusin', openMegaMenu);
+  megaMenu?.addEventListener('mouseenter', openMegaMenu);
+  megaMenu?.addEventListener('mouseleave', scheduleMegaClose);
+  document.addEventListener('click', event => {
+    if (megaMenu && !megaMenu.closest('.nav-item--mega')?.contains(event.target)) {
+      megaTrigger?.setAttribute('aria-expanded', 'false');
+      megaMenu.classList.remove('is-open');
+    }
+  });
+
   // Multi-machine selection helpers: card buttons check the matching request form option.
   function syncEquipmentPicker(picker) {
     const selected = picker.querySelectorAll('input[name="equipment[]"]:checked');
@@ -140,6 +183,15 @@
       activateMachineTab(machineTabs[nextIndex], true);
     });
   });
+  document.querySelectorAll('[data-machine-nav-filter]').forEach(link => link.addEventListener('click', event => {
+    const target = document.querySelector(`.equipment-tab[data-machine-filter="${link.dataset.machineNavFilter}"]`);
+    if (!target) return;
+    event.preventDefault();
+    activateMachineTab(target);
+    document.querySelector('#equipment')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    megaTrigger?.setAttribute('aria-expanded', 'false');
+    megaMenu?.classList.remove('is-open');
+  }));
   if (machineTabs[0]) activateMachineTab(machineTabs[0]);
 
   // Honor reduced-motion preferences; enhance rather than block core navigation.
