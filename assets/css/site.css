@@ -479,3 +479,39 @@ html[data-theme=light] .mega-menu__intro{background:#252830;color:#fff}
 
 /* Accent border for the desktop mega-menu intro panel. */
 @media(min-width:781px){.mega-menu__intro{border:1px solid var(--accent)}}
+
+
+/* Contact page form card: keep one outer frame, not nested/double borders. */
+.contact-form-wrap{
+  min-width:0;
+  overflow:hidden;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:10px;
+  box-shadow:0 18px 44px rgba(27,36,29,.075);
+}
+.contact-form-wrap .contact-tabs{
+  padding:20px 24px 14px;
+  margin:0;
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+}
+.contact-form-wrap .contact-tabs a.is-active{
+  padding-bottom:12px;
+  margin-bottom:-15px;
+}
+.contact-form-wrap .request-form.contact-form{
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  margin:0;
+}
+.contact-form-wrap .gravel-request-form{
+  border-top:0;
+}
+html[data-theme=dark] .contact-form-wrap{
+  box-shadow:0 14px 38px rgba(0,0,0,.26);
+}
+@media(max-width:440px){
+  .contact-form-wrap .contact-tabs{padding:17px 17px 13px;gap:12px}
+}
