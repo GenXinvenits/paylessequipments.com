@@ -207,6 +207,41 @@
   }));
   if (machineTabs[0]) activateMachineTab(machineTabs[0]);
 
+  // Equipment catalogue category tabs.
+  const catalogueTabs = [...document.querySelectorAll('[data-catalogue-tab]')];
+  const cataloguePanels = catalogueTabs
+    .map(tab => document.getElementById(tab.getAttribute('aria-controls')))
+    .filter(Boolean);
+  function activateCatalogueTab(tab, moveFocus = false) {
+    const panelId = tab.getAttribute('aria-controls');
+    catalogueTabs.forEach(item => {
+      const active = item === tab;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+    });
+    cataloguePanels.forEach(panel => {
+      const active = panel.id === panelId;
+      panel.hidden = !active;
+      panel.classList.toggle('is-active', active);
+    });
+    if (moveFocus) tab.focus();
+  }
+  catalogueTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateCatalogueTab(tab));
+    tab.addEventListener('keydown', event => {
+      let nextIndex = index;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % catalogueTabs.length;
+      else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + catalogueTabs.length) % catalogueTabs.length;
+      else if (event.key === 'Home') nextIndex = 0;
+      else if (event.key === 'End') nextIndex = catalogueTabs.length - 1;
+      else return;
+      event.preventDefault();
+      activateCatalogueTab(catalogueTabs[nextIndex], true);
+    });
+  });
+  if (catalogueTabs[0]) activateCatalogueTab(catalogueTabs.find(tab => tab.getAttribute('aria-selected') === 'true') || catalogueTabs[0]);
+
   // Honor reduced-motion preferences; enhance rather than block core navigation.
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const revealElements = document.querySelectorAll('[data-reveal], .section-heading, .gravel-feature__content, .local-layout');
