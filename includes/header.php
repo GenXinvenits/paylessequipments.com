@@ -1,8 +1,8 @@
 <?php
 $navItems = [
   'Equipment' => page_url('equipment'),
-  'About Us' => page_url('about'),
-  'Gravel Delivery' => page_url('gravel'),
+  'About ' => page_url('about'),
+  'Gravel ' => page_url('gravel'),
   'Contact' => page_url('contact'),
 ];
 ?>
@@ -67,7 +67,7 @@ $navItems = [
             </div>
           </div>
         <?php else: ?>
-          <a class="<?= ($label === 'About Us' && $page === 'about') || ($label === 'Gravel Delivery' && $page === 'gravel') || ($label === 'Contact' && $page === 'contact') ? 'is-active' : '' ?>" href="<?= e($url) ?>"><?= e($label) ?></a>
+          <a class="<?= ($label === 'About ' && $page === 'about') || ($label === 'Gravel ' && $page === 'gravel') || ($label === 'Contact' && $page === 'contact') ? 'is-active' : '' ?>" href="<?= e($url) ?>"><?= e($label) ?></a>
         <?php endif; ?>
       <?php endforeach; ?>
     </nav>
