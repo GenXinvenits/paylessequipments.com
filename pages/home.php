@@ -45,7 +45,7 @@
       ?>
       <?php foreach ($homepageCatalogueGroups as $categoryIndex => $catalogueGroup): ?>
       <?php $catalogueCategory = $catalogueGroup['category']; $categoryItems = $catalogueGroup['items']; ?>
-      <button class="catalogue-tab<?= $categoryIndex === 0 ? ' is-active' : '' ?>" type="button" role="tab" id="home-catalogue-tab-<?= e($catalogueCategory['anchor']) ?>" aria-controls="home-catalogue-panel-<?= e($catalogueCategory['anchor']) ?>" aria-selected="<?= $categoryIndex === 0 ? 'true' : 'false' ?>" tabindex="<?= $categoryIndex === 0 ? '0' : '-1' ?>" data-catalogue-tab data-machine-nav-filter="<?= e($catalogueCategory['anchor']) ?>">
+      <button class="catalogue-tab<?= $categoryIndex === 0 ? ' is-active' : '' ?>" type="button" role="tab" id="home-catalogue-tab-<?= e($catalogueCategory['anchor']) ?>" aria-controls="home-catalogue-panel-<?= e($catalogueCategory['anchor']) ?>" aria-selected="<?= $categoryIndex === 0 ? 'true' : 'false' ?>" tabindex="<?= $categoryIndex === 0 ? '0' : '-1' ?>" data-catalogue-tab data-catalogue-filter="<?= e($catalogueCategory['anchor']) ?>">
         <span><?= e($catalogueCategory['name']) ?></span><small><?= count($categoryItems) ?></small>
       </button>
       <?php endforeach; ?>
