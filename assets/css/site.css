@@ -496,3 +496,7 @@ html[data-theme=dark] .contact-form-wrap{
 @media(max-width:440px){
   .contact-form-wrap .contact-tabs{padding:17px 17px 13px;gap:12px}
 }
+
+/* Keep the mega-menu catalogue link readable on hover in the light theme. */
+html[data-theme=light] .mega-menu__intro>a:hover,
+html[data-theme=light] .mega-menu__intro>a:focus-visible{color:var(--accent)!important;}
