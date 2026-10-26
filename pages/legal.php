@@ -42,6 +42,11 @@ $legalPages = [
       ['24. Governing Law', 'Unless otherwise stated in a signed rental agreement, these Terms shall be interpreted under the laws applicable to the transaction and the jurisdiction identified in the applicable rental agreement. Any venue, dispute-resolution, arbitration, attorney-fee, or governing-law provisions should be stated specifically in the signed rental agreement after review by qualified legal counsel.'],
       ['25. Severability', 'If any provision of these Terms is determined to be unenforceable, the remaining provisions shall remain effective to the extent permitted by law.'],
       ['26. Changes', 'PayLess may update these website Terms from time to time. Updated Terms will be posted with a revised “Last Updated” date.'],
+      ['28. Rental Rates and Rental Period', 'Confirm the exact rental period, current rate, applicable charges, extension rules, and payment requirements before booking. Published website rates may change, and monthly rates may require a quote. The applicable quote, invoice, and signed rental agreement control the specific rental charges and period.'],
+      ['29. Availability and Delivery', 'Equipment availability is not guaranteed until PayLess confirms it. Delivery options, transportation charges, timing, site access, and pickup arrangements depend on the equipment, location, and conditions. Any applicable delivery and pickup charges and arrangements should be confirmed in writing.'],
+      ['30. Machine Setup and Safe Use', 'Before use, confirm equipment dimensions, attachment availability and charges, fuel and return expectations, rated capacity, operator requirements, and jobsite suitability. Follow manufacturer instructions and all applicable laws and safety requirements.'],
+      ['31. Other Rental Conditions', 'Insurance, deposits, damage responsibility, late returns, cleaning, cancellation, and other transaction-specific conditions may vary. The applicable written quote and signed rental agreement must state the requirements for each rental. This website does not promise terms that are not confirmed in those documents.'],
+      ['32. Confirming Your Rental Terms', 'Contact PayLess at (503) 259-0252 to discuss your project and obtain the applicable written rental terms before committing to a rental. A rental is subject to confirmation and the applicable rental agreement.'],
       ['27. Contact', 'PayLess Equipment Rentals LLC. Phone: 503-259-0252. Website: www.PayLessEquipments.com. Email: Rentals@PayLessEquipments.com.']
     ]
   ],
@@ -64,18 +69,6 @@ $legalPages = [
       ['12. Contact', 'PayLess Equipment Rentals LLC. Phone: 503-259-0252. Website: www.PayLessEquipments.com. Email: Rentals@PayLessEquipments.com.']
     ]
   ],
-  'rental-terms' => [
-    'label' => 'SITE INFORMATION / RENTAL TERMS',
-    'title' => 'Know the terms<br><span>before the machine arrives.</span>',
-    'intro' => 'This is a general guide only. The current written rental agreement and direct confirmation from PayLess govern each rental.',
-    'sections' => [
-      ['Rates and rental period', 'Confirm the exact rental period, current rate, applicable charges, extension rules and payment requirements before booking. Published website rates may change; monthly rates may require a quote.'],
-      ['Availability and delivery', 'Availability is not guaranteed until PayLess confirms it. Delivery options, transport charges, timing, site access and pickup arrangements depend on the equipment and location.'],
-      ['Machine setup and safe use', 'Confirm dimensions, attachment availability and charges, fuel and return expectations, capacity, operator requirements and site suitability before use. Follow manufacturer instructions and applicable laws and safety requirements.'],
-      ['Other rental conditions', 'Insurance, deposits, damage responsibility, late returns, cleaning, cancellation and other contractual conditions vary and must be stated in the current written rental agreement. This website does not set or promise those terms.'],
-      ['Get current terms', 'Contact PayLess at (503) 259-0252 to discuss your project and obtain the applicable written rental terms before committing to a rental.']
-    ]
-  ]
 ];
 $content = $legalPages[$page] ?? $legalPages['terms'];
 ?>
