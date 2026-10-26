@@ -199,7 +199,7 @@
   document.querySelectorAll('[data-machine-nav-filter]').forEach(link => link.addEventListener('click', event => {
     const filter = link.dataset.machineNavFilter;
     const machineTarget = document.querySelector(`.equipment-tab[data-machine-filter="${filter}"]`);
-    const catalogueTarget = document.querySelector(`.catalogue-tab[data-machine-nav-filter="${filter}"]`);
+    const catalogueTarget = document.querySelector(`.catalogue-tab[data-catalogue-filter="${filter}"]`);
     if (!machineTarget && !catalogueTarget) return;
     event.preventDefault();
     if (machineTarget) activateMachineTab(machineTarget);
