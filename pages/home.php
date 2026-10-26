@@ -20,22 +20,60 @@
 <section class="section equipment-fleet" id="equipment">
   <div class="container">
     <div class="section-heading section-heading--split"><div><p class="eyebrow"><span class="eyebrow-line"></span> FIND YOUR MACHINE · THE FLEET</p><h2>Right tool.<br><span>Right on time.</span></h2></div><div class="section-heading__aside"><p>Browse the fleet by equipment type. Product photos are representative; exact rental units and configurations may vary. Contact us to confirm availability and current rates.</p><a class="text-link" href="<?= e(page_url('equipment')) ?>">View full catalogue <span>↗</span></a></div></div>
-    <div class="equipment-tabs" role="tablist" aria-label="Filter equipment by category">
-      <button class="equipment-tab is-active" type="button" role="tab" id="equipment-tab-all" aria-selected="true" aria-controls="equipment-list" tabindex="0" data-machine-filter="all" data-machine-description="Showing all <?= count($equipment) ?> equipment options. Select a category to narrow the fleet.">All equipment <span><?= count($equipment) ?></span></button>
-      <?php foreach ($categories as $category): $count = count(array_filter($equipment, static fn($item) => $item['category'] === $category['name'])); ?>
-      <button class="equipment-tab" type="button" role="tab" id="equipment-tab-<?= e($category['anchor']) ?>" aria-selected="false" aria-controls="equipment-list" tabindex="-1" data-machine-filter="<?= e($category['anchor']) ?>" data-machine-description="<?= e($category['detail']) ?>"><i class="<?= e($category['icon']) ?>" aria-hidden="true"></i> <?= e($category['name']) ?> <span><?= $count ?></span></button>
+    <div class="catalogue-tabs" role="tablist" aria-label="Equipment categories">
+      <?php
+      $homepageCatalogueCategories = $categories;
+      foreach ($equipment as $homepageCatalogueItem) {
+        $knownHomepageCategory = false;
+        foreach ($homepageCatalogueCategories as $homepageCatalogueCategory) {
+          if ($homepageCatalogueCategory['name'] === $homepageCatalogueItem['category']) { $knownHomepageCategory = true; break; }
+        }
+        if (!$knownHomepageCategory) {
+          $homepageCatalogueCategories[] = [
+            'name' => $homepageCatalogueItem['category'],
+            'detail' => 'Browse available ' . strtolower($homepageCatalogueItem['category']) . ' options',
+            'icon' => 'fa-solid fa-gear',
+            'anchor' => 'cat-' . strtolower(trim(preg_replace('/[^a-z0-9]+/i', '-', $homepageCatalogueItem['category']), '-'))
+          ];
+        }
+      }
+      $homepageCatalogueGroups = [];
+      foreach ($homepageCatalogueCategories as $homepageCatalogueCategory) {
+        $homepageCategoryItems = array_values(array_filter($equipment, static fn($homepageCatalogueItem) => $homepageCatalogueItem['category'] === $homepageCatalogueCategory['name']));
+        if ($homepageCategoryItems) $homepageCatalogueGroups[] = ['category' => $homepageCatalogueCategory, 'items' => $homepageCategoryItems];
+      }
+      ?>
+      <?php foreach ($homepageCatalogueGroups as $categoryIndex => $catalogueGroup): ?>
+      <?php $catalogueCategory = $catalogueGroup['category']; $categoryItems = $catalogueGroup['items']; ?>
+      <button class="catalogue-tab<?= $categoryIndex === 0 ? ' is-active' : '' ?>" type="button" role="tab" id="home-catalogue-tab-<?= e($catalogueCategory['anchor']) ?>" aria-controls="home-catalogue-panel-<?= e($catalogueCategory['anchor']) ?>" aria-selected="<?= $categoryIndex === 0 ? 'true' : 'false' ?>" tabindex="<?= $categoryIndex === 0 ? '0' : '-1' ?>" data-catalogue-tab data-machine-nav-filter="<?= e($catalogueCategory['anchor']) ?>">
+        <span><?= e($catalogueCategory['name']) ?></span><small><?= count($categoryItems) ?></small>
+      </button>
       <?php endforeach; ?>
     </div>
-    <p class="equipment-tab-detail" aria-live="polite">Showing all <?= count($equipment) ?> equipment options. Select a category to narrow the fleet.</p>
-    <div class="equipment-grid" id="equipment-list" role="tabpanel" aria-labelledby="equipment-tab-all" tabindex="0">
-      <?php foreach ($equipment as $i => $item): ?>
-      <?php $categoryAnchor = ''; foreach ($categories as $category) { if ($item['category'] === $category['name']) { $categoryAnchor = $category['anchor']; break; } } ?>
-      <article class="equipment-card" data-machine-category="<?= e($categoryAnchor) ?>" data-reveal>
-        <a class="equipment-card__image" href="<?= e(page_url('equipment')) ?>&amp;item=<?= e($item['id']) ?>" aria-label="View <?= e($item['name']) ?>"><img src="<?= e($item['image']) ?>" alt="<?= e($item['alt']) ?>" loading="lazy"><span class="equipment-card__image-arrow">↗</span></a>
-        <div class="equipment-card__body"><p class="equipment-card__category"><?= e($item['category']) ?> <span>•</span> <?= e($item['tag']) ?></p><h3><?= e($item['name']) ?></h3><p class="equipment-card__description"><?= e($item['description']) ?></p><p class="equipment-card__spec"><?= e($item['spec']) ?></p><div class="equipment-card__rates"><div><small>CURRENT PRICE</small><strong><?= e($item['price']) ?></strong></div><div><small>PREVIOUS PRICE</small><strong><?= $item['previous'] !== '' ? '<del>' . e($item['previous']) . '</del>' : '—' ?></strong></div></div><div class="equipment-card__actions"><a href="<?= e(page_url('equipment')) ?>#<?= e($item['id']) ?>">View details <span>↗</span></a><button type="button" class="add-equipment" data-add-equipment="<?= e($item['name']) ?>">+ Add to list</button></div></div>
-      </article>
-      <?php endforeach; ?>
-    </div>
+    <?php foreach ($homepageCatalogueGroups as $categoryIndex => $catalogueGroup): ?>
+    <?php $catalogueCategory = $catalogueGroup['category']; $categoryItems = $catalogueGroup['items']; ?>
+    <section class="catalogue-category<?= $categoryIndex === 0 ? ' is-active' : '' ?>" id="home-catalogue-panel-<?= e($catalogueCategory['anchor']) ?>" role="tabpanel" aria-labelledby="home-catalogue-tab-<?= e($catalogueCategory['anchor']) ?>"<?= $categoryIndex === 0 ? '' : ' hidden' ?>>
+      <div class="section-heading section-heading--split catalogue-category__heading">
+        <div><p class="eyebrow"><span class="eyebrow-line"></span> <?= e(strtoupper($catalogueCategory['name'])) ?> / <?= count($categoryItems) ?> <?= count($categoryItems) === 1 ? 'OPTION' : 'OPTIONS' ?></p><h2 id="home-<?= e($catalogueCategory['anchor']) ?>-title"><?= e($catalogueCategory['name']) ?><br><span>Find the right fit.</span></h2></div>
+        <div class="section-heading__aside"><p><?= e($catalogueCategory['detail']) ?>. Product photos are representative; confirm current availability and rates with PayLess.</p></div>
+      </div>
+      <div class="equipment-grid">
+        <?php foreach ($categoryItems as $item): ?>
+        <article class="equipment-card" id="home-<?= e($item['id']) ?>" data-reveal>
+          <a class="equipment-card__image" href="<?= e(page_url('equipment')) ?>&amp;item=<?= e($item['id']) ?>" aria-label="View <?= e($item['name']) ?>"><img src="<?= e($item['image']) ?>" alt="<?= e($item['alt']) ?>" loading="lazy"><span class="equipment-card__image-arrow">↗</span></a>
+          <div class="equipment-card__body">
+            <p class="equipment-card__category"><?= e($item['category']) ?> <span>•</span> <?= e($item['tag']) ?></p>
+            <h3><a href="<?= e(page_url('equipment')) ?>&amp;item=<?= e($item['id']) ?>"><?= e($item['name']) ?></a></h3>
+            <p class="equipment-card__description"><?= e($item['description']) ?></p>
+            <p class="equipment-card__spec"><?= e($item['spec']) ?></p>
+            <div class="equipment-card__rates"><div><small>CURRENT PRICE</small><strong><?= e($item['price']) ?></strong></div><div><small>PREVIOUS PRICE</small><strong><?= $item['previous'] !== '' ? '<del>' . e($item['previous']) . '</del>' : '—' ?></strong></div></div>
+            <div class="equipment-card__actions"><a href="<?= e(page_url('equipment')) ?>&amp;item=<?= e($item['id']) ?>">View details <span>↗</span></a><button type="button" class="add-equipment" data-add-equipment="<?= e($item['name']) ?>">+ Add to list</button></div>
+          </div>
+        </article>
+        <?php endforeach; ?>
+      </div>
+    </section>
+    <?php endforeach; ?>
   </div>
 </section>
 
