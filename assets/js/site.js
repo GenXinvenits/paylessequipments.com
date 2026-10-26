@@ -146,11 +146,32 @@
     if (error) error.hidden = true;
   }));
 
-  // Lightweight contact-page tab navigation.
-  const tabLinks = document.querySelectorAll('.contact-tabs a');
-  tabLinks.forEach(link => link.addEventListener('click', () => {
-    tabLinks.forEach(tab => tab.classList.toggle('is-active', tab === link));
-  }));
+  // Contact request tabs switch between the two forms instead of only changing the underline.
+  const tabLinks = [...document.querySelectorAll('.contact-tabs a[role="tab"]')];
+  const requestForms = tabLinks
+    .map(tab => document.getElementById(tab.getAttribute('aria-controls')))
+    .filter(Boolean);
+
+  function activateContactForm(tab) {
+    const targetId = tab.getAttribute('aria-controls');
+    tabLinks.forEach(item => {
+      const active = item === tab;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+    });
+    requestForms.forEach(form => {
+      form.hidden = form.id !== targetId;
+    });
+  }
+
+  if (tabLinks.length && requestForms.length) {
+    tabLinks.forEach(tab => tab.addEventListener('click', event => {
+      event.preventDefault();
+      activateContactForm(tab);
+    }));
+    activateContactForm(tabLinks.find(tab => tab.classList.contains('is-active')) || tabLinks[0]);
+  }
 
   // Homepage machine finder and fleet share one category-filtered equipment list.
   const machineTabs = [...document.querySelectorAll('.equipment-tab[data-machine-filter]')];
