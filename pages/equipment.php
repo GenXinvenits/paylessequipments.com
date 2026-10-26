@@ -44,13 +44,24 @@ if ($selectedEquipment) {
         ];
       }
     }
-    $renderedCategoryCount = 0;
-    foreach ($catalogueCategories as $catalogueCategory):
+    <?php
+    $availableCatalogueCategories = [];
+    foreach ($catalogueCategories as $catalogueCategory) {
       $categoryItems = array_values(array_filter($equipment, static fn($catalogueItem) => $catalogueItem['category'] === $catalogueCategory['name']));
-      if (!$categoryItems) continue;
-      $renderedCategoryCount++;
+      if ($categoryItems) $availableCatalogueCategories[] = ['category' => $catalogueCategory, 'items' => $categoryItems];
+    }
     ?>
-    <section class="catalogue-category" id="<?= e($catalogueCategory['anchor']) ?>" aria-labelledby="<?= e($catalogueCategory['anchor']) ?>-title">
+    <div class="catalogue-tabs" role="tablist" aria-label="Equipment categories">
+      <?php foreach ($availableCatalogueCategories as $categoryIndex => $catalogueGroup): ?>
+      <?php $catalogueCategory = $catalogueGroup['category']; $categoryItems = $catalogueGroup['items']; ?>
+      <button class="catalogue-tab<?= $categoryIndex === 0 ? ' is-active' : '' ?>" type="button" role="tab" id="catalogue-tab-<?= e($catalogueCategory['anchor']) ?>" aria-controls="catalogue-panel-<?= e($catalogueCategory['anchor']) ?>" aria-selected="<?= $categoryIndex === 0 ? 'true' : 'false' ?>" tabindex="<?= $categoryIndex === 0 ? '0' : '-1' ?>" data-catalogue-tab>
+        <span><?= e($catalogueCategory['name']) ?></span><small><?= count($categoryItems) ?></small>
+      </button>
+      <?php endforeach; ?>
+    </div>
+    <?php foreach ($availableCatalogueCategories as $categoryIndex => $catalogueGroup): ?>
+    <?php $catalogueCategory = $catalogueGroup['category']; $categoryItems = $catalogueGroup['items']; ?>
+    <section class="catalogue-category<?= $categoryIndex === 0 ? ' is-active' : '' ?>" id="catalogue-panel-<?= e($catalogueCategory['anchor']) ?>" role="tabpanel" aria-labelledby="catalogue-tab-<?= e($catalogueCategory['anchor']) ?>"<?= $categoryIndex === 0 ? '' : ' hidden' ?>>
       <div class="section-heading section-heading--split catalogue-category__heading">
         <div><p class="eyebrow"><span class="eyebrow-line"></span> <?= e(strtoupper($catalogueCategory['name'])) ?> / <?= count($categoryItems) ?> <?= count($categoryItems) === 1 ? 'OPTION' : 'OPTIONS' ?></p><h2 id="<?= e($catalogueCategory['anchor']) ?>-title"><?= e($catalogueCategory['name']) ?><br><span>Find the right fit.</span></h2></div>
         <div class="section-heading__aside"><p><?= e($catalogueCategory['detail']) ?>. Product photos are representative; confirm current availability and rates with PayLess.</p></div>
