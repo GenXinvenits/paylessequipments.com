@@ -25,7 +25,54 @@ if ($selectedEquipment) {
 }
 ?>
 <section class="page-hero page-hero--equipment"><div class="container page-hero__inner"><p class="eyebrow"><span class="eyebrow-line"></span> CURRENT FLEET / BEAVERTON, OR</p><h1>Construction equipment<br><span>for the work ahead.</span></h1><p>Browse the current product list, compare current and previous prices, and add equipment to one request. Product photos are representative; actual units and configurations may vary.</p><a class="button button--primary" href="<?= e(page_url('home')) ?>#request">Build your equipment list <span>↗</span></a></div></section>
-<section class="section catalogue-section"><div class="container"><div class="catalogue-toolbar"><span>EQUIPMENT OPTIONS</span><span>PRICES IN USD · AVAILABILITY SUBJECT TO CONFIRMATION</span></div>
-<div class="catalogue-grid"><?php foreach ($equipment as $i => $item): ?><article class="catalogue-card" id="<?= e($item['id']) ?>"><div class="catalogue-card__image"><img src="<?= e($item['image']) ?>" alt="<?= e($item['alt']) ?>" loading="lazy"></div><div class="catalogue-card__content"><p class="eyebrow"><?= e($item['category']) ?></p><h2><a href="<?= e(page_url('equipment')) ?>&amp;item=<?= e($item['id']) ?>"><?= e($item['name']) ?></a></h2><p><?= e($item['description']) ?></p><div class="catalogue-spec"><span>KEY SPECS</span><strong><?= e($item['spec']) ?></strong></div><div class="catalogue-rates catalogue-rates--prices"><div><small>CURRENT PRICE</small><strong><?= e($item['price']) ?></strong></div><div><small>PREVIOUS PRICE</small><strong><?= $item['previous'] !== '' ? '<del>' . e($item['previous']) . '</del>' : '—' ?></strong></div></div><a class="button button--outline button--wide" href="<?= e(page_url('home')) ?>#request" data-add-link="<?= e($item['name']) ?>">Add to equipment list <span>↗</span></a></div></article><?php endforeach; ?></div>
-<p class="catalogue-disclaimer">Prices and specifications are based on the supplied product list. Confirm current availability, equipment details, rental period and any delivery charges with PayLess.</p></div></section>
+<section class="section catalogue-section">
+  <div class="container">
+    <div class="catalogue-toolbar"><span>ALL EQUIPMENT BY CATEGORY</span><span>PRICES IN USD · AVAILABILITY SUBJECT TO CONFIRMATION</span></div>
+    <?php
+    $catalogueCategories = $categories;
+    foreach ($equipment as $catalogueItem) {
+      $knownCategory = false;
+      foreach ($catalogueCategories as $catalogueCategory) {
+        if ($catalogueCategory['name'] === $catalogueItem['category']) { $knownCategory = true; break; }
+      }
+      if (!$knownCategory) {
+        $catalogueCategories[] = [
+          'name' => $catalogueItem['category'],
+          'detail' => 'Browse available ' . strtolower($catalogueItem['category']) . ' options',
+          'icon' => 'fa-solid fa-gear',
+          'anchor' => 'cat-' . strtolower(trim(preg_replace('/[^a-z0-9]+/i', '-', $catalogueItem['category']), '-'))
+        ];
+      }
+    }
+    $renderedCategoryCount = 0;
+    foreach ($catalogueCategories as $catalogueCategory):
+      $categoryItems = array_values(array_filter($equipment, static fn($catalogueItem) => $catalogueItem['category'] === $catalogueCategory['name']));
+      if (!$categoryItems) continue;
+      $renderedCategoryCount++;
+    ?>
+    <section class="catalogue-category" id="<?= e($catalogueCategory['anchor']) ?>" aria-labelledby="<?= e($catalogueCategory['anchor']) ?>-title">
+      <div class="section-heading section-heading--split catalogue-category__heading">
+        <div><p class="eyebrow"><span class="eyebrow-line"></span> <?= e(strtoupper($catalogueCategory['name'])) ?> / <?= count($categoryItems) ?> <?= count($categoryItems) === 1 ? 'OPTION' : 'OPTIONS' ?></p><h2 id="<?= e($catalogueCategory['anchor']) ?>-title"><?= e($catalogueCategory['name']) ?><br><span>Find the right fit.</span></h2></div>
+        <div class="section-heading__aside"><p><?= e($catalogueCategory['detail']) ?>. Product photos are representative; confirm current availability and rates with PayLess.</p></div>
+      </div>
+      <div class="equipment-grid">
+        <?php foreach ($categoryItems as $item): ?>
+        <article class="equipment-card" id="<?= e($item['id']) ?>" data-reveal>
+          <a class="equipment-card__image" href="<?= e(page_url('equipment')) ?>&amp;item=<?= e($item['id']) ?>" aria-label="View <?= e($item['name']) ?>"><img src="<?= e($item['image']) ?>" alt="<?= e($item['alt']) ?>" loading="lazy"><span class="equipment-card__image-arrow">↗</span></a>
+          <div class="equipment-card__body">
+            <p class="equipment-card__category"><?= e($item['category']) ?> <span>•</span> <?= e($item['tag']) ?></p>
+            <h3><a href="<?= e(page_url('equipment')) ?>&amp;item=<?= e($item['id']) ?>"><?= e($item['name']) ?></a></h3>
+            <p class="equipment-card__description"><?= e($item['description']) ?></p>
+            <p class="equipment-card__spec"><?= e($item['spec']) ?></p>
+            <div class="equipment-card__rates"><div><small>CURRENT PRICE</small><strong><?= e($item['price']) ?></strong></div><div><small>PREVIOUS PRICE</small><strong><?= $item['previous'] !== '' ? '<del>' . e($item['previous']) . '</del>' : '—' ?></strong></div></div>
+            <div class="equipment-card__actions"><a href="<?= e(page_url('equipment')) ?>&amp;item=<?= e($item['id']) ?>">View details <span>↗</span></a><button type="button" class="add-equipment" data-add-equipment="<?= e($item['name']) ?>">+ Add to list</button></div>
+          </div>
+        </article>
+        <?php endforeach; ?>
+      </div>
+    </section>
+    <?php endforeach; ?>
+    <p class="catalogue-disclaimer">Prices and specifications are based on the supplied product list. Confirm current availability, equipment details, rental period and any delivery charges with PayLess.</p>
+  </div>
+</section>
 <section class="final-cta final-cta--compact"><div class="container final-cta__inner"><p class="eyebrow">READY WHEN YOU ARE</p><h2>Let's line up<br><span>your equipment.</span></h2><div><a class="button button--primary" href="<?= e(page_url('home')) ?>#request">Build your equipment list <span>↗</span></a><a class="final-cta__phone" href="tel:<?= e(SITE_PHONE_LINK) ?>">Call <?= e(SITE_PHONE) ?> ↗</a></div></div></section>
