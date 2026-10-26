@@ -342,7 +342,7 @@ html[data-theme=light] .value-bar__inner>div{border-color:var(--line)}
 html[data-theme=light] .value-icon{background:#fff;color:#a87800}
 html[data-theme=light] .value-bar small,html[data-theme=light] .request-intro>p:not(.eyebrow),html[data-theme=light] .request-step small{color:var(--muted)}
 html[data-theme=light] .request-step{border-color:var(--line)}
-html[data-theme=light] .request-intro .eyebrow,html[data-theme=light] .final-cta .eyebrow,html[data-theme=light] .gravel-feature__content .eyebrow,html[data-theme=light] .page-hero .eyebrow{color:var(--muted)}
+html[data-theme=light] .request-intro .eyebrow,html[data-theme=light] .final-cta .eyebrow,html[data-theme=light] .page-hero .eyebrow{color:var(--muted)}
 html[data-theme=light] .page-hero{background:#eff0f2;color:var(--ink)}
 html[data-theme=light] .page-hero:after{background:linear-gradient(90deg,rgba(239,240,242,.96) 0%,rgba(239,240,242,.83) 42%,rgba(239,240,242,.35) 100%),url('/assets/images/hero-excavator-poster.jpg') center 48%/cover;opacity:.38}
 html[data-theme=light] .page-hero h1 span,html[data-theme=light] .request-intro h2 span,html[data-theme=light] .final-cta h2 span{color:var(--muted)}
@@ -350,7 +350,8 @@ html[data-theme=light] .page-hero__call,html[data-theme=light] .final-cta__phone
 html[data-theme=light] .hero{background:#252830;color:#fff}
 html[data-theme=light] .hero__background-shade{background:linear-gradient(90deg,rgba(24,26,32,.88) 0%,rgba(24,26,32,.68) 44%,rgba(24,26,32,.24) 100%),linear-gradient(0deg,rgba(24,26,32,.55),transparent 36%)}
 
-html[data-theme=light] .hero .eyebrow,html[data-theme=light] .hero .hero__body,html[data-theme=light] .hero .hero__meta span{color:var(--accent)}
+html[data-theme=light] .hero .eyebrow,html[data-theme=light] .gravel-feature__content .eyebrow{color:var(--accent)}
+html[data-theme=light] .hero .hero__body,html[data-theme=light] .hero .hero__meta span{color:rgba(255,255,255,.84)}
 html[data-theme=light] .hero__bottom{color:rgba(255,255,255,.84)}
 html[data-theme=light] .hero h1 span{color:var(--accent)}
 html[data-theme=light] .gravel-feature{background:#252830;color:#fff}
