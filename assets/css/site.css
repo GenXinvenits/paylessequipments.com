@@ -510,3 +510,6 @@ html[data-theme=dark] .mega-menu{background:rgba(20,25,34,.58)}
 
 /* Keep the mega-menu intro readable when light theme maps --dark to a light grey. */
 html[data-theme=light] .mega-menu__intro{background:#252830;color:#fff}
+
+/* Accent border for the desktop mega-menu intro panel. */
+@media(min-width:781px){.mega-menu__intro{border:1px solid var(--accent)}}
