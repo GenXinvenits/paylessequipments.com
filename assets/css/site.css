@@ -544,3 +544,9 @@ html[data-theme=light] .gravel-fab-wrapper > .gravel-fab:focus-visible {
 .gravel-fab-wrapper > .gravel-fab--call .gravel-fab__copy small {
   font-weight: 800;
 }
+
+
+/* Emphasize the project-pricing prompt in the floating Gravel Delivery action. */
+.gravel-fab-wrapper > .gravel-fab:not(.gravel-fab--call) .gravel-fab__copy small {
+  font-weight: 800;
+}
