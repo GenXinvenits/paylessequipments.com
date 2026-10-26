@@ -197,10 +197,13 @@
     });
   });
   document.querySelectorAll('[data-machine-nav-filter]').forEach(link => link.addEventListener('click', event => {
-    const target = document.querySelector(`.equipment-tab[data-machine-filter="${link.dataset.machineNavFilter}"]`);
-    if (!target) return;
+    const filter = link.dataset.machineNavFilter;
+    const machineTarget = document.querySelector(`.equipment-tab[data-machine-filter="${filter}"]`);
+    const catalogueTarget = document.querySelector(`.catalogue-tab[data-machine-nav-filter="${filter}"]`);
+    if (!machineTarget && !catalogueTarget) return;
     event.preventDefault();
-    activateMachineTab(target);
+    if (machineTarget) activateMachineTab(machineTarget);
+    else activateCatalogueTab(catalogueTarget);
     document.querySelector('#equipment')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     megaTrigger?.setAttribute('aria-expanded', 'false');
     megaMenu?.classList.remove('is-open');
