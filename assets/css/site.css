@@ -258,42 +258,7 @@ html[data-theme=dark] .hero__visual{box-shadow:0 22px 55px rgba(0,0,0,.35)}
 @media(max-width:560px){.hero__visual{min-height:370px;border-radius:7px}.hero__grid{padding-top:32px;padding-bottom:32px}.hero__meta{margin-top:30px}.gravel-feature{min-height:460px}.gravel-feature__image{background-position:58% center}.gravel-feature__content{width:calc(100% - 36px);padding:62px 0 110px}.gravel-feature__stamp{right:18px;bottom:16px;padding:10px 12px;font-size:9px}.gravel-feature__actions{gap:14px}.footer-bottom{padding:14px 0;align-items:flex-start}.page-hero:after{width:100%;opacity:.34;background:linear-gradient(90deg,rgba(24,33,27,.9),rgba(24,33,27,.45)),url('/assets/images/hero-excavator-poster.jpg') center/cover}}
 @media(prefers-reduced-motion:reduce){.button,.footer-column>a,.footer-bottom a{transition:none}}
 
-/* Improve light-theme text contrast and reading sizes without changing dark mode. */
-html[data-theme=light]{--bg:#f7f6f1;--surface:#fffefa;--surface-2:#eeece4;--ink:#252830;--muted:#646a74;--line:rgba(27,38,30,.18);--accent:#f5b82e;--accent-ink:#252830;--dark:#252830;--dark-2:#e5e7eb}
-html[data-theme=light] body{font-size:16px;line-height:1.75}
-html[data-theme=light] .primary-nav a{font-size:13px;color:#646a74}
-html[data-theme=light] .primary-nav a:hover,html[data-theme=light] .primary-nav a.is-active{color:#252830}
-html[data-theme=light] .hero h1 span,html[data-theme=light] .section-heading h2 span,html[data-theme=light] .why-section h2 span,html[data-theme=light] .process-section h2 span,html[data-theme=light] .serve-layout h2 span,html[data-theme=light] .local-layout h2 span,html[data-theme=light] .proof-layout h2 span,html[data-theme=light] .faq-layout h2 span,html[data-theme=light] .about-intro h2 span,html[data-theme=light] .gravel-detail h2 span,html[data-theme=light] .contact-sidebar h2 span{color:#646a74}
-html[data-theme=light] .hero__body{font-size:15px;line-height:1.8;color:#646a74}
-html[data-theme=light] .hero__meta span{font-size:10px;color:#646a74}
-html[data-theme=light] .eyebrow{font-size:11px;color:#646a74}
-html[data-theme=light] .section-heading__aside p,html[data-theme=light] .faq-layout>div>p:not(.eyebrow){font-size:14px;line-height:1.8;color:#646a74}
-html[data-theme=light] .text-link{font-size:12px}
-html[data-theme=light] .equipment-card__category{font-size:10px;color:#646a74}
-html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1.7;color:#646a74;min-height:0}
-html[data-theme=light] .equipment-card__spec{font-size:11px;line-height:1.6}
-html[data-theme=light] .equipment-card__rates small{font-size:10px;color:#646a74}
-html[data-theme=light] .why-grid p,html[data-theme=light] .process-grid p{font-size:13px;line-height:1.8;color:#646a74}
-html[data-theme=light] .local-layout>div>p:not(.eyebrow),html[data-theme=light] .about-intro p:not(.eyebrow),html[data-theme=light] .gravel-detail p:not(.eyebrow){font-size:15px;line-height:1.8;color:#646a74}
-html[data-theme=light] .proof-copy{font-size:15px;line-height:1.8}
-html[data-theme=light] .proof-note{font-size:12px;line-height:1.7;color:#646a74}
-html[data-theme=light] .equipment-tab-detail{font-size:11px;color:#646a74}
-html[data-theme=light] .request-intro>p:not(.eyebrow){font-size:14px;line-height:1.8}
-html[data-theme=light] .request-form label,html[data-theme=light] .request-form legend{font-size:12px}
-html[data-theme=light] .request-form input:not([type=checkbox]),html[data-theme=light] .request-form select,html[data-theme=light] .request-form textarea{font-size:13px}
-html[data-theme=light] .form-disclaimer{font-size:11px;line-height:1.7}
-html[data-theme=light] .page-hero__inner>p:not(.eyebrow){font-size:15px;line-height:1.8}
-html[data-theme=light] .footer-note,html[data-theme=light] .footer-column>a,html[data-theme=light] .footer-contact>p:not(.footer-label){font-size:12px;color:#646a74}
-html[data-theme=light] .footer-label{font-size:10px;color:#646a74}
-html[data-theme=light] .footer-bottom{font-size:10px;color:#646a74}
-html[data-theme=light] .footer-bottom a{color:#f2f4ed}
-html[data-theme=light] .button{font-size:12px}
-html[data-theme=light] .equipment-picker__option span{font-size:11px}
-html[data-theme=light] .equipment-picker>summary{font-size:12px}
-html[data-theme=light] .request-section{background:#252830;color:#f0f1e9}
-html[data-theme=light] .page-hero h1 span,html[data-theme=light] .request-intro h2 span,html[data-theme=light] .final-cta h2 span{color:#646a74}
-html[data-theme=light] .page-hero .eyebrow,html[data-theme=light] .request-intro .eyebrow,html[data-theme=light] .final-cta .eyebrow,html[data-theme=light] .gravel-feature__content .eyebrow{color:#646a74}
-@media(max-width:780px){html[data-theme=light] .hero__body{font-size:14px}html[data-theme=light] .section-heading__aside p,html[data-theme=light] .local-layout>div>p:not(.eyebrow){font-size:14px}}
+/* Shared typography and component sizing: theme changes are limited to palette and contrast. */
 
 /* Full-bleed video hero */
 .hero{isolation:isolate;min-height:min(760px,calc(100svh - 120px));display:flex;flex-direction:column;justify-content:center;background:#17231b;color:#fff}
@@ -384,7 +349,7 @@ html[data-theme=light] .page-hero h1 span,html[data-theme=light] .request-intro 
 html[data-theme=light] .page-hero__call,html[data-theme=light] .final-cta__phone{color:var(--ink)}
 html[data-theme=light] .hero{background:#252830;color:#fff}
 html[data-theme=light] .hero__background-shade{background:linear-gradient(90deg,rgba(24,26,32,.88) 0%,rgba(24,26,32,.68) 44%,rgba(24,26,32,.24) 100%),linear-gradient(0deg,rgba(24,26,32,.55),transparent 36%)}
-html[data-theme=light] .hero .eyebrow{font-size:10px}
+
 html[data-theme=light] .hero .eyebrow,html[data-theme=light] .hero .hero__body,html[data-theme=light] .hero .hero__meta span{color:var(--accent)}
 html[data-theme=light] .hero__bottom{color:rgba(255,255,255,.84)}
 html[data-theme=light] .hero h1 span{color:var(--accent)}
