@@ -500,3 +500,7 @@ html[data-theme=dark] .contact-form-wrap{
 /* Keep the mega-menu catalogue link readable on hover in the light theme. */
 html[data-theme=light] .mega-menu__intro>a:hover,
 html[data-theme=light] .mega-menu__intro>a:focus-visible{color:#fff!important;}
+
+/* Equipment catalogue hero background. */
+html[data-theme=dark] .page-hero.page-hero--equipment:after{width:100%;background:linear-gradient(90deg,rgba(16,19,25,.88) 0%,rgba(16,19,25,.68) 44%,rgba(16,19,25,.24) 100%),linear-gradient(0deg,rgba(16,19,25,.55),transparent 36%),url('/assets/images/equipments-hero.jpeg') center 52%/cover;opacity:1}
+html[data-theme=light] .page-hero.page-hero--equipment:after{width:100%;background:linear-gradient(90deg,rgba(239,240,242,.96) 0%,rgba(239,240,242,.68) 44%,rgba(239,240,242,.24) 100%),linear-gradient(0deg,rgba(239,240,242,.55),transparent 36%),url('/assets/images/equipments-hero.jpeg') center 52%/cover;opacity:1}
