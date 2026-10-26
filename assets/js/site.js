@@ -3,14 +3,6 @@
   document.documentElement.classList.add('js-motion');
   const root = document.documentElement;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  document.querySelectorAll('.hero__image').forEach(video => {
-    const syncMotionPreference = () => {
-      if (reducedMotion.matches) video.pause();
-      else video.play().catch(() => {});
-    };
-    syncMotionPreference();
-    reducedMotion.addEventListener?.('change', syncMotionPreference);
-  });
   const themeButton = document.querySelector('.theme-toggle');
   const themeIcon = document.querySelector('.theme-toggle__icon');
   const metaTheme = document.querySelector('meta[name="theme-color"]');
