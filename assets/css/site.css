@@ -581,5 +581,5 @@ html[data-theme=light] .gravel-fab-wrapper > .gravel-fab:focus-visible {
 @media(max-width:780px){.catalogue-tabs{gap:7px;margin-top:20px}.catalogue-tab{min-height:44px;padding:0 13px;gap:10px;font-size:11px}.catalogue-category{margin-top:26px}.catalogue-category__heading{align-items:flex-start;gap:14px}}
 
 
-/* Restore the original, more readable equipment-description style on the catalogue page only. */
-html[data-theme=light] .catalogue-category .equipment-card__description{font-size:13px;line-height:1.7;color:#646a74;min-height:0}
+/* Match the equipment blurb typography used by the main-branch catalogue. */
+.catalogue-category .equipment-card__description{font-size:10px;line-height:1.7;color:var(--muted);min-height:0}
