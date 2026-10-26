@@ -44,7 +44,6 @@ if ($selectedEquipment) {
         ];
       }
     }
-    <?php
     $availableCatalogueCategories = [];
     foreach ($catalogueCategories as $catalogueCategory) {
       $categoryItems = array_values(array_filter($equipment, static fn($catalogueItem) => $catalogueItem['category'] === $catalogueCategory['name']));
