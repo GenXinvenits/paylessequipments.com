@@ -507,3 +507,6 @@ html[data-theme=dark] .mega-menu{background:rgba(20,25,34,.58)}
 .gravel-fab--call .gravel-fab__copy{padding-left:32px}.gravel-fab--call .gravel-fab__copy-phone{top:50%;font-size:21px;line-height:1;transform:translateY(-50%)}
 .gravel-fab-wrapper>.gravel-fab:hover .gravel-fab__icon i,.gravel-fab-wrapper>.gravel-fab:focus-visible .gravel-fab__icon i{animation:fab-icon-hover .55s cubic-bezier(.2,.8,.25,1)}.gravel-fab-wrapper>.gravel-fab:hover .gravel-fab__arrow,.gravel-fab-wrapper>.gravel-fab:focus-visible .gravel-fab__arrow{transform:translateX(3px)}.gravel-fab__arrow{transition:width .42s cubic-bezier(.22,1,.36,1),opacity .2s ease .08s,transform .25s ease}@keyframes fab-icon-hover{0%{transform:translateY(0) rotate(0)}35%{transform:translateY(-2px) rotate(-10deg)}70%{transform:translateY(0) rotate(8deg)}100%{transform:translateY(0) rotate(0)}}
 @media(prefers-reduced-motion:reduce){.gravel-fab-wrapper>.gravel-fab:hover .gravel-fab__icon i,.gravel-fab-wrapper>.gravel-fab:focus-visible .gravel-fab__icon i{animation:none}.gravel-fab__arrow{transition:none}}
+
+/* Keep the mega-menu intro readable when light theme maps --dark to a light grey. */
+html[data-theme=light] .mega-menu__intro{background:#252830;color:#fff}
