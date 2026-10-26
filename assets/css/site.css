@@ -538,3 +538,9 @@ html[data-theme=light] .gravel-fab-wrapper > .gravel-fab:focus-visible {
   border-color: rgba(23,35,27,.28);
   box-shadow: 0 17px 40px rgba(8,14,10,.24);
 }
+
+
+/* Emphasize the phone number in the floating Call Now action. */
+.gravel-fab-wrapper > .gravel-fab--call .gravel-fab__copy small {
+  font-weight: 800;
+}
