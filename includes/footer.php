@@ -21,6 +21,6 @@
   <div class="container footer-bottom"><span>© <?= date('Y') ?> PayLess Equipment Rental LLC</span><span>Built around the way you work.</span><span class="footer-legal"><a href="<?= e(page_url('privacy')) ?>">Privacy</a><a href="<?= e(page_url('terms')) ?>">Terms &amp; Conditions</a><a href="<?= e(page_url('disclaimer')) ?>">Website disclaimer</a></span><a href="#top">Back to top ↑</a></div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.8/dist/lenis.min.js" defer></script>
-<script src="/assets/js/site.js?v=scroll-reveal-2" defer></script>
+<script src="/assets/js/site.js?v=homepage-catalogue-tabs-1" defer></script>
 </body>
 </html>
