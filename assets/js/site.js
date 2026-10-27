@@ -60,33 +60,24 @@
       }
     }, 180);
   };
-  // On mobile, the first tap after page load can be consumed by the
-  // browser's hover/focus transition. Prevent that by explicitly opening
-  // the menu on pointer interaction; the click handler then toggles normally.
-  megaTrigger?.addEventListener('pointerdown', event => {
-    if (window.innerWidth <= 780 && megaTrigger.getAttribute('aria-expanded') !== 'true') {
-      event.preventDefault();
-      openMegaMenu();
-    }
-  });
+  // Keep the mobile dropdown open after a tap. Hover-based close behavior is
+  // desktop-only; on touch devices, close via a second tap or outside click.
   megaTrigger?.addEventListener('click', event => {
+    event.preventDefault();
     const open = megaTrigger.getAttribute('aria-expanded') === 'true';
-    if (window.innerWidth <= 780 && !open) {
-      event.preventDefault();
-      openMegaMenu();
-      return;
-    }
     if (open) {
       megaTrigger.setAttribute('aria-expanded', 'false');
       megaMenu?.classList.remove('is-open');
     } else openMegaMenu();
   });
   window.addEventListener('resize', positionMegaMenu);
-  megaItem?.addEventListener('mouseenter', openMegaMenu);
-  megaItem?.addEventListener('mouseleave', scheduleMegaClose);
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    megaItem?.addEventListener('mouseenter', openMegaMenu);
+    megaItem?.addEventListener('mouseleave', scheduleMegaClose);
+    megaMenu?.addEventListener('mouseenter', openMegaMenu);
+    megaMenu?.addEventListener('mouseleave', scheduleMegaClose);
+  }
   megaItem?.addEventListener('focusin', openMegaMenu);
-  megaMenu?.addEventListener('mouseenter', openMegaMenu);
-  megaMenu?.addEventListener('mouseleave', scheduleMegaClose);
   document.addEventListener('click', event => {
     if (megaMenu && !megaMenu.closest('.nav-item--mega')?.contains(event.target)) {
       megaTrigger?.setAttribute('aria-expanded', 'false');
