@@ -704,3 +704,20 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     -webkit-appearance: none;
   }
 }
+
+
+/* Make the mobile hamburger control circular, not square. */
+@media (max-width: 780px) {
+  .menu-toggle {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+    padding: 11px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+}
