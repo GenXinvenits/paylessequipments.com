@@ -757,3 +757,27 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     transform: none;
   }
 }
+
+
+/* Explicitly center the theme glyph in both light and dark mobile themes. */
+@media (max-width: 780px) {
+  html[data-theme="light"] .theme-toggle,
+  html[data-theme="dark"] .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+  }
+
+  html[data-theme="light"] .theme-toggle__icon,
+  html[data-theme="dark"] .theme-toggle__icon {
+    display: block;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    transform: none;
+  }
+}
