@@ -840,3 +840,10 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     border-radius: 0;
   }
 }
+
+/* Remove the apparent top gap inside the mobile navigation panel. */
+@media (max-width: 780px) {
+  .primary-nav {
+    padding-top: 0;
+  }
+}
