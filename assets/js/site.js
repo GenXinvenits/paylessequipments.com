@@ -24,13 +24,22 @@
 
   const menuButton = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.primary-nav');
+  const alignMobileNav = () => {
+    if (nav && siteHeader && window.innerWidth <= 780) {
+      nav.style.top = `${siteHeader.getBoundingClientRect().bottom}px`;
+    } else if (nav) {
+      nav.style.removeProperty('top');
+    }
+  };
   menuButton?.addEventListener('click', () => {
     const open = menuButton.getAttribute('aria-expanded') === 'true';
     menuButton.setAttribute('aria-expanded', String(!open));
     menuButton.setAttribute('aria-label', open ? 'Open navigation' : 'Close navigation');
+    if (!open) alignMobileNav();
     nav?.classList.toggle('is-open', !open);
     document.body.classList.toggle('menu-open', !open);
   });
+  window.addEventListener('resize', alignMobileNav);
   nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
     nav.classList.remove('is-open');
     menuButton?.setAttribute('aria-expanded', 'false');
