@@ -862,3 +862,38 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     padding: 0 22px 25px;
   }
 }
+
+/* Larger, tap-friendly tabs in the mobile hamburger menu. */
+@media (max-width: 780px) {
+  .site-header .primary-nav {
+    gap: 10px;
+    padding: 16px 18px 22px;
+  }
+  .site-header .primary-nav > a,
+  .site-header .primary-nav > .nav-item--mega > .nav-mega-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 54px;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.35;
+    text-align: left;
+  }
+  .site-header .primary-nav > a.is-active,
+  .site-header .primary-nav > .nav-item--mega.is-active > .nav-mega-trigger {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+  .site-header .primary-nav > a:active,
+  .site-header .primary-nav > .nav-item--mega > .nav-mega-trigger:active {
+    transform: scale(.99);
+  }
+}
