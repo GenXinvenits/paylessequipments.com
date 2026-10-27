@@ -1067,3 +1067,16 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     padding-left: 0;
   }
 }
+
+/* Restore vertical breathing room for the mobile navbar logo without changing its left alignment. */
+@media (max-width: 780px) {
+  .nav-wrap > .brand > .brand__mobile-footer-logo-frame {
+    height: 82px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .nav-wrap > .brand .brand__mobile-footer-logo {
+    top: 0;
+  }
+}
