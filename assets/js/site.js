@@ -60,8 +60,22 @@
       }
     }, 180);
   };
-  megaTrigger?.addEventListener('click', () => {
+  // On mobile, the first tap after page load can be consumed by the
+  // browser's hover/focus transition. Prevent that by explicitly opening
+  // the menu on pointer interaction; the click handler then toggles normally.
+  megaTrigger?.addEventListener('pointerdown', event => {
+    if (window.innerWidth <= 780 && megaTrigger.getAttribute('aria-expanded') !== 'true') {
+      event.preventDefault();
+      openMegaMenu();
+    }
+  });
+  megaTrigger?.addEventListener('click', event => {
     const open = megaTrigger.getAttribute('aria-expanded') === 'true';
+    if (window.innerWidth <= 780 && !open) {
+      event.preventDefault();
+      openMegaMenu();
+      return;
+    }
     if (open) {
       megaTrigger.setAttribute('aria-expanded', 'false');
       megaMenu?.classList.remove('is-open');
