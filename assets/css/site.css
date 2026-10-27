@@ -905,3 +905,33 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     grid-template-columns: minmax(0, 1fr) !important;
   }
 }
+
+
+/* Desktop mega-menu intro: use the brand yellow as a solid panel. */
+@media (min-width: 781px) {
+  .mega-menu__intro {
+    background: var(--accent) !important;
+    color: var(--accent-ink) !important;
+    border: 0 !important;
+  }
+
+  .mega-menu__intro .eyebrow {
+    color: var(--accent-ink) !important;
+    opacity: .78;
+  }
+
+  .mega-menu__intro > strong {
+    color: var(--accent-ink) !important;
+  }
+
+  .mega-menu__intro > a,
+  html[data-theme="light"] .mega-menu__intro > a,
+  html[data-theme="light"] .mega-menu__intro > a:hover,
+  html[data-theme="light"] .mega-menu__intro > a:focus-visible {
+    color: var(--accent-ink) !important;
+  }
+
+  .mega-menu__intro > a span {
+    color: inherit;
+  }
+}
