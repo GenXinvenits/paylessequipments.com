@@ -737,3 +737,23 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     flex: 0 0 42px;
   }
 }
+
+
+/* Keep the theme glyph visually centered inside the circular mobile control. */
+@media (max-width: 780px) {
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .theme-toggle__icon {
+    display: block;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    transform: none;
+  }
+}
