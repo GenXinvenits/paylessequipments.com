@@ -19,7 +19,7 @@ $navItems = [
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="/assets/css/site.css?v=light-mobile-hero-paragraph-contrast-1">
+  <link rel="stylesheet" href="/assets/css/site.css?v=mobile-navbar-logo-left-spacing-1">
   <link rel="icon" type="image/png" href="/assets/images/payless-equipment-rental-logo.png?v=favicon-2">
   <link rel="apple-touch-icon" href="/assets/images/payless-equipment-rental-logo.png?v=favicon-2">
   <script>
