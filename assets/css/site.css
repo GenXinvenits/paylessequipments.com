@@ -355,15 +355,15 @@ html[data-theme] .hero .hero__meta i{color:var(--accent)}
 html[data-theme=dark] .page-hero.page-hero--gravel:after{width:100%;background:linear-gradient(90deg,rgba(16,19,25,.88) 0%,rgba(16,19,25,.68) 44%,rgba(16,19,25,.24) 100%),linear-gradient(0deg,rgba(16,19,25,.55),transparent 36%),url('/assets/images/gravel-delivery.jpeg') center 48%/cover;opacity:1}
 html[data-theme=light] .page-hero.page-hero--gravel:after{width:100%;background:linear-gradient(90deg,rgba(239,240,242,.96) 0%,rgba(239,240,242,.68) 44%,rgba(239,240,242,.24) 100%),linear-gradient(0deg,rgba(239,240,242,.55),transparent 36%),url('/assets/images/gravel-delivery.jpeg') center 48%/cover;opacity:1}
 .gravel-feature:not(.gravel-feature--page) .gravel-feature__image{background-image:url('/assets/images/gravel-delivery.jpeg')}
-.process-grid article:not(:last-child)::after{content:'→';position:absolute;z-index:2;top:50%;right:-15px;transform:translate(50%,-50%);display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,185,0,.48);border-radius:50%;background:var(--surface);color:var(--accent);font-size:20px;font-weight:800;line-height:1}
-@media(max-width:780px){.process-grid article:not(:last-child)::after{content:'↓';top:auto;right:50%;bottom:-19px;transform:translate(50%,50%);width:30px;height:30px;font-size:18px}}
+
+
 .hero h1{font-size:clamp(48px,6vw,82px);letter-spacing:-.075em;line-height:.99;font-weight:800;margin:0;max-width:670px;text-transform:none}
 @media(max-width:780px){.hero h1{font-size:clamp(48px,6.4vw,70px)}}
 @media(max-width:440px){.hero h1{font-size:clamp(48px,13vw,68px)}}
 .process-grid{column-gap:30px}
 .process-grid article:not(:last-child){z-index:1}
-.process-grid article:not(:last-child)::after{width:30px;height:30px;right:-15px;font-size:18px}
-@media(max-width:780px){.process-grid{row-gap:30px;column-gap:0}.process-grid article:not(:last-child)::after{right:50%;bottom:-15px}}
+
+
 .serve-section{background:var(--surface-2)}
 .serve-layout{align-items:center;gap:clamp(38px,6vw,78px)}
 .serve-intro h2{font-size:clamp(42px,5vw,66px);line-height:.98}
