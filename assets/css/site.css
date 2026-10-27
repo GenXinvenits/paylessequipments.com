@@ -1122,3 +1122,43 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     margin: 0;
   }
 }
+
+/* Final mobile logo layout: size from the navbar's actual available height. */
+@media (max-width: 780px) {
+  .nav-wrap {
+    align-items: stretch;
+  }
+
+  .nav-wrap > .brand {
+    align-self: stretch;
+    min-width: 0;
+    height: 100%;
+  }
+
+  .nav-wrap > .brand > .brand__mobile-footer-logo-frame {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    flex: 0 1 auto;
+    width: auto;
+    height: 100%;
+    min-width: 0;
+    max-width: 116px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .nav-wrap > .brand .brand__mobile-footer-logo {
+    display: block;
+    position: static;
+    flex: 0 1 auto;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    padding: 0;
+    margin: 0;
+  }
+}
