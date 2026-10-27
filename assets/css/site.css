@@ -955,3 +955,6 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
 /* Slightly emphasize the footer brand tagline */
 .site-footer .footer-brand>p:first-of-type{font-size:14px}
 @media(max-width:780px){.site-footer .footer-brand>p:first-of-type{font-size:13px}}
+
+/* Home hero quote button: subtle glass blur behind the translucent background. */
+.hero__actions .button--outline{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
