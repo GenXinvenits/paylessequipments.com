@@ -975,3 +975,74 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     white-space: nowrap;
   }
 }
+
+/* Mobile sub-page hero: keep the gradient behind the copy and improve text contrast. */
+@media (max-width: 780px) {
+  .page-hero {
+    isolation: isolate;
+  }
+
+  .page-hero::after {
+    z-index: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgba(12, 18, 14, .78) 0%,
+      rgba(12, 18, 14, .56) 48%,
+      rgba(12, 18, 14, .24) 100%
+    );
+  }
+
+  .page-hero__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-hero h1 {
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+
+  .page-hero__inner > p:not(.eyebrow) {
+    color: rgba(255, 255, 255, .88);
+    line-height: 1.75;
+  }
+
+  .page-hero .eyebrow,
+  .page-hero h1,
+  .page-hero h1 span,
+  .page-hero .page-hero__call {
+    color: #fff;
+  }
+}
+
+/* Light theme uses a light hero surface, so retain dark readable copy there. */
+@media (max-width: 780px) {
+  html[data-theme="light"] .page-hero::after {
+    background: linear-gradient(
+      180deg,
+      rgba(239, 240, 242, .32) 0%,
+      rgba(239, 240, 242, .12) 100%
+    );
+  }
+
+  html[data-theme="light"] .page-hero h1,
+  html[data-theme="light"] .page-hero h1 span,
+  html[data-theme="light"] .page-hero .page-hero__call {
+    color: var(--ink);
+  }
+
+  html[data-theme="light"] .page-hero .eyebrow {
+    color: var(--muted);
+  }
+
+  html[data-theme="light"] .page-hero__inner > p:not(.eyebrow) {
+    color: var(--muted);
+  }
+}
