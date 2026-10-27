@@ -821,3 +821,22 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     transition: none;
   }
 }
+
+
+/* Preserve the original hamburger control and line sizing; improve touch usability only. */
+@media (max-width: 780px) {
+  .menu-toggle {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+    flex: 0 0 42px;
+    padding: 11px;
+    gap: 5px;
+  }
+
+  .menu-toggle span {
+    height: 1px;
+    border-radius: 0;
+  }
+}
