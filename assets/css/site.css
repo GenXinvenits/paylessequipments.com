@@ -897,3 +897,11 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     transform: scale(.99);
   }
 }
+
+/* On phones, show equipment cards in a single full-width column. */
+@media (max-width: 560px) {
+  .equipment-grid,
+  .catalogue-category .equipment-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
