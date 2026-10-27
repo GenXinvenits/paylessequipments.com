@@ -583,3 +583,97 @@ html[data-theme=light] .gravel-fab-wrapper > .gravel-fab:focus-visible {
 
 /* Match the equipment description styling from the main branch. */
 html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1.7;color:#646a74;min-height:0}
+
+
+/* Mobile navigation: keep the Equipment dropdown usable and scrollable. */
+@media (max-width: 780px) {
+  .primary-nav {
+    max-height: calc(100dvh - 108px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .primary-nav .nav-item--mega {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .primary-nav .nav-mega-trigger {
+    display: flex;
+    width: 100%;
+    min-height: 48px;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    padding: 14px 0;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--muted);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .primary-nav .nav-item--mega.is-active > .nav-mega-trigger,
+  .primary-nav .nav-mega-trigger[aria-expanded="true"] {
+    color: var(--ink);
+  }
+
+  /* Override the mobile :focus-within rule that otherwise hides an open menu. */
+  .primary-nav .nav-item--mega:focus-within > .mega-menu.is-open,
+  .primary-nav .nav-item--mega > .mega-menu.is-open {
+    display: block;
+    position: static;
+    width: 100%;
+    max-height: min(52dvh, 420px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 8px 0 12px;
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    box-shadow: none;
+    background: transparent;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .primary-nav .mega-menu:before,
+  .primary-nav .mega-menu__intro {
+    display: none;
+  }
+
+  .primary-nav .mega-menu__categories {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    width: 100%;
+  }
+
+  .primary-nav .mega-menu__category {
+    grid-template-columns: 42px minmax(0, 1fr) 14px;
+    gap: 10px;
+    min-width: 0;
+    padding: 10px 4px;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    background: transparent;
+  }
+
+  .primary-nav .mega-menu__category img {
+    width: 42px;
+    height: 38px;
+  }
+
+  .primary-nav .mega-menu__category strong {
+    font-size: 11px;
+  }
+
+  .primary-nav .mega-menu__category small {
+    font-size: 9px;
+  }
+}
