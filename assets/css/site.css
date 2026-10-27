@@ -951,3 +951,7 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
   .nav-wrap>.brand>.brand__mobile-footer-logo-frame{position:relative;display:block;flex:0 0 auto;width:96px;height:72px;overflow:visible}
   .nav-wrap>.brand .brand__mobile-footer-logo{position:absolute;top:-13px;left:0;width:96px;height:auto}
 }
+
+/* Slightly emphasize the footer brand tagline */
+.site-footer .footer-brand>p:first-of-type{font-size:14px}
+@media(max-width:780px){.site-footer .footer-brand>p:first-of-type{font-size:13px}}
