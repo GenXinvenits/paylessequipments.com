@@ -1123,7 +1123,7 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
   }
 }
 
-/* Final mobile logo layout: size from the navbar's actual available height. */
+/* Keep the mobile logo visible and constrain it to the navbar's real height. */
 @media (max-width: 780px) {
   .nav-wrap {
     align-items: stretch;
@@ -1137,11 +1137,12 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
 
   .nav-wrap > .brand > .brand__mobile-footer-logo-frame {
     display: flex;
+    align-self: stretch;
     align-items: center;
     justify-content: flex-start;
     position: relative;
     flex: 0 1 auto;
-    width: auto;
+    width: 116px;
     min-width: 0;
     max-width: 116px;
     padding: 0;
@@ -1153,7 +1154,7 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     position: static;
     flex: 0 1 auto;
     width: auto;
-    height: auto;
+    height: 100%;
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
