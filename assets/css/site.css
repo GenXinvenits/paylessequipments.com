@@ -907,31 +907,28 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
 }
 
 
-/* Desktop mega-menu intro: solid brand yellow with a balanced light/dark type hierarchy. */
+/* Desktop mega-menu intro: use the brand yellow as a solid panel. */
 @media (min-width: 781px) {
   .mega-menu__intro {
     background: var(--accent) !important;
-    color: #171717 !important;
+    color: var(--accent-ink) !important;
     border: 0 !important;
   }
 
   .mega-menu__intro .eyebrow {
-    color: rgba(255, 255, 255, .96) !important;
-    font-weight: 800;
-    letter-spacing: .14em;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, .16);
+    color: var(--accent-ink) !important;
+    opacity: .78;
   }
 
   .mega-menu__intro > strong {
-    color: #171717 !important;
+    color: var(--accent-ink) !important;
   }
 
   .mega-menu__intro > a,
-  .mega-menu__intro > a:hover,
-  .mega-menu__intro > a:focus-visible {
-    color: #fff !important;
-    font-weight: 900;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+  html[data-theme="light"] .mega-menu__intro > a,
+  html[data-theme="light"] .mega-menu__intro > a:hover,
+  html[data-theme="light"] .mega-menu__intro > a:focus-visible {
+    color: var(--accent-ink) !important;
   }
 
   .mega-menu__intro > a span {
