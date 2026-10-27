@@ -677,3 +677,30 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     font-size: 9px;
   }
 }
+
+
+/* Keep every mobile navigation item typographically consistent. */
+@media (max-width: 780px) {
+  .primary-nav > a,
+  .primary-nav > .nav-item--mega > .nav-mega-trigger {
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 15px;
+    font-style: inherit;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: inherit;
+    text-transform: none;
+  }
+
+  .primary-nav > a {
+    display: block;
+    width: 100%;
+  }
+
+  .primary-nav > .nav-item--mega > .nav-mega-trigger {
+    margin: 0;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+}
