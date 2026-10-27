@@ -1080,3 +1080,20 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     top: 0;
   }
 }
+
+/* Keep the mobile navbar logo fully inside the 72px header. */
+@media (max-width: 780px) {
+  .nav-wrap > .brand > .brand__mobile-footer-logo-frame {
+    height: 72px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .nav-wrap > .brand .brand__mobile-footer-logo {
+    top: 0;
+    left: 0;
+    width: 96px;
+    padding: 0;
+    margin: 0;
+  }
+}
