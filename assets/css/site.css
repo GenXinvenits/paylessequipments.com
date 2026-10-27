@@ -1046,3 +1046,12 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     color: var(--muted);
   }
 }
+
+/* Improve paragraph contrast in light-theme mobile sub-page heroes. */
+@media (max-width: 780px) {
+  html[data-theme="light"] .page-hero .page-hero__inner > p:not(.eyebrow) {
+    color: #343b35;
+    opacity: 1;
+    text-shadow: none;
+  }
+}
