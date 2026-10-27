@@ -1142,7 +1142,6 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     position: relative;
     flex: 0 1 auto;
     width: auto;
-    height: 100%;
     min-width: 0;
     max-width: 116px;
     padding: 0;
