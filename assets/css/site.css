@@ -1055,3 +1055,15 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     text-shadow: none;
   }
 }
+
+/* Mobile navbar logo: reduce the empty space on the left edge. */
+@media (max-width: 780px) {
+  .nav-wrap > .brand > .brand__mobile-footer-logo-frame {
+    padding-left: 0;
+  }
+
+  .nav-wrap > .brand .brand__mobile-footer-logo {
+    left: 0;
+    padding-left: 0;
+  }
+}
