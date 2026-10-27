@@ -781,3 +781,43 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
     transform: none;
   }
 }
+
+
+/* Touch-friendly mobile hamburger: larger hit area, clear focus and feedback. */
+@media (max-width: 780px) {
+  .menu-toggle {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    flex: 0 0 48px;
+    padding: 12px;
+    gap: 6px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
+  }
+
+  .menu-toggle span {
+    height: 2px;
+    border-radius: 2px;
+    pointer-events: none;
+  }
+
+  .menu-toggle:active {
+    background: var(--surface-2);
+    transform: scale(.96);
+  }
+
+  .menu-toggle:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-toggle {
+    transition: none;
+  }
+}
