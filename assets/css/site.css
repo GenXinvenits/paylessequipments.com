@@ -958,3 +958,20 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
 
 /* Home hero quote button: subtle glass blur behind the translucent background. */
 .hero__actions .button--outline{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+
+/* Mobile product cards: keep “Add to list” beside “View details”. */
+@media (max-width: 780px) {
+  .equipment-card__actions {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .equipment-card__actions > a,
+  .equipment-card__actions > .add-equipment {
+    flex: 0 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+  }
+}
