@@ -39,7 +39,6 @@
 
   const megaTrigger = document.querySelector('.nav-mega-trigger');
   const megaMenu = document.querySelector('.mega-menu');
-  const megaTriggerIsLink = megaTrigger?.tagName === 'A';
   const megaItem = document.querySelector('.nav-item--mega');
   const siteHeader = document.querySelector('.site-header');
   let megaCloseTimer;
@@ -61,15 +60,13 @@
       }
     }, 180);
   };
-  if (!megaTriggerIsLink) {
-    megaTrigger?.addEventListener('click', () => {
-      const open = megaTrigger.getAttribute('aria-expanded') === 'true';
-      if (open) {
-        megaTrigger.setAttribute('aria-expanded', 'false');
-        megaMenu?.classList.remove('is-open');
-      } else openMegaMenu();
-    });
-  }
+  megaTrigger?.addEventListener('click', () => {
+    const open = megaTrigger.getAttribute('aria-expanded') === 'true';
+    if (open) {
+      megaTrigger.setAttribute('aria-expanded', 'false');
+      megaMenu?.classList.remove('is-open');
+    } else openMegaMenu();
+  });
   window.addEventListener('resize', positionMegaMenu);
   megaItem?.addEventListener('mouseenter', openMegaMenu);
   megaItem?.addEventListener('mouseleave', scheduleMegaClose);
