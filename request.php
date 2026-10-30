@@ -178,28 +178,17 @@ $textBody = "PAYLESS EQUIPMENT RENTAL LLC\nNew {$requestLabel}\nRequest referenc
   . implode("\n", $textRows)
   . "\n\nProject details:\n{$detailsText}\n\nSubmitted through the PayLess Equipment Rental website.\n";
 
-$boundary = '=_PayLess_' . bin2hex(random_bytes(16));
-$headers = [
-  'From' => 'PayLess Equipment Rental <' . $sender . '>',
-  'Reply-To' => (string) $email,
-  'MIME-Version' => '1.0',
-  'Content-Type' => 'multipart/alternative; boundary="' . $boundary . '"',
-  'X-Mailer' => 'PayLess Website Forms',
-];
-$message = '--' . $boundary . "\r\n"
-  . "Content-Type: text/plain; charset=UTF-8\r\n"
-  . "Content-Transfer-Encoding: 8bit\r\n\r\n"
-  . $textBody . "\r\n"
-  . '--' . $boundary . "\r\n"
-  . "Content-Type: text/html; charset=UTF-8\r\n"
-  . "Content-Transfer-Encoding: 8bit\r\n\r\n"
-  . $htmlBody . "\r\n"
-  . '--' . $boundary . "--\r\n";
+require_once __DIR__ . '/includes/mailer.php';
 
-if (!mail($recipient, $subject, $message, $headers)) {
-  error_log('PayLess request #' . $requestId . ' was saved but its notification email could not be handed to the mail transport.');
+try {
+  payless_send_email($recipient, $subject, $htmlBody, $textBody, (string) $email);
+} catch (Throwable $exception) {
+  // The customer request is already committed. Keep it even if SMTP is unavailable.
+  error_log('PayLess request #' . $requestId . ' was saved, but SMTP notification failed: '
+    . get_class($exception) . ': ' . $exception->getMessage());
   $_SESSION['request_last_sent'] = time();
   request_redirect('saved-email-failed');
 }
+
 $_SESSION['request_last_sent'] = time();
 request_redirect('sent');
