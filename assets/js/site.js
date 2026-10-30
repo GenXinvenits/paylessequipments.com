@@ -131,6 +131,17 @@
     syncEquipmentPicker(picker);
   });
 
+  // Attachment dropdowns mirror the equipment multi-select picker.
+  document.querySelectorAll('.attachment-picker').forEach(picker => {
+    const summary = picker.querySelector('[data-attachment-summary]');
+    const sync = () => {
+      const selected = picker.querySelectorAll('input[name="attachments[]"]:checked');
+      if (summary) summary.textContent = selected.length ? `${selected.length} selected` : 'Choose attachments';
+    };
+    picker.querySelectorAll('input[name="attachments[]"]').forEach(input => input.addEventListener('change', sync));
+    sync();
+  });
+
   document.querySelectorAll('.request-form').forEach(form => form.addEventListener('submit', event => {
     const choices = form.querySelectorAll('input[name="equipment[]"]:checked');
     const error = form.querySelector('[data-equipment-error]');
