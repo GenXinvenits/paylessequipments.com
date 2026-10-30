@@ -38,6 +38,14 @@ $allowedEquipmentNames = array_column($equipment, 'name');
 $equipmentList = array_values(array_intersect($equipmentList, array_merge($allowedEquipmentNames, ['Other / not sure'])));
 if ($formType === 'equipment' && count($equipmentList) === 0) { request_redirect('missing'); }
 
+$attachmentList = $_POST['attachments'] ?? [];
+if (!is_array($attachmentList)) { $attachmentList = []; }
+$allowedAttachmentNames = array_column($requestAttachments, 'name');
+$attachmentList = array_values(array_unique(array_intersect(
+  array_filter(array_map(static fn($value) => trim(strip_tags((string) $value)), $attachmentList)),
+  $allowedAttachmentNames
+)));
+
 $rentalPeriod = trim(strip_tags((string) ($_POST['rental_period'] ?? '')));
 $rawStartDate = trim((string) ($_POST['start_date'] ?? ''));
 $startDate = null;
@@ -54,6 +62,7 @@ $company = trim(strip_tags((string) ($_POST['company'] ?? '')));
 $zip = trim(strip_tags((string) ($_POST['zip'] ?? '')));
 $quantity = trim(strip_tags((string) ($_POST['quantity'] ?? '')));
 $details = trim(strip_tags((string) ($_POST['details'] ?? '')));
+if ($attachmentList) { $details = trim($details . "\n\nAttachments requested: " . implode(', ', $attachmentList)); }
 if (request_length($company) > 160 || request_length($zip) > 20 || request_length($rentalPeriod) > 40 || request_length($projectType) > 80 || request_length($quantity) > 120 || request_length($details) > 10000) {
   request_redirect('invalid');
 }
