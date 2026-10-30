@@ -174,11 +174,29 @@
   }
 
   if (tabLinks.length && requestForms.length) {
+    const tabForHash = () => tabLinks.find(tab => tab.getAttribute('aria-controls') === window.location.hash.slice(1));
+
     tabLinks.forEach(tab => tab.addEventListener('click', event => {
       event.preventDefault();
       activateContactForm(tab);
+      const targetId = tab.getAttribute('aria-controls');
+      if (window.history?.replaceState) {
+        window.history.replaceState({}, '', `${window.location.pathname}${window.location.search}#${targetId}`);
+      }
     }));
-    activateContactForm(tabLinks.find(tab => tab.classList.contains('is-active')) || tabLinks[0]);
+
+    // Direct links such as /?page=contact#gravel-request must reveal the
+    // matching form instead of always opening the equipment request.
+    activateContactForm(tabForHash() || tabLinks.find(tab => tab.classList.contains('is-active')) || tabLinks[0]);
+
+    window.addEventListener('hashchange', () => {
+      const matchingTab = tabForHash();
+      if (matchingTab) activateContactForm(matchingTab);
+    });
+
+    if (tabForHash()) {
+      requestAnimationFrame(() => document.getElementById(window.location.hash.slice(1))?.scrollIntoView({ block: 'start' }));
+    }
   }
 
   // Homepage machine finder and fleet share one category-filtered equipment list.
