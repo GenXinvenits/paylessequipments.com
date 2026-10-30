@@ -7,7 +7,7 @@ require_once __DIR__ . '/PHPMailer/src/SMTP.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
 /** Send one message through authenticated SMTP. There is deliberately no mail() fallback. */
-function payless_send_email(string $recipient, string $subject, string $htmlBody, string $textBody, string $replyTo): void {
+function payless_send_email(string $recipient, string $subject, string $htmlBody, string $textBody, string $replyTo, string $sender): void {
   $localConfigPath = __DIR__ . '/mail.local.php';
   $localConfig = is_file($localConfigPath) ? require $localConfigPath : [];
   if (!is_array($localConfig)) {
@@ -23,13 +23,12 @@ function payless_send_email(string $recipient, string $subject, string $htmlBody
   $username = trim((string) $setting('username', 'PAYLESS_SMTP_USERNAME'));
   $password = (string) $setting('password', 'PAYLESS_SMTP_PASSWORD');
   $encryption = strtolower(trim((string) $setting('encryption', 'PAYLESS_SMTP_ENCRYPTION', 'ssl')));
-  $fromEmail = trim((string) $setting('from_email', 'PAYLESS_SMTP_FROM', $username));
   $fromName = trim((string) $setting('from_name', 'PAYLESS_SMTP_FROM_NAME', 'PayLess Equipment Rental'));
 
-  if ($host === '' || $username === '' || $password === '' || $fromEmail === '') {
+  if ($host === '' || $username === '' || $password === '' || $sender === '') {
     throw new RuntimeException('SMTP is not configured. Set PAYLESS_SMTP_* variables or create includes/mail.local.php on the hosting server.');
   }
-  if (!filter_var($username, FILTER_VALIDATE_EMAIL) || !filter_var($fromEmail, FILTER_VALIDATE_EMAIL)) {
+  if (!filter_var($username, FILTER_VALIDATE_EMAIL) || !filter_var($sender, FILTER_VALIDATE_EMAIL)) {
     throw new RuntimeException('Invalid SMTP username or sender email address.');
   }
   if (!in_array($port, [465, 587], true) || !in_array($encryption, ['ssl', 'tls'], true)) {
@@ -48,7 +47,7 @@ function payless_send_email(string $recipient, string $subject, string $htmlBody
   $mail->Timeout = 20;
   $mail->CharSet = PHPMailer::CHARSET_UTF8;
   $mail->isHTML(true);
-  $mail->setFrom($fromEmail, $fromName);
+  $mail->setFrom($sender, $fromName);
   $mail->addAddress($recipient);
   if ($replyTo !== '' && filter_var($replyTo, FILTER_VALIDATE_EMAIL)) {
     $mail->addReplyTo($replyTo);
