@@ -52,5 +52,13 @@ $categories = [
   ['name' => 'Scissor Lifts', 'detail' => 'Elevated work platforms', 'icon' => 'fa-solid fa-up-down', 'anchor' => 'cat-scissor-lifts', 'image' => '/assets/images/Scissor lift (for rent).jpeg', 'alt' => 'Scissor lift'],
 ];
 
+$requestAttachments = [
+  ['id' => 'hydraulic-chain-trencher', 'name' => 'Hydraulic Chain Trencher', 'category' => 'Mini Skid Steer'],
+  ['id' => 'skeleton-rock-bucket', 'name' => 'Skeleton Bucket / Rock Bucket', 'category' => 'Loader Attachment'],
+  ['id' => 'hydraulic-skeleton-grapple-bucket', 'name' => 'Hydraulic Skeleton Grapple Bucket', 'category' => 'Grapple Attachment'],
+  ['id' => 'hydraulic-multi-head-earth-drill', 'name' => 'Hydraulic Multi-Head Earth Drill', 'category' => 'Hydraulic Earth Drill'],
+  ['id' => 'hydraulic-breaker-hammer', 'name' => 'Hydraulic Breaker / Hammer', 'category' => 'Mini Excavator Attachment']
+];
+
 function e(string $value): string { return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); }
 function page_url(string $page = 'home'): string { return $page === 'home' ? '/' : '/?page=' . rawurlencode($page); }
