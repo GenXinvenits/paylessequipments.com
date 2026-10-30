@@ -190,5 +190,43 @@ try {
   request_redirect('saved-email-failed');
 }
 
+// Send a separate receipt to the customer. A failure here must not undo the saved request
+// or the internal notification that has already been delivered.
+$confirmationSubject = 'We received your ' . $requestLabel . ' #' . $requestId;
+$confirmationHtml = '<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>'
+  . '<body style="margin:0;padding:28px 12px;background:#f1f3ef;font-family:Arial,Helvetica,sans-serif;color:#202820;">'
+  . '<div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #e2e7df;border-radius:14px;overflow:hidden;">'
+  . '<div style="padding:27px 32px;background:#171c19;border-bottom:4px solid #c99a36;">'
+  . '<div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#d8b45e;">PAYLESS EQUIPMENT RENTAL LLC</div>'
+  . '<h1 style="margin:13px 0 0;color:#ffffff;font-size:25px;line-height:1.25;">We received your request.</h1>'
+  . '</div>'
+  . '<div style="padding:27px 32px;">'
+  . '<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">Hi ' . request_mail_escape($name) . ',</p>'
+  . '<p style="margin:0 0 20px;color:#4d594b;font-size:14px;line-height:1.7;">Thank you for contacting PayLess Equipment Rental. Your ' . request_mail_escape(strtolower($requestLabel)) . ' has been received. Our team will review the details and follow up with availability, pricing and next steps.</p>'
+  . '<div style="margin:0 0 20px;padding:14px 16px;background:#f5f0e4;border-left:3px solid #c99a36;border-radius:5px;">'
+  . '<div style="color:#73551b;font-size:10px;font-weight:700;letter-spacing:.1em;">YOUR REQUEST REFERENCE</div>'
+  . '<div style="margin-top:5px;color:#202820;font-size:19px;font-weight:800;">#' . $requestId . '</div>'
+  . '<div style="margin-top:5px;color:#687365;font-size:12px;">Submitted ' . request_mail_escape($submittedAt) . '</div>'
+  . '</div>'
+  . '<div style="margin:0 0 9px;font-size:14px;font-weight:800;">Request summary</div>'
+  . '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border:1px solid #e8ece6;border-radius:8px;overflow:hidden;">' . $mailRows . '</table>'
+  . '<div style="margin-top:18px;padding:14px 16px;background:#f6f7f4;border-radius:6px;color:#566052;font-size:13px;line-height:1.7;">Need to add something or have a question? Reply to this email or call <a href="tel:+15039019990" style="color:#73551b;font-weight:700;text-decoration:none;">(503) 901-9990</a>.</div>'
+  . '</div></div>'
+  . '<div style="max-width:640px;margin:14px auto 0;text-align:center;color:#8b9487;font-size:11px;line-height:1.6;">PayLess Equipment Rental LLC · Beaverton, Oregon</div>'
+  . '</body></html>';
+$confirmationText = "PAYLESS EQUIPMENT RENTAL LLC\nWe received your request.\n\n"
+  . "Hi {$name},\n\nThank you for contacting PayLess Equipment Rental. Your {$requestLabel} has been received. Our team will review the details and follow up with availability, pricing and next steps.\n\n"
+  . "Request reference: #{$requestId}\nSubmitted: {$submittedAt}\n\n"
+  . implode("\n", $textRows)
+  . "\n\nProject details:\n{$detailsText}\n\n"
+  . "Questions? Reply to this email or call (503) 901-9990.\n";
+
+try {
+  payless_send_email((string) $email, $confirmationSubject, $confirmationHtml, $confirmationText, $recipient, $sender);
+} catch (Throwable $exception) {
+  error_log('PayLess request #' . $requestId . ' was saved and internal notification sent, but customer confirmation failed: '
+    . get_class($exception) . ': ' . $exception->getMessage());
+}
+
 $_SESSION['request_last_sent'] = time();
 request_redirect('sent');
