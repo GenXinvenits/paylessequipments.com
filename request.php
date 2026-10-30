@@ -99,7 +99,7 @@ try {
 }
 
 $subject = $formType === 'gravel' ? 'New gravel delivery inquiry' : 'New equipment rental request';
-$body = "PayLess website request #{$requestId}\n\nType: {$formType}\nName: {$name}\nCompany: {$company}\nPhone: {$phone}\nEmail: {$email}\nJob-site location: {$location}\nZIP: {$zip}\nRental period: " . ($rentalPeriod !== '' ? $rentalPeriod : 'Not specified') . "\nStart date / needed by: " . ($startDate ?? 'Not specified') . "\nProject type: " . ($projectType !== '' ? $projectType : 'Not specified') . "\nQuantity: " . ($quantity !== '' ? $quantity : 'Not specified') . "\nEquipment: " . implode(', ', $equipmentList) . "\n\nDetails:\n" . ($details !== '' ? $details : 'Not provided') . "\n";
+$body = "PayLess website request #{$requestId}\n\nType: {$formType}\nName: {$name}\nCompany: {$company}\nPhone: {$phone}\nEmail: {$email}\nJob-site location: {$location}\nZIP: {$zip}\nRental period: " . ($rentalPeriod !== '' ? $rentalPeriod : 'Not specified') . "\nStart date / needed by: " . ($startDate ?? 'Not specified') . "\nProject type: " . ($projectType !== '' ? $projectType : 'Not specified') . "\nQuantity: " . ($quantity !== '' ? $quantity : 'Not specified') . "\nEquipment: " . implode(', ', $equipmentList) . "\nAttachments: " . ($attachmentList ? implode(', ', $attachmentList) : 'None selected') . "\n\nDetails:\n" . ($details !== '' ? $details : 'Not provided') . "\n";
 $recipient = SITE_EMAIL;
 if ($recipient === '' || !filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
   $_SESSION['request_last_sent'] = time();
