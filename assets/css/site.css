@@ -1226,3 +1226,64 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
   }
   .primary-nav > .nav-item--mega > .nav-equipment-mobile-link:active{transform:scale(.99)}
 }
+
+
+/* Keep equipment and attachment choices together in both request forms. */
+.request-selection-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:14px;
+  align-items:start;
+}
+.request-selection-grid>.equipment-choice,
+.request-selection-grid>.attachment-choice{
+  min-width:0;
+  margin:0;
+}
+.attachment-choice{
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:14px;
+  background:var(--surface);
+}
+.attachment-choice legend{
+  padding:0 4px;
+  font-size:12px;
+  font-weight:800;
+}
+.attachment-choice legend small{
+  color:var(--muted);
+  font-size:10px;
+  font-weight:500;
+}
+.attachment-choice__options{
+  display:grid;
+  gap:8px;
+  margin-top:8px;
+}
+.attachment-choice__option{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  font-size:11px;
+  line-height:1.45;
+  cursor:pointer;
+}
+.attachment-choice__option input{
+  flex:0 0 auto;
+  margin:2px 0 0;
+  accent-color:var(--accent);
+}
+.attachment-choice__link{
+  display:inline-block;
+  margin-top:12px;
+  color:var(--ink);
+  font-size:10px;
+  font-weight:800;
+  text-decoration:underline;
+  text-decoration-color:var(--accent);
+  text-underline-offset:3px;
+}
+@media(max-width:560px){
+  .request-selection-grid{grid-template-columns:1fr}
+}
