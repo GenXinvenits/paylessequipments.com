@@ -8,7 +8,7 @@ $legalPages = [
       ['Information you submit', 'Equipment requests may include your name, company, phone number, email, job-site location, dates, project details and equipment selections. Please do not submit sensitive personal information that is not needed for your request.'],
       ['How requests are used', 'Details submitted through the form are used to review your inquiry and respond about equipment availability, pricing, delivery options and next steps. The website does not take online payments.'],
       ['Database storage, hosting and email', 'Equipment and gravel enquiries are stored in the website operator’s MariaDB database so PayLess can review and respond to requests. If configured, an email notification is also sent to the business inbox. Hosting and email providers may process information to deliver their services, and hosting systems may maintain technical logs. Access to stored enquiries should be limited to authorised staff.'],
-      ['Retention and your choices', 'The business operator should retain enquiries only as long as needed for business, legal and recordkeeping purposes, then securely delete them. To ask about your information or request a correction or deletion, contact PayLess at (503) 259-0252. This notice should be reviewed against the actual hosting setup and applicable privacy laws before launch.']
+      ['Retention and your choices', 'The business operator should retain enquiries only as long as needed for business, legal and recordkeeping purposes, then securely delete them. To ask about your information or request a correction or deletion, contact PayLess at (503) 901-9990. This notice should be reviewed against the actual hosting setup and applicable privacy laws before launch.']
     ]
   ],
   'terms' => [
@@ -46,8 +46,8 @@ $legalPages = [
       ['29. Availability and Delivery', 'Equipment availability is not guaranteed until PayLess confirms it. Delivery options, transportation charges, timing, site access, and pickup arrangements depend on the equipment, location, and conditions. Any applicable delivery and pickup charges and arrangements should be confirmed in writing.'],
       ['30. Machine Setup and Safe Use', 'Before use, confirm equipment dimensions, attachment availability and charges, fuel and return expectations, rated capacity, operator requirements, and jobsite suitability. Follow manufacturer instructions and all applicable laws and safety requirements.'],
       ['31. Other Rental Conditions', 'Insurance, deposits, damage responsibility, late returns, cleaning, cancellation, and other transaction-specific conditions may vary. The applicable written quote and signed rental agreement must state the requirements for each rental. This website does not promise terms that are not confirmed in those documents.'],
-      ['32. Confirming Your Rental Terms', 'Contact PayLess at (503) 259-0252 to discuss your project and obtain the applicable written rental terms before committing to a rental. A rental is subject to confirmation and the applicable rental agreement.'],
-      ['27. Contact', 'PayLess Equipment Rentals LLC. Phone: 503-259-0252. Website: www.PayLessEquipments.com. Email: Rentals@PayLessEquipments.com.']
+      ['32. Confirming Your Rental Terms', 'Contact PayLess at (503) 901-9990 to discuss your project and obtain the applicable written rental terms before committing to a rental. A rental is subject to confirmation and the applicable rental agreement.'],
+      ['27. Contact', 'PayLess Equipment Rentals LLC. Phone: 503-901-9990. Website: www.PayLessEquipments.com. Email: Rentals@PayLessEquipments.com.']
     ]
   ],
   'disclaimer' => [
@@ -66,7 +66,7 @@ $legalPages = [
       ['9. Limitation of Website Reliance', 'To the maximum extent permitted by applicable law, PayLess Equipment Rentals LLC shall not be responsible for losses or damages arising solely from a person’s reliance on general information published on this website. Nothing in this Disclaimer is intended to exclude or limit liability that cannot legally be excluded or limited under applicable law.'],
       ['10. Rental Agreement Controls', 'If information contained on this website conflicts with the terms of a signed rental agreement, equipment-specific documentation, manufacturer’s instructions, or applicable law, the applicable controlling document or law will govern. Website information does not replace the customer’s contractual obligations under a rental agreement.'],
       ['11. Changes to This Disclaimer', 'PayLess may update this Disclaimer from time to time. Updates will be posted on this page with a revised “Last Updated” date.'],
-      ['12. Contact', 'PayLess Equipment Rentals LLC. Phone: 503-259-0252. Website: www.PayLessEquipments.com. Email: Rentals@PayLessEquipments.com.']
+      ['12. Contact', 'PayLess Equipment Rentals LLC. Phone: 503-901-9990. Website: www.PayLessEquipments.com. Email: Rentals@PayLessEquipments.com.']
     ]
   ],
 ];
