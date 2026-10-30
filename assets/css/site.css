@@ -1292,3 +1292,20 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
 /* Keep attachment multi-select dropdown aligned with the equipment picker. */
 .attachment-picker{margin:0 0 8px}
 .attachment-picker .equipment-picker__options{grid-template-columns:1fr}
+
+
+/* Product detail image slider */
+.equipment-image-slider{position:absolute;inset:0;overflow:hidden}
+.equipment-image-slider__track{display:flex;width:100%;height:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none}
+.equipment-image-slider__track::-webkit-scrollbar{display:none}
+.equipment-image-slider__slide{position:relative;flex:0 0 100%;width:100%;height:100%;scroll-snap-align:start}
+.equipment-detail__media .equipment-image-slider__slide img{position:static;width:100%;height:100%;min-height:100%;object-fit:cover}
+.equipment-image-slider__arrow{position:absolute;top:50%;z-index:3;display:grid;place-items:center;width:42px;height:42px;transform:translateY(-50%);border:1px solid #ffffff66;border-radius:50%;background:#101712b8;color:#fff;font-size:28px;line-height:1;cursor:pointer;transition:background .2s,transform .2s}
+.equipment-image-slider__arrow:hover{background:#101712e8;transform:translateY(-50%) scale(1.05)}
+.equipment-image-slider__arrow--prev{left:16px}
+.equipment-image-slider__arrow--next{right:16px}
+.equipment-image-slider__dots{position:absolute;z-index:3;left:50%;bottom:18px;display:flex;align-items:center;justify-content:center;gap:8px;transform:translateX(-50%);padding:8px 11px;border-radius:30px;background:#10171280}
+.equipment-image-slider__dot{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:#ffffff80;cursor:pointer;transition:width .2s,background .2s}
+.equipment-image-slider__dot[aria-current=true]{width:22px;border-radius:8px;background:var(--accent)}
+@media(prefers-reduced-motion:reduce){.equipment-image-slider__track{scroll-behavior:auto}.equipment-image-slider__arrow{transition:none}}
+@media(max-width:600px){.equipment-image-slider__arrow{width:36px;height:36px;font-size:24px}.equipment-image-slider__arrow--prev{left:10px}.equipment-image-slider__arrow--next{right:10px}.equipment-image-slider__dots{bottom:12px}}
