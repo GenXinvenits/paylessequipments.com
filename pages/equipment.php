@@ -44,7 +44,10 @@ if ($selectedEquipment) {
         ];
       }
     }
-    $availableCatalogueCategories = [];
+    $availableCatalogueCategories = [[
+      'category' => ['name' => 'All', 'detail' => 'Browse the complete equipment catalogue', 'icon' => 'fa-solid fa-layer-group', 'anchor' => 'all-equipment'],
+      'items' => $equipment
+    ]];
     foreach ($catalogueCategories as $catalogueCategory) {
       $categoryItems = array_values(array_filter($equipment, static fn($catalogueItem) => $catalogueItem['category'] === $catalogueCategory['name']));
       if ($categoryItems) $availableCatalogueCategories[] = ['category' => $catalogueCategory, 'items' => $categoryItems];
