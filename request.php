@@ -154,7 +154,7 @@ $htmlBody = '<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta na
   . '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:680px;margin:0 auto;background:#ffffff;border:1px solid #e2e7df;border-radius:14px;overflow:hidden;">'
   . '<tr><td style="padding:27px 32px;background:#171c19;border-bottom:4px solid #c99a36;">'
   . '<div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#d8b45e;text-transform:uppercase;">PAYLESS EQUIPMENT RENTAL LLC</div>'
-  . '<div style="margin-top:12px;color:#ffffff;font-size:25px;font-weight:800;line-height:1.2;">New website inquiry</div>'
+  . '<div style="margin-top:12px;color:#ffffff;font-size:25px;font-weight:800;line-height:1.2;">New Customer Inquiry – PayLess Equipments</div>'
   . '<div style="margin-top:7px;color:#c5cdc3;font-size:13px;">' . request_mail_escape($requestLabel) . '</div>'
   . '</td></tr>'
   . '<tr><td style="padding:25px 32px 8px;">'
