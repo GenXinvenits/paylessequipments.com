@@ -49,6 +49,6 @@
 
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.8/dist/lenis.min.js" defer></script>
-<script src="/assets/js/site.js?v=equipment-dropdown-touch-persistent-1" defer></script>
+<script src="/assets/js/site.js?v=gravel-form-routing-1" defer></script>
 </body>
 </html>
