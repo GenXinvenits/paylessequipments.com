@@ -7,6 +7,14 @@ define('SITE_PHONE_LINK', '+15039019990');
 define('SITE_ADDRESS', '4480 SW 185th Ave, Beaverton, OR 97078');
 define('SITE_EMAIL', getenv('PAYLESS_CONTACT_EMAIL') ?: '');
 
+$attachmentLinks = [
+  ['id' => 'hydraulic-chain-trencher', 'name' => 'Hydraulic Chain Trencher'],
+  ['id' => 'skeleton-rock-bucket', 'name' => 'Skeleton Bucket / Rock Bucket'],
+  ['id' => 'hydraulic-skeleton-grapple-bucket', 'name' => 'Hydraulic Skeleton Grapple Bucket'],
+  ['id' => 'hydraulic-multi-head-earth-drill', 'name' => 'Hydraulic Multi-Head Earth Drill'],
+  ['id' => 'hydraulic-breaker-hammer', 'name' => 'Hydraulic Breaker / Hammer'],
+];
+
 $equipment = [
   ['id'=>'trailer','name'=>'Trailer (for rent)','category'=>'Trailers','tag'=>'For rent','description'=>'New trailer available for rent from PayLess Equipment Rental LLC.','spec'=>'Condition: New · Hauling capacity: over 11,000 lb · Length: 16 ft · Width: 79 in','price'=>'$150','previous'=>'','rentalRates'=>['daily'=>'$150','weekly'=>'$750','monthly'=>'Contact for a monthly quote'],'rentalNotice'=>'Equipment Protection: A mandatory 15% Damage Waiver is applied to cover minor wear and tear and accidental job site damage.','image'=>'/assets/images/Trailer new.jpeg','alt'=>'Trailer available for rent from PayLess Equipment Rental LLC'],
   ['id'=>'bobcat-t66-2','name'=>'Bobcat T66-2 Skid Steer (for rent)','category'=>'Skid Steers','tag'=>'For rent','description'=>'New Bobcat T66-2 Skid Steer available for rent from PayLess Equipment Rental LLC.','spec'=>'Condition: New · Engine: 74 HP · Operating weight: 8,500 lb · Cab: closed, with new 8-inch display and Bluetooth radio · Operating capacity: 2,400 lb · Tipping load: 6,857 lb · Height: 80.5 in · Width: 67.8 in','price'=>'$350','previous'=>'','rentalRates'=>['daily'=>'$350','weekly'=>'$1,500','monthly'=>'Contact for availability'],'rentalNotice'=>'Equipment Protection: A mandatory 15% Damage Waiver is applied to cover normal wear and tear and minor accidental job site damage.','deliveryNotice'=>'We offer delivery for a fee; prices vary depending on location!','image'=>'/assets/images/Bobcat T66-2 Skid Steer (for rent).jpeg','alt'=>'Bobcat T66-2 skid steer for rent from PayLess Equipment Rental LLC'],
