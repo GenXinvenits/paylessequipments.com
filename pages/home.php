@@ -37,7 +37,7 @@
           ];
         }
       }
-      $homepageCatalogueGroups = [];
+      $homepageCatalogueGroups = [['category' => ['name' => 'All', 'detail' => 'Browse the complete equipment fleet', 'icon' => 'fa-solid fa-layer-group', 'anchor' => 'all-equipment'], 'items' => $equipment]];
       foreach ($homepageCatalogueCategories as $homepageCatalogueCategory) {
         $homepageCategoryItems = array_values(array_filter($equipment, static fn($homepageCatalogueItem) => $homepageCatalogueItem['category'] === $homepageCatalogueCategory['name']));
         if ($homepageCategoryItems) $homepageCatalogueGroups[] = ['category' => $homepageCatalogueCategory, 'items' => $homepageCategoryItems];
