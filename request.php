@@ -121,12 +121,13 @@ $submittedAt = (new DateTimeImmutable())->format('F j, Y \a\t g:i A T');
 
 $mailRows = '';
 $textRows = [];
+$locationLabel = $formType === 'gravel' ? 'Delivery address' : 'Job-site location';
 $fields = [
   'Customer name' => $name,
   'Company / individual' => $company,
   'Email address' => (string) $email,
   'Phone number' => $phone,
-  $formType === 'gravel' ? 'Delivery address' : 'Job-site location' => $location,
+  $locationLabel => $location,
   'ZIP code' => $zip,
   'Equipment requested' => implode(', ', $equipmentList),
   'Attachments requested' => implode(', ', $attachmentList),
