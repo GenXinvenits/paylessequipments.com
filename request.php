@@ -115,8 +115,8 @@ try {
 
 $requestLabel = $formType === 'gravel' ? 'Gravel delivery inquiry' : 'Equipment rental request';
 $subject = 'New ' . $requestLabel . ' #' . $requestId;
-$recipient = 'genxinvenits@rediffmail.com';
-$sender = 'Rentals@paylessequipments.com';
+$recipient = 'rentals@paylessequipments.com';
+$sender = 'noreply@paylessequipments.com';
 $submittedAt = (new DateTimeImmutable())->format('F j, Y \a\t g:i A T');
 
 $mailRows = '';
@@ -181,7 +181,7 @@ $textBody = "PAYLESS EQUIPMENT RENTAL LLC\nNew {$requestLabel}\nRequest referenc
 require_once __DIR__ . '/includes/mailer.php';
 
 try {
-  payless_send_email($recipient, $subject, $htmlBody, $textBody, (string) $email);
+  payless_send_email($recipient, $subject, $htmlBody, $textBody, (string) $email, $sender);
 } catch (Throwable $exception) {
   // The customer request is already committed. Keep it even if SMTP is unavailable.
   error_log('PayLess request #' . $requestId . ' was saved, but SMTP notification failed: '
