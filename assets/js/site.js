@@ -291,6 +291,48 @@ if (machineTabs[0]) activateMachineTab(machineTabs[0]);
     }));
   });
 
+  // Product detail image galleries: touch scrolling, arrows and image indicators.
+  document.querySelectorAll('[data-image-slider]').forEach(slider => {
+    const track = slider.querySelector('[data-slider-track]');
+    const slides = Array.from(slider.querySelectorAll('[data-slider-slide]'));
+    const previous = slider.querySelector('[data-slider-prev]');
+    const next = slider.querySelector('[data-slider-next]');
+    const dots = slider.querySelector('[data-slider-dots]');
+    const status = slider.querySelector('[data-slider-status]');
+    if (!track || slides.length < 2 || !dots) return;
+
+    let activeIndex = 0;
+    const indicators = slides.map((slide, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'equipment-image-slider__dot';
+      dot.setAttribute('aria-label', `Show image ${index + 1} of ${slides.length}`);
+      dot.addEventListener('click', () => track.scrollTo({ left: index * track.clientWidth, behavior: 'smooth' }));
+      dots.append(dot);
+      return dot;
+    });
+
+    const sync = () => {
+      const width = track.clientWidth || 1;
+      const index = Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / width)));
+      if (index === activeIndex && indicators[index].getAttribute('aria-current') === 'true') return;
+      activeIndex = index;
+      indicators.forEach((dot, dotIndex) => {
+        if (dotIndex === activeIndex) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+      if (previous) previous.disabled = activeIndex === 0;
+      if (next) next.disabled = activeIndex === slides.length - 1;
+      if (status) status.textContent = `Image ${activeIndex + 1} of ${slides.length}`;
+    };
+
+    previous?.addEventListener('click', () => track.scrollTo({ left: Math.max(0, (activeIndex - 1) * track.clientWidth), behavior: 'smooth' }));
+    next?.addEventListener('click', () => track.scrollTo({ left: Math.min((slides.length - 1) * track.clientWidth, (activeIndex + 1) * track.clientWidth), behavior: 'smooth' }));
+    track.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  });
+
   // Show a clear, accessible popup after an equipment or gravel request submission.
   const params = new URLSearchParams(window.location.search);
   const status = params.get('status');
