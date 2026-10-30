@@ -1,2 +1,5 @@
 # Server-only database credentials
 /includes/database.local.php
+
+# Server-only SMTP credentials
+/includes/mail.local.php
