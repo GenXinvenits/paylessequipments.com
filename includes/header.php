@@ -58,6 +58,7 @@ $navItems = [
       <?php foreach ($navItems as $label => $url): ?>
         <?php if ($label === 'Equipment'): ?>
           <div class="nav-item--mega <?= $page === 'equipment' ? 'is-active' : '' ?>">
+<a class="nav-equipment-mobile-link" href="<?= e($url) ?>">Equipments</a>
 <button class="nav-mega-trigger" type="button" aria-expanded="false" aria-controls="equipment-mega-menu">Equipments <span class="nav-mega-chevron" aria-hidden="true"></span></button>           <div class="mega-menu" id="equipment-mega-menu">
  <div class="mega-menu__intro"><p class="eyebrow">THE PAYLESS FLEET</p><strong>Find the right machine for the work ahead.</strong><a href="<?= e($url) ?>">View full catalogue <span aria-hidden="true">↗</span></a></div>
               <div class="mega-menu__categories">
