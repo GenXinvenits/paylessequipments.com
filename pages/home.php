@@ -97,14 +97,17 @@
                 </fieldset>
                 <fieldset class="attachment-choice">
                   <legend>Attachments needed <small>(optional)</small></legend>
-                  <div class="attachment-choice__options">
-                    <?php foreach ($requestAttachments as $attachment): ?>
-                      <label class="attachment-choice__option">
-                        <input type="checkbox" name="attachments[]" value="<?= e($attachment['name']) ?>">
-                        <span><?= e($attachment['name']) ?></span>
-                      </label>
-                    <?php endforeach; ?>
-                  </div>
+                  <details class="equipment-picker attachment-picker">
+                    <summary><span data-attachment-summary>Choose attachments</span><span class="equipment-picker__chevron" aria-hidden="true">⌄</span></summary>
+                    <div class="equipment-picker__options">
+                      <?php foreach ($requestAttachments as $attachment): ?>
+                        <label class="equipment-picker__option">
+                          <input type="checkbox" name="attachments[]" value="<?= e($attachment['name']) ?>" data-attachment-option>
+                          <span><?= e($attachment['name']) ?></span>
+                        </label>
+                      <?php endforeach; ?>
+                    </div>
+                  </details>
                   <a class="attachment-choice__link" href="<?= e(page_url('attachments')) ?>">View attachment details ↗</a>
                 </fieldset>
               </div>
