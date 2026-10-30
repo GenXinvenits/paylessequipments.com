@@ -84,16 +84,30 @@
     <form class="request-form" action="/request.php" method="post">
       <input type="hidden" name="form_type" value="equipment">
       <div class="form-heading"><span>REQUEST</span><span class="form-required">* REQUIRED</span></div>
-      <fieldset class="equipment-choice"><legend>What equipment do you need? <em>*</em></legend>
-        <details class="equipment-picker">
-          <summary><span data-equipment-summary>Choose equipment</span><span class="equipment-picker__chevron" aria-hidden="true">⌄</span></summary>
-          <div class="equipment-picker__options">
-            <?php foreach ($equipment as $item): ?><label class="equipment-picker__option"><input type="checkbox" name="equipment[]" value="<?= e($item['name']) ?>" data-equipment-option><span><?= e($item['name']) ?></span></label><?php endforeach; ?>
-            <label class="equipment-picker__option"><input type="checkbox" name="equipment[]" value="Other / not sure" data-equipment-option><span>Other / not sure</span></label>
-          </div>
-        </details>
-        <small class="field-error" data-equipment-error hidden>Please select at least one equipment option.</small>
-      </fieldset>
+              <div class="request-selection-grid">
+                <fieldset class="equipment-choice"><legend>What equipment do you need? <em>*</em></legend>
+                  <details class="equipment-picker">
+                    <summary><span data-equipment-summary>Choose equipment</span><span class="equipment-picker__chevron" aria-hidden="true">⌄</span></summary>
+                    <div class="equipment-picker__options">
+                      <?php foreach ($equipment as $item): ?><label class="equipment-picker__option"><input type="checkbox" name="equipment[]" value="<?= e($item['name']) ?>" data-equipment-option><span><?= e($item['name']) ?></span></label><?php endforeach; ?>
+                      <label class="equipment-picker__option"><input type="checkbox" name="equipment[]" value="Other / not sure" data-equipment-option><span>Other / not sure</span></label>
+                    </div>
+                  </details>
+                  <small class="field-error" data-equipment-error hidden>Please select at least one equipment option.</small>
+                </fieldset>
+                <fieldset class="attachment-choice">
+                  <legend>Attachments needed <small>(optional)</small></legend>
+                  <div class="attachment-choice__options">
+                    <?php foreach ($requestAttachments as $attachment): ?>
+                      <label class="attachment-choice__option">
+                        <input type="checkbox" name="attachments[]" value="<?= e($attachment['name']) ?>">
+                        <span><?= e($attachment['name']) ?></span>
+                      </label>
+                    <?php endforeach; ?>
+                  </div>
+                  <a class="attachment-choice__link" href="<?= e(page_url('attachments')) ?>">View attachment details ↗</a>
+                </fieldset>
+              </div>
       <div class="form-row"><label>Rental period <em>*</em><select name="rental_period" required><option value="">Choose a rental period</option><option>Daily</option><option>Weekly</option><option>Monthly</option><option>Not sure yet</option></select></label><label>Preferred start date<input type="date" name="start_date"></label></div>
       <div class="form-row"><label>Project type <em>*</em><select name="project_type" required><option value="">Select project type</option><option>Construction</option><option>Landscaping</option><option>Residential</option><option>Commercial</option><option>Utility</option><option>Site preparation</option><option>Material handling</option><option>Other</option></select></label><label>Job-site ZIP code <input name="zip" autocomplete="postal-code" placeholder="e.g. 97078"></label></div>
       <label>Job-site location <em>*</em><input name="job_location" required placeholder="Street, city or job-site address" autocomplete="street-address"></label>
