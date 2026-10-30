@@ -6,7 +6,7 @@ if ($selectedEquipment) {
   $pageTitle = $selectedEquipment['name'] . ' Rental in Beaverton, OR';
   $faqs = [
     ['What is the current price?', 'The current and previous prices are shown below where supplied. Contact PayLess to confirm current availability and pricing details.'],
-    ['How do I confirm availability?', 'Submit an equipment request with your preferred dates and job-site location, or call (503) 259-0252.'],
+    ['How do I confirm availability?', 'Submit an equipment request with your preferred dates and job-site location, or call (503) 901-9990.'],
     ['Can this equipment be delivered?', 'Delivery options and charges depend on equipment and job-site location. Contact PayLess to confirm details.'],
     ['What should I check before booking?', 'Confirm dimensions, site access, operating requirements, transport, attachments and current rental terms with PayLess.'],
     ['Can I request more than one machine?', 'Yes. Add this machine to your equipment list and select any additional equipment in the request builder.']

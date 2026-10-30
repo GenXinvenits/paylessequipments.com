@@ -130,7 +130,7 @@
       ['Can equipment be delivered to my job site?', 'Delivery options and charges depend on the equipment and job-site location. Share your address and timing so the team can confirm details.'],
       ['Does PayLess deliver gravel?', 'Yes. PayLess offers gravel delivery for construction and property projects. Contact the team for current availability and project-specific pricing.'],
       ['Where is PayLess Equipment Rental located?', 'PayLess Equipment Rental LLC is located at 4480 SW 185th Ave, Beaverton, Oregon 97078 and serves customers in the surrounding Portland-area market.'],
-      ['How do I request more than one machine?', 'Use the equipment request builder to select multiple machines, choose a rental period, provide job-site details and send one request. You can also call (503) 259-0252.'],
+      ['How do I request more than one machine?', 'Use the equipment request builder to select multiple machines, choose a rental period, provide job-site details and send one request. You can also call (503) 901-9990.'],
       ['What information should I include in a request?', 'Include the equipment you need, rental start date, rental duration, job-site location, project type, delivery needs and any attachments or access requirements.']
     ]; foreach ($faqs as $i => $faq): ?>
     <details class="faq-item" <?= $i === 0 ? 'open' : '' ?>><summary><span><?= e($faq[0]) ?></span><b aria-hidden="true">+</b></summary><div class="faq-item__answer"><p><?= e($faq[1]) ?></p></div></details>

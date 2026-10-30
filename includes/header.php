@@ -1,8 +1,9 @@
 <?php
 $navItems = [
   'Equipment' => page_url('equipment'),
-  'About ' => page_url('about'),
+  'Attachments' =>page_url('attachments'),
   'Gravel ' => page_url('gravel'),
+  'About ' => page_url('about'),
   'Contact' => page_url('contact'),
 ];
 ?>
@@ -57,9 +58,8 @@ $navItems = [
       <?php foreach ($navItems as $label => $url): ?>
         <?php if ($label === 'Equipment'): ?>
           <div class="nav-item--mega <?= $page === 'equipment' ? 'is-active' : '' ?>">
-            <button class="nav-mega-trigger" type="button" aria-expanded="false" aria-controls="equipment-mega-menu">Equipments <span class="nav-mega-chevron" aria-hidden="true"></span></button>
-            <div class="mega-menu" id="equipment-mega-menu">
-              <div class="mega-menu__intro"><p class="eyebrow">THE PAYLESS FLEET</p><strong>Find the right machine for the work ahead.</strong><a href="<?= e($url) ?>">View full catalogue <span aria-hidden="true">↗</span></a></div>
+<button class="nav-mega-trigger" type="button" aria-expanded="false" aria-controls="equipment-mega-menu">Equipments <span class="nav-mega-chevron" aria-hidden="true"></span></button>           <div class="mega-menu" id="equipment-mega-menu">
+ <div class="mega-menu__intro"><p class="eyebrow">THE PAYLESS FLEET</p><strong>Find the right machine for the work ahead.</strong><a href="<?= e($url) ?>">View full catalogue <span aria-hidden="true">↗</span></a></div>
               <div class="mega-menu__categories">
                 <?php foreach ($categories as $category): ?>
                   <a class="mega-menu__category" href="<?= e(page_url('home')) ?>#equipment" data-machine-nav-filter="<?= e($category['anchor']) ?>"><img src="<?= e($category['image']) ?>" alt="" loading="lazy"><span><strong><?= e($category['name']) ?></strong><small><?= e($category['detail']) ?></small></span><b aria-hidden="true">↗</b></a>
@@ -68,7 +68,7 @@ $navItems = [
             </div>
           </div>
         <?php else: ?>
-          <a class="<?= ($label === 'About ' && $page === 'about') || ($label === 'Gravel ' && $page === 'gravel') || ($label === 'Contact' && $page === 'contact') ? 'is-active' : '' ?>" href="<?= e($url) ?>"><?= e($label) ?></a>
+          <a class="<?= ($label === 'About ' && $page === 'about') || ($label === 'Gravel ' && $page === 'gravel') || ($label === 'Contact' && $page === 'contact') || ($label === 'Attachments' && $page === 'attachments') ? 'is-active' : '' ?>" href="<?= e($url) ?>"><?= e($label) ?></a>
         <?php endif; ?>
       <?php endforeach; ?>
     </nav>

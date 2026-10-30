@@ -213,7 +213,7 @@
     megaTrigger?.setAttribute('aria-expanded', 'false');
     megaMenu?.classList.remove('is-open');
   }));
-  if (machineTabs[0]) activateMachineTab(machineTabs[0]);
+if (machineTabs[0]) activateMachineTab(machineTabs[0]);
 
   // Equipment catalogue category tabs.
   const catalogueTabs = [...document.querySelectorAll('[data-catalogue-tab]')];

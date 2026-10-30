@@ -18,7 +18,35 @@
     <div class="footer-column"><p class="footer-label">EQUIPMENT</p><?php foreach ($categories as $category): ?><a href="<?= e(page_url('equipment')) ?>"><?= e($category['name']) ?></a><?php endforeach; ?></div>
     <div class="footer-column footer-contact"><p class="footer-label">LET'S GET TO WORK</p><a class="footer-phone" href="tel:<?= e(SITE_PHONE_LINK) ?>"><?= e(SITE_PHONE) ?> ↗</a><a href="mailto:Rentals@paylessequipments.com">Rentals@paylessequipments.com</a><p><?= e(SITE_ADDRESS) ?></p><a href="https://maps.google.com/?q=4480+SW+185th+Ave+Beaverton+OR+97078" target="_blank" rel="noopener">Get directions ↗</a></div>
   </div>
-  <div class="container footer-bottom"><span>© <?= date('Y') ?> PayLess Equipment Rental LLC</span><span>Built around the way you work.</span><span class="footer-legal"><a href="<?= e(page_url('privacy')) ?>">Privacy</a><a href="<?= e(page_url('terms')) ?>">Terms &amp; Conditions</a><a href="<?= e(page_url('disclaimer')) ?>">Website disclaimer</a></span><a href="#top">Back to top ↑</a></div>
+
+
+<div class="container footer-bottom"><span>© <?= date('Y') ?> PayLess Equipment Rental LLC</span><span>Built around the way you work.</span><span class="footer-legal"><a href="<?= e(page_url('privacy')) ?>">Privacy</a><a href="<?= e(page_url('terms')) ?>">Terms &amp; Conditions</a><a href="<?= e(page_url('disclaimer')) ?>">Website disclaimer</a></span><a href="#top">Back to top ↑</a></div>
+
+
+
+
+
+<div class="container footer-bottom-credit" style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:8px; padding:14px 0 20px; margin-top:0; border-top:none; background:#14171D; color:#aeb6a9 !important; font-family:'DM Mono',monospace; font-size:10px; line-height:1.8; text-align:center; width:100%; box-sizing:border-box;">
+
+  <span style="color:#aeb6a9 !important;">
+    © <?= date('Y') ?> PayLess Equipment Rental LLC. All rights reserved.
+  </span>
+
+  <span style="color:#aeb6a9 !important;">| Designed and Developed by</span>
+
+  <a href="https://www.crackajackllc.com/" target="_blank" rel="noopener noreferrer"
+     style="color:#CA9C35 !important; text-decoration:none; transition:color .2s ease;"
+     onmouseover="this.style.setProperty('color','#ffffff','important')"
+     onmouseout="this.style.setProperty('color','#CA9C35','important')">
+    CrackaJack Digital Solutions LLC.
+  </a>
+
+</div>
+
+
+
+
+
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.8/dist/lenis.min.js" defer></script>
 <script src="/assets/js/site.js?v=equipment-dropdown-touch-persistent-1" defer></script>

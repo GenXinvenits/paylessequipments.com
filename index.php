@@ -4,13 +4,14 @@ require_once __DIR__ . '/includes/site.php';
 $page = isset($_GET['page']) ? (string) $_GET['page'] : 'home';
 // Keep old rental-terms URLs working by routing them to the unified Terms & Conditions page.
 if ($page === 'rental-terms') { $page = 'terms'; }
-$allowedPages = ['home', 'equipment', 'about', 'gravel', 'contact', 'privacy', 'terms', 'disclaimer'];
+$allowedPages = ['home', 'equipment', 'about', 'gravel','attachments', 'contact', 'privacy', 'terms', 'disclaimer'];
 if (!in_array($page, $allowedPages, true)) { http_response_code(404); $page = '404'; }
 $pageTitles = [
   'home' => 'Construction Equipment Rental in Beaverton, OR',
   'equipment' => 'Construction Equipment for Rent',
   'about' => 'Equipment Rental Built Around the Way You Work',
   'gravel' => 'Gravel Delivery in Beaverton, Oregon',
+  'attachments' => 'Equipment Attachments for Rent | PayLess Equipment Rental',
   'contact' => 'Contact PayLess Equipment Rental',
   'privacy' => 'Privacy Notice | PayLess Equipment Rental',
   'terms' => 'Website Terms | PayLess Equipment Rental',
@@ -38,6 +39,8 @@ if ($page === 'home') {
   require __DIR__ . '/pages/about.php';
 } elseif ($page === 'gravel') {
   require __DIR__ . '/pages/gravel.php';
+} elseif ($page === 'attachments') {
+  require __DIR__ . '/pages/attachments.php';
 } elseif ($page === 'contact') {
   require __DIR__ . '/pages/contact.php';
 } elseif (in_array($page, ['privacy', 'terms', 'disclaimer'], true)) {
