@@ -12,6 +12,21 @@ function request_redirect(string $status): never {
   header('Location: /?page=contact&status=' . rawurlencode($status) . '#request-feedback');
   exit;
 }
+
+function request_mail_escape(string $value): string {
+  return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+}
+
+function request_mail_row(string $label, string $value): string {
+  if ($value === '') {
+    return '';
+  }
+  return '<tr>'
+    . '<td style="width:34%;padding:12px 14px;border-bottom:1px solid #e8ece6;color:#667064;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;vertical-align:top;">' . request_mail_escape($label) . '</td>'
+    . '<td style="padding:12px 14px;border-bottom:1px solid #e8ece6;color:#202820;font-size:14px;line-height:1.55;vertical-align:top;">' . nl2br(request_mail_escape($value)) . '</td>'
+    . '</tr>';
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: /?page=contact'); exit; }
 $honeypot = trim((string) ($_POST['website'] ?? ''));
 if ($honeypot !== '') { request_redirect('invalid'); }
@@ -98,19 +113,90 @@ try {
   request_redirect('database-error');
 }
 
-$subject = $formType === 'gravel' ? 'New gravel delivery inquiry' : 'New equipment rental request';
-$body = "PayLess website request #{$requestId}\n\nType: {$formType}\nName: {$name}\nCompany: {$company}\nPhone: {$phone}\nEmail: {$email}\nJob-site location: {$location}\nZIP: {$zip}\nRental period: " . ($rentalPeriod !== '' ? $rentalPeriod : 'Not specified') . "\nStart date / needed by: " . ($startDate ?? 'Not specified') . "\nProject type: " . ($projectType !== '' ? $projectType : 'Not specified') . "\nQuantity: " . ($quantity !== '' ? $quantity : 'Not specified') . "\nEquipment: " . implode(', ', $equipmentList) . "\nAttachments: " . ($attachmentList ? implode(', ', $attachmentList) : 'None selected') . "\n\nDetails:\n" . ($details !== '' ? $details : 'Not provided') . "\n";
-$recipient = SITE_EMAIL;
-if ($recipient === '' || !filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
-  $_SESSION['request_last_sent'] = time();
-  request_redirect('saved-email-not-configured');
-}
-$headers = [
-  'From' => 'website@' . (preg_replace('/[^a-z0-9.-]/i', '', (string) ($_SERVER['HTTP_HOST'] ?? 'localhost')) ?: 'localhost'),
-  'Reply-To' => (string) $email,
-  'Content-Type' => 'text/plain; charset=UTF-8',
+$requestLabel = $formType === 'gravel' ? 'Gravel delivery inquiry' : 'Equipment rental request';
+$subject = 'New ' . $requestLabel . ' #' . $requestId;
+$recipient = 'genxinvenits@rediffmail.com';
+$sender = 'Rentals@paylessequipments.com';
+$submittedAt = (new DateTimeImmutable())->format('F j, Y \a\t g:i A T');
+
+$mailRows = '';
+$textRows = [];
+$fields = [
+  'Customer name' => $name,
+  'Company / individual' => $company,
+  'Email address' => (string) $email,
+  'Phone number' => $phone,
+  $formType === 'gravel' ? 'Delivery address' : 'Job-site location' => $location,
+  'ZIP code' => $zip,
+  'Equipment requested' => implode(', ', $equipmentList),
+  'Attachments requested' => implode(', ', $attachmentList),
+  'Rental period' => $rentalPeriod,
+  'Start date / needed by' => $startDate ?? '',
+  'Project type' => $projectType,
+  'Estimated quantity' => $quantity,
 ];
-if (!mail($recipient, $subject, $body, $headers)) {
+foreach ($fields as $label => $value) {
+  if ($value === '') {
+    continue;
+  }
+  $mailRows .= request_mail_row($label, $value);
+  $textRows[] = $label . ': ' . $value;
+}
+$detailsHtml = $details !== ''
+  ? nl2br(request_mail_escape($details))
+  : '<span style="color:#7b8578;">No additional project details provided.</span>';
+$detailsText = $details !== '' ? $details : 'No additional project details provided.';
+
+$htmlBody = '<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>'
+  . '<body style="margin:0;padding:28px 12px;background:#f1f3ef;font-family:Arial,Helvetica,sans-serif;color:#202820;">'
+  . '<div style="display:none;max-height:0;overflow:hidden;opacity:0;">New ' . request_mail_escape($requestLabel) . ' from the PayLess Equipment Rental website.</div>'
+  . '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:680px;margin:0 auto;background:#ffffff;border:1px solid #e2e7df;border-radius:14px;overflow:hidden;">'
+  . '<tr><td style="padding:27px 32px;background:#171c19;border-bottom:4px solid #c99a36;">'
+  . '<div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#d8b45e;text-transform:uppercase;">PAYLESS EQUIPMENT RENTAL LLC</div>'
+  . '<div style="margin-top:12px;color:#ffffff;font-size:25px;font-weight:800;line-height:1.2;">New website inquiry</div>'
+  . '<div style="margin-top:7px;color:#c5cdc3;font-size:13px;">' . request_mail_escape($requestLabel) . '</div>'
+  . '</td></tr>'
+  . '<tr><td style="padding:25px 32px 8px;">'
+  . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
+  . '<td style="color:#687365;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;">REQUEST REFERENCE</td>'
+  . '<td align="right"><span style="display:inline-block;padding:7px 11px;border-radius:6px;background:#f5f0e4;color:#73551b;font-size:13px;font-weight:700;">#' . $requestId . '</span></td>'
+  . '</tr></table>'
+  . '<div style="margin-top:8px;color:#778174;font-size:12px;">Received ' . request_mail_escape($submittedAt) . '</div>'
+  . '</td></tr>'
+  . '<tr><td style="padding:18px 32px 8px;"><div style="margin-bottom:10px;color:#202820;font-size:15px;font-weight:800;">Customer information</div>'
+  . '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border:1px solid #e8ece6;border-radius:8px;overflow:hidden;">' . $mailRows . '</table>'
+  . '</td></tr>'
+  . '<tr><td style="padding:20px 32px 28px;"><div style="margin-bottom:10px;color:#202820;font-size:15px;font-weight:800;">Project details</div>'
+  . '<div style="padding:16px 18px;background:#f6f7f4;border-left:3px solid #c99a36;border-radius:5px;color:#354033;font-size:14px;line-height:1.7;">' . $detailsHtml . '</div>'
+  . '<div style="margin-top:22px;padding-top:17px;border-top:1px solid #e8ece6;color:#788174;font-size:11px;line-height:1.6;">This inquiry was submitted through the PayLess Equipment Rental website. Reply directly to this email to contact ' . request_mail_escape($name) . '.</div>'
+  . '</td></tr>'
+  . '</table><div style="max-width:680px;margin:14px auto 0;text-align:center;color:#8b9487;font-size:11px;line-height:1.6;">PayLess Equipment Rental LLC · Beaverton, Oregon · (503) 901-9990</div>'
+  . '</body></html>';
+
+$textBody = "PAYLESS EQUIPMENT RENTAL LLC\nNew {$requestLabel}\nRequest reference: #{$requestId}\nReceived: {$submittedAt}\n\n"
+  . implode("\n", $textRows)
+  . "\n\nProject details:\n{$detailsText}\n\nSubmitted through the PayLess Equipment Rental website.\n";
+
+$boundary = '=_PayLess_' . bin2hex(random_bytes(16));
+$headers = [
+  'From' => 'PayLess Equipment Rental <' . $sender . '>',
+  'Reply-To' => (string) $email,
+  'MIME-Version' => '1.0',
+  'Content-Type' => 'multipart/alternative; boundary="' . $boundary . '"',
+  'X-Mailer' => 'PayLess Website Forms',
+];
+$message = '--' . $boundary . "\r\n"
+  . "Content-Type: text/plain; charset=UTF-8\r\n"
+  . "Content-Transfer-Encoding: 8bit\r\n\r\n"
+  . $textBody . "\r\n"
+  . '--' . $boundary . "\r\n"
+  . "Content-Type: text/html; charset=UTF-8\r\n"
+  . "Content-Transfer-Encoding: 8bit\r\n\r\n"
+  . $htmlBody . "\r\n"
+  . '--' . $boundary . "--\r\n";
+
+if (!mail($recipient, $subject, $message, $headers)) {
+  error_log('PayLess request #' . $requestId . ' was saved but its notification email could not be handed to the mail transport.');
   $_SESSION['request_last_sent'] = time();
   request_redirect('saved-email-failed');
 }
