@@ -132,14 +132,23 @@ foreach ($attachments as $attachment) {
     <div class="container equipment-detail__layout">
 
         <div class="equipment-detail__media">
-            <img
-                src="<?= e($selectedAttachment['image']) ?>"
-                alt="<?= e($selectedAttachment['alt']) ?>"
-            >
-            <span class="equipment-detail__badge">
-                <?= e($selectedAttachment['category']) ?>
-            </span>
-        </div>
+    <div class="equipment-image-slider" data-image-slider role="region" aria-label="Attachment photos">
+      <div class="equipment-image-slider__track" data-slider-track>
+        <?php foreach (($selectedAttachment['gallery'] ?? [$selectedAttachment['image']]) as $galleryIndex => $galleryImage): ?>
+          <div class="equipment-image-slider__slide" data-slider-slide>
+            <img src="<?= e($galleryImage) ?>" alt="<?= e($selectedAttachment['alt']) ?>" <?= $galleryIndex === 0 ? 'fetchpriority="high"' : 'loading="lazy"' ?>>
+          </div>
+        <?php endforeach; ?>
+      </div>
+      <?php if (count($selectedAttachment['gallery'] ?? [$selectedAttachment['image']]) > 1): ?>
+        <button class="equipment-image-slider__arrow equipment-image-slider__arrow--prev" type="button" data-slider-prev aria-label="Previous image">‹</button>
+        <button class="equipment-image-slider__arrow equipment-image-slider__arrow--next" type="button" data-slider-next aria-label="Next image">›</button>
+        <div class="equipment-image-slider__dots" data-slider-dots aria-label="Choose image"></div>
+        <span class="sr-only" data-slider-status aria-live="polite"></span>
+      <?php endif; ?>
+    </div>
+    <span class="equipment-detail__badge"><?= e($selectedAttachment['category']) ?></span>
+  </div>
 
         <div class="equipment-detail__intro">
             <p class="eyebrow">
