@@ -1287,3 +1287,8 @@ html[data-theme=light] .equipment-card__description{font-size:13px;line-height:1
 @media(max-width:560px){
   .request-selection-grid{grid-template-columns:1fr}
 }
+
+
+/* Keep attachment multi-select dropdown aligned with the equipment picker. */
+.attachment-picker{margin:0 0 8px}
+.attachment-picker .equipment-picker__options{grid-template-columns:1fr}
