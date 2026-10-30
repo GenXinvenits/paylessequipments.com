@@ -30,7 +30,6 @@
           <?php endforeach; ?>
         </div>
       </details>
-      <a class="attachment-choice__link" href="<?= e(page_url('attachments')) ?>">View attachment details ↗</a>
     </fieldset>
   </div>
   <div class="form-row"><label>Rental period <em>*</em><select name="rental_period" required><option value="">Choose period</option><option>Daily</option><option>Weekly</option><option>Monthly</option><option>Not sure yet</option></select></label><label>Start date<input type="date" name="start_date"></label></div>
